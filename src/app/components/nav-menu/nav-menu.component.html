@@ -8,7 +8,10 @@
   </form>
 
   <div>
-  <a class="navbar-brand" routerLink="login">Login</a>
+  <a class="navbar-brand" routerLink="login" *ngIf=!loggedIn>Login</a>
+
+  <a class="navbar-brand" routerLink="logout" *ngIf=loggedIn>Logout</a>
+
   <a class="navbar-brand" routerLink="profile">Profile</a>
   </div>
 </nav>
