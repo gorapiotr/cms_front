@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {JarwisService} from '../../services/jarwis.service';
 import {Router} from '@angular/router';
 import {TokenService} from '../../services/token.service';
+import {SnotifyService} from 'ng-snotify';
 
 @Component({
   selector: 'app-signup',
@@ -21,7 +22,8 @@ export class SignupComponent implements OnInit {
 
   constructor(private Jarwis: JarwisService,
               private Token: TokenService,
-              private router: Router
+              private router: Router,
+              private Notify: SnotifyService,
   ) { }
 
     onSubmit() {
@@ -37,11 +39,15 @@ export class SignupComponent implements OnInit {
   handleResponse(data) {
       this.Token.handle(data.access_token);
 
+      this.Notify.success(data.data);
+
       this.router.navigateByUrl('/profile');
   }
 
   handleError(error) {
     this.error = error.error.errors;
+
+    this.Notify.error('Something was wrong!');
   }
 
 }

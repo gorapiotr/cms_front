@@ -4,6 +4,7 @@ import { JarwisService } from '../../services/jarwis.service';
 import { TokenService } from '../../services/token.service';
 import {Router} from '@angular/router';
 import {AuthService} from '../../services/auth.service';
+import {SnotifyService} from 'ng-snotify';
 
 @Component({
     selector: 'app-login',
@@ -24,6 +25,7 @@ export class LoginComponent implements OnInit {
         private Token: TokenService,
         private router: Router,
         private Auth: AuthService,
+        private Notify: SnotifyService,
     ) { }
 
     onSubmit() {
@@ -38,11 +40,15 @@ export class LoginComponent implements OnInit {
 
         this.Auth.changeAuthStatus(true);
 
+        this.Notify.success('Succesful login!');
+
         this.router.navigateByUrl('/profile');
     }
 
     handleError(error) {
         this.error = error.error.error;
+
+       this.Notify.error(this.error);
     }
     ngOnInit() {
     }
