@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {JarwisService} from '../../../services/jarwis.service';
+import {JarwisService} from '../../../../../services/jarwis.service';
 import {SnotifyService} from 'ng-snotify';
 
 @Component({
