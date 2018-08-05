@@ -10,7 +10,7 @@ const routes: Routes = [
         path: 'login',
         component: LoginComponent,
         canActivate: [BeforeLoginService]
-    },*/
+    },
     {
         path: 'signup',
         component: SignupComponent,
@@ -26,9 +26,11 @@ const routes: Routes = [
         component: ResponseResetComponent,
         canActivate: [BeforeLoginService]
 
-    },
+    },*/
     {path: 'login', loadChildren: './login/login.module#LoginModule'},
-    {path: 'admin-panel', loadChildren: './admin-panel/admin-panel.module#AdminPanelModule'}
+    {path: 'admin-panel', loadChildren: './admin-panel/admin-panel.module#AdminPanelModule'},
+    {path: 'signup', loadChildren: './signup/signup.module#SignupModule'},
+    {path: 'password', loadChildren: './password/password.module#PasswordModule'}
 ];
 
 @NgModule({

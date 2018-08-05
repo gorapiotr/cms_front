@@ -26,6 +26,8 @@ export class RequestResetComponent implements OnInit {
     );
   }
 
+
+
   handleResponse(res) {
     this.form.email = null;
   }
