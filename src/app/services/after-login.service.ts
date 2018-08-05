@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {ActivatedRouteSnapshot, CanActivate, RouterStateSnapshot} from '@angular/router';
+import {ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot} from '@angular/router';
 import {Observable} from 'rxjs';
 import {TokenService} from './token.service';
 
@@ -9,8 +9,14 @@ import {TokenService} from './token.service';
 export class AfterLoginService implements CanActivate{
 
     canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean | Observable<boolean> | Promise<boolean> {
-        return this.Token.loggedIn();
+
+        if (this.Token.loggedIn() === true) {
+            return this.Token.loggedIn();
+        } else {
+            this.router.navigateByUrl('/');
+            return this.Token.loggedIn();
+        }
     }
 
-    constructor(private Token: TokenService) { }
+    constructor(private Token: TokenService, private router: Router) { }
 }

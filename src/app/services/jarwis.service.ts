@@ -23,6 +23,6 @@ export class JarwisService {
   }
 
   changePassword(data) {
-      return this.http.post(`${this.baseUrl}/resetPassword`, data)
+      return this.http.post(`${this.baseUrl}/resetPassword`, data);
   }
 }
