@@ -1,7 +1,12 @@
 /* You can add global styles to this file, and also import other style files */
 @import '~bootstrap/dist/css/bootstrap.css';
 @import "~ng-snotify/styles/material.css";
-@import "~@fortawesome/fontawesome-free/css/all.css";
+@import "assets/vendors/iconfonts/mdi/css/materialdesignicons.min.css";
+@import "assets/css/style.css";
+
+
+
+font-awesome.min.css
 
 .ng-invalid:not(form){
     border-left:5px solid red;
