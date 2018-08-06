@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {SnotifyService} from 'ng-snotify';
-import {JarwisService} from '../../services/jarwis.service';
+import {JarwisService} from '../../_services/jarwis.service';
 
 @Component({
     selector: 'app-request-reset',

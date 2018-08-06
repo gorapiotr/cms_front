@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import {Router} from '@angular/router';
 import {SnotifyService} from 'ng-snotify';
-import {JarwisService} from '../services/jarwis.service';
-import {TokenService} from '../services/token.service';
-import {AuthService} from '../services/auth.service';
+import {JarwisService} from '../_services/jarwis.service';
+import {TokenService} from '../_services/token.service';
+import {AuthService} from '../_services/auth.service';
 
 @Component({
     selector: 'app-signup',

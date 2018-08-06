@@ -25,4 +25,9 @@ export class JarwisService {
   changePassword(data) {
       return this.http.post(`${this.baseUrl}/resetPassword`, data);
   }
+
+  getUserData() {
+    return this.http.get('http://localhost:80/api/user');
+  }
+
 }

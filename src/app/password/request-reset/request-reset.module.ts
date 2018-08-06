@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import {RouterModule, Routes} from '@angular/router';
 import {RequestResetComponent} from './request-reset.component';
 import {FormsModule} from '@angular/forms';
-import {BeforeLoginService} from '../../services/before-login.service';
+import {BeforeLoginService} from '../../_services/before-login.service';
 
 const routes: Routes = [{
     path: '',

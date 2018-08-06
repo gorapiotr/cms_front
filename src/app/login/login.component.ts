@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import {AuthService} from '../services/auth.service';
-import {JarwisService} from '../services/jarwis.service';
+import {AuthService} from '../_services/auth.service';
+import {JarwisService} from '../_services/jarwis.service';
 import {Router} from '@angular/router';
-import {TokenService} from '../services/token.service';
+import {TokenService} from '../_services/token.service';
 import {SnotifyService} from 'ng-snotify';
+import {UserService} from '../_services/user.service';
 
 @Component({
   selector: 'app-login',
@@ -24,6 +25,7 @@ export class LoginComponent implements OnInit {
         private router: Router,
         private Auth: AuthService,
         private Notify: SnotifyService,
+        private userService: UserService
     ) { }
 
     onSubmit() {
