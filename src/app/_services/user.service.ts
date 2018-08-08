@@ -6,8 +6,7 @@ import {MapUtils} from '../shared/class/maputils';
 import {User} from '../_models/User';
 import {map} from 'rxjs/internal/operators';
 import {Observable} from 'rxjs';
-
-
+import {ResponseInterface} from '../_contracts/response.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -18,20 +17,14 @@ export class UserService {
 
     private baseUrl = 'http://localhost:80/api/user';
 
-    constructor(private http: HttpClient, private Token: TokenService) {
+    constructor(private http: HttpClient) {
     }
-    /** TODO
-     *
-     * Problem: Property data does not exist in Object.
-     *
-     * Solution: Make interface for res.
-     *
-     * **/
+
     getUserData(): Observable<any> {
 
         return this.http.get(`${this.baseUrl}`)
             .pipe(
-              map((res) => {
+              map((res: ResponseInterface) => {
                 return MapUtils.deserialize(User, res.data);
             }));
     }

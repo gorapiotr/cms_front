@@ -5,7 +5,10 @@ import {AfterLoginService} from '../_services/after-login.service';
 
 const routes: Routes = [
     {
-        path: 'admin', component: AdminPanelComponent, canActivate: [AfterLoginService]
+        path: 'admin', component: AdminPanelComponent, canActivate: [AfterLoginService],
+        children: [
+            {path: 'account', loadChildren: './account/account.module#AccountModule'}
+        ]
     }
 ];
 

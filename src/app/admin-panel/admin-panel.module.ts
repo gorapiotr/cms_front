@@ -6,6 +6,7 @@ import { AdminPanelComponent } from './admin-panel.component';
 import {NavComponent} from '../shared/nav/nav.component';
 import {SidebarComponent} from '../shared/sidebar/sidebar.component';
 import {FooterComponent} from '../shared/footer/footer.component';
+import { AccountComponent } from './account/account.component';
 
 @NgModule({
   imports: [

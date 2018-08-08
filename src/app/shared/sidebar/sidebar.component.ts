@@ -3,6 +3,7 @@ import * as $ from 'jquery';
 import {MapUtils} from '../class/maputils';
 import {User} from '../../_models/User';
 import {UserService} from '../../_services/user.service';
+import {Route} from '@angular/router';
 
 @Component({
   selector: 'app-sidebar',
@@ -11,12 +12,13 @@ import {UserService} from '../../_services/user.service';
 })
 export class SidebarComponent implements OnInit {
 
-    public user: User;
+  public user: User;
 
-  constructor(private UserService: UserService) { }
+  constructor(private userService: UserService
+  ) { }
 
   ngOnInit() {
-      this.UserService.getUserData().subscribe(data => this.user = data);
+      this.userService.getUserData().subscribe(data => this.user = data);
   }
 
 }
