@@ -22,18 +22,26 @@
       </div>
     </li>
     <li class="nav-item">
-      <a class="nav-link" routerLink="account/account">
+      <a class="nav-link" data-toggle="collapse" href="#account" aria-expanded="false" aria-controls="ui-basic">
         <i class="menu-icon mdi mdi-television"></i>
         <span class="menu-title">My Account</span>
+        <i class="menu-arrow"></i>
       </a>
+      <div class="collapse" id="account">
+        <ul class="nav flex-column sub-menu">
+          <li class="nav-item">
+            <a class="nav-link" routerLink="account/account">Account info</a>
+          </li>
+        </ul>
+      </div>
     </li>
     <li class="nav-item">
-      <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
+      <a class="nav-link" data-toggle="collapse" href="#components" aria-expanded="false" aria-controls="ui-basic">
         <i class="menu-icon mdi mdi-content-copy"></i>
         <span class="menu-title">Components</span>
         <i class="menu-arrow"></i>
       </a>
-      <div class="collapse" id="ui-basic">
+      <div class="collapse" id="components">
         <ul class="nav flex-column sub-menu">
           <li class="nav-item">
             <a class="nav-link" routerLink="components/carousel">Carousel</a>
