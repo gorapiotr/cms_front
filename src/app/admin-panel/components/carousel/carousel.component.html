@@ -44,11 +44,37 @@
   <div class="col-12 grid-margin">
     <div class="card">
       <div class="row">
-        <div class="col-md-6">
+        <div class="col-md-12">
           <div class="card-body">
             <h4 class="card-title">Carousel elements</h4>
             <!-- Carousel list -->
-
+              <div class="table-responsive">
+                  <table class="table table-striped">
+                      <thead>
+                          <tr>
+                              <th>Photo</th>
+                              <th>Id</th>
+                              <th>Name</th>
+                              <th>Alt</th>
+                              <th>Author</th>
+                              <th>Position</th>
+                          </tr>
+                      </thead>
+                      <tbody id="sortable">
+                          <tr *ngFor="let item of carousel; let i = index">
+                              <td class="py-1">
+                                  <img src='../../assets/images/faces-clipart/pic-{{item.position}}.png' alt="image" />
+                              </td>
+                              <td>{{item.id}}</td>
+                              <td>{{item.name}}</td>
+                              <td>{{item.alt}}</td>
+                              <td>{{item.author}}</td>
+                              <td>{{item.position}}</td>
+                              <td>{{item.active}}</td>
+                          </tr>
+                      </tbody>
+                  </table>
+              </div>
           </div>
         </div>
       </div>
