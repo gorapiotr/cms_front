@@ -1,6 +1,7 @@
 import {AfterViewInit, Component, OnInit} from '@angular/core';
 import 'jquery-ui/ui/widgets/sortable.js';
 import {Carousel} from '../../../_models/Carousel';
+import {CarouselService} from '../../../_services/carousel/carousel.service';
 declare var $: any;
 
 @Component({
@@ -10,26 +11,34 @@ declare var $: any;
 })
 export class CarouselComponent implements OnInit, AfterViewInit {
 
-     carousel: Array<Carousel> =[
-         new Carousel(0,"name", "alt", 1, 4, true),
-         new Carousel(1,"name", "alt", 2, 3, false),
-         new Carousel(2,"name", "alt", 3, 11, true),
-         new Carousel(3,"name", "alt", 4, 11, true),
-         new Carousel(4,"name", "alt", 2, 3, true),
-         new Carousel(5,"name", "alt", 3, 4, true)
-     ];
+     carousel: Array<Carousel>;
 
 
 
-  constructor() { }
+  constructor(protected carouselService: CarouselService) { }
 
   ngOnInit() {
+        this.carouselService.getCarousels().subscribe( ( data ) => this.carousel = data.data);
   }
 
   ngAfterViewInit() {
-      $( '#sortable' ).sortable({
-          axis: 'y'
+      const self = this;
+      const sorted = $( "#sortable" );
+      sorted.sortable({
+          axis: 'y',
+          update: function (event, ui) {
+              let sorted = $(this).sortable('toArray');
+              self.updateCarouselsPositions(sorted);
+          }
       });
   }
+
+    updateCarouselsPositions(data) {
+        data.forEach( (data, index) => {
+            let foundIndex = this.carousel.findIndex( (x) => x.id == data);
+            this.carousel[foundIndex].position = index+1;
+        });
+    }
+
 
 }

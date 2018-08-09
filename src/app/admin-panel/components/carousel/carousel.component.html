@@ -56,19 +56,18 @@
                               <th>Id</th>
                               <th>Name</th>
                               <th>Alt</th>
-                              <th>Author</th>
                               <th>Position</th>
+                              <th>Active</th>
                           </tr>
                       </thead>
                       <tbody id="sortable">
-                          <tr *ngFor="let item of carousel; let i = index">
+                          <tr *ngFor="let item of carousel; let i = index" id="{{item.id}}">
                               <td class="py-1">
-                                  <img src='../../assets/images/faces-clipart/pic-{{item.position}}.png' alt="image" />
+                                  <img src='../../assets/images/faces-clipart/pic-1.png' alt="image" />
                               </td>
                               <td>{{item.id}}</td>
                               <td>{{item.name}}</td>
                               <td>{{item.alt}}</td>
-                              <td>{{item.author}}</td>
                               <td>{{item.position}}</td>
                               <td>{{item.active}}</td>
                           </tr>
