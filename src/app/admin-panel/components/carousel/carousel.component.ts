@@ -14,7 +14,6 @@ export class CarouselComponent implements OnInit, AfterViewInit {
      carousel: Array<Carousel>;
 
 
-
   constructor(protected carouselService: CarouselService) { }
 
   ngOnInit() {
