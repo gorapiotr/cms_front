@@ -2,6 +2,7 @@ import {AfterViewInit, Component, OnInit} from '@angular/core';
 import 'jquery-ui/ui/widgets/sortable.js';
 import {Carousel} from '../../../_models/Carousel';
 import {CarouselService} from '../../../_services/carousel/carousel.service';
+import {SnotifyService} from 'ng-snotify';
 declare var $: any;
 
 @Component({
@@ -12,12 +13,17 @@ declare var $: any;
 export class CarouselComponent implements OnInit, AfterViewInit {
 
      carousel: Array<Carousel>;
+     loadedCarousel: boolean = false;
 
-
-  constructor(protected carouselService: CarouselService) { }
+  constructor(protected carouselService: CarouselService,
+              protected Notify: SnotifyService,
+  ) { }
 
   ngOnInit() {
-        this.carouselService.getCarousels().subscribe( ( data ) => this.carousel = data.data);
+        this.carouselService.getCarousels().subscribe( ( data ) => {
+            this.carousel = data.data.sort((x,y) => x.position - y.position);
+            this.loadedCarousel = true;
+        });
   }
 
   ngAfterViewInit() {
@@ -32,12 +38,18 @@ export class CarouselComponent implements OnInit, AfterViewInit {
       });
   }
 
-    updateCarouselsPositions(data) {
-        data.forEach( (data, index) => {
-            let foundIndex = this.carousel.findIndex( (x) => x.id == data);
-            this.carousel[foundIndex].position = index+1;
-        });
+  updateCarouselsPositions(data) {
+    data.forEach( (data, index) => {
+        let foundIndex = this.carousel.findIndex( (x) => x.id == data);
+        this.carousel[foundIndex].position = index+1;
+    });
+  }
+
+  saveChanges() {
+    this.carouselService.update(this.carousel).subscribe( ( data ) => {
+        this.Notify.success('Updated');
+    }, ( error ) => {
+        this.Notify.error('Smothing was wrong');
+    });
     }
-
-
 }
