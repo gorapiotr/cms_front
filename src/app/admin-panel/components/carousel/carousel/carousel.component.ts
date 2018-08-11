@@ -1,7 +1,7 @@
 import {AfterViewInit, Component, OnInit} from '@angular/core';
 import 'jquery-ui/ui/widgets/sortable.js';
-import {Carousel} from '../../../_models/Carousel';
-import {CarouselService} from '../../../_services/carousel/carousel.service';
+import {Carousel} from '../../../../_models/Carousel/Carousel';
+import {CarouselService} from '../../../../_services/carousel/carousel.service';
 import {SnotifyService} from 'ng-snotify';
 declare var $: any;
 

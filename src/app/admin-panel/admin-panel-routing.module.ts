@@ -7,8 +7,9 @@ const routes: Routes = [
     {
         path: 'admin', component: AdminPanelComponent, canActivate: [AfterLoginService],
         children: [
-            {path: 'account/account', loadChildren: './account/account/account.module#AccountModule'},
-            {path: 'components/carousel', loadChildren: './components/carousel/carousel.module#CarouselModule'}
+            {path: 'account/account',               loadChildren: './account/account/account.module#AccountModule'},
+            {path: 'components/carousel',           loadChildren: './components/carousel/carousel/carousel.module#CarouselModule'},
+            {path: 'components/carousel-group',     loadChildren: './components/carousel/carousel-list/carousel-list.module#CarouselListModule' }
         ]
     }
 ];

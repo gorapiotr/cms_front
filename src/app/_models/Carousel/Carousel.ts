@@ -15,13 +15,4 @@ export class Carousel {
         this.author = undefined;
         this.active = undefined;
     }
-
-    // constructor(id, name, alt, position, author, active) {
-    //     this.id = id;
-    //     this.name = name;
-    //     this.alt = alt;
-    //     this.position = position;
-    //     this.author = author;
-    //     this.active = active;
-    // }
 }
