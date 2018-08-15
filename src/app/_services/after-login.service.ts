@@ -13,7 +13,7 @@ export class AfterLoginService implements CanActivate{
         if (this.Token.loggedIn() === true) {
             return this.Token.loggedIn();
         } else {
-            this.router.navigateByUrl('/');
+            this.router.navigateByUrl('/login');
             return this.Token.loggedIn();
         }
     }
