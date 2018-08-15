@@ -5,7 +5,7 @@ import {BeforeLoginService} from '../_services/before-login.service';
 
 const routes: Routes = [
     {
-        path: 'reset', component: PasswordComponent,
+        path: '', component: PasswordComponent,
         children: [
             {path: 'request-reset-password', loadChildren: './request-reset/request-reset.module#RequestResetModule'},
             {path: 'response-reset-password', loadChildren: './response-reset/response-reset.module#ResponseResetModule'}

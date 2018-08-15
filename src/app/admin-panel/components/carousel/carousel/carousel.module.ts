@@ -6,6 +6,10 @@ import {CarouselComponent} from './carousel.component';
 import {CarouselService} from '../../../../_services/carousel/carousel.service';
 import {FormsModule} from '@angular/forms';
 import {InlineEditorModule} from '../../../../../assets/js/@qontu/ngx-inline-editor';
+import { AngularFireModule } from 'angularfire2';
+import { environment } from '../../../../../environments/environment';
+import { AngularFireDatabaseModule } from 'angularfire2/database';
+import {UploadService} from '../../../../_services/upload/upload.service';
 
 const routes: Routes = [{
     path: '',
@@ -17,10 +21,13 @@ const routes: Routes = [{
     CommonModule,
     RouterModule.forChild(routes),
     FormsModule,
-    InlineEditorModule
+    InlineEditorModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFireDatabaseModule
   ],
   providers: [
-    CarouselService
+    CarouselService,
+    UploadService
   ],
   declarations: [CarouselComponent],
   exports: [CarouselComponent]

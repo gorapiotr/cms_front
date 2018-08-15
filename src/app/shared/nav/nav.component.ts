@@ -37,7 +37,7 @@ export class NavComponent implements OnInit {
 
         this.Token.remove();
 
-        this.router.navigateByUrl('/');
+        this.router.navigateByUrl('/login');
     }
 
 }

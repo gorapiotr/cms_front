@@ -1,3 +1,35 @@
+<div class="row">
+    <div class="col-12 grid-margin">
+        <div class="card">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card-body">
+                        <div *ngIf="currentUpload">
+                        <div class="progress">
+                            <div class="progress-bar progress-bar-animated" [ngStyle]="{ 'width': currentUpload?.progress + '%' }"></div>
+                        </div>
+                        Progress: {{currentUpload?.name}} | {{currentUpload?.progress}}% Complete
+                        </div>
+                        <label>
+                            <input type="file" (change)="detectFiles($event)">
+                        </label>
+
+                        <button
+                                [disabled]="!selectedFiles"
+                                (click)="uploadSingle()">
+
+                            Upload Single
+                        </button>
+                        <img id="myimg">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
 
 <div class="row">
   <div class="col-12 grid-margin">
@@ -9,19 +41,34 @@
             <!-- BOOTESTRAP 4 CAROUSEL -->
             <div *ngIf="loadedCarousel" id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
               <ol class="carousel-indicators">
-                    <div *ngFor="let item of carousel,let i = index">
-                        <div *ngIf="item.active">
-                            <li  href="#carouselExampleIndicators" [attr.data-slide-to]="i+1" [class.active]="i == 0"></li>
-                        </div>
+                    <div *ngFor="let item of carousel; let i = index; let first = first; let last = last;">
+                        <ng-container *ngIf="first">
+                            {{resetCounter()}}
+                        </ng-container>
+                        <ng-container *ngIf="item.active">
+                            <li  href="#carouselExampleIndicators" [attr.data-slide-to]="i+1" [class.active]="carouselCounter == 0"></li>
+                            {{incrementCounter(carouselCounter)}}
+                        </ng-container>
+                        <ng-container *ngIf="last">
+                            {{resetCounter()}}
+                        </ng-container>
                     </div>
               </ol>
               <div class="carousel-inner">
                 <ng-container *ngFor="let item of carousel,let i = index">
-                  <div *ngIf="item.active" class="carousel-item" [class.active]="i == 0">
-                    <img  class="d-block w-100" src="../../assets/images/faces/face2.jpg" alt="Second slide">
-                  </div>
+                    <ng-container *ngIf="first">
+                        {{resetCounter()}}
+                    </ng-container>
+                    <ng-container *ngIf="item.active" >
+                        <div class="carousel-item" [class.active]="carouselCounter == 0">
+                            <img  class="d-block w-100" src="https://firebasestorage.googleapis.com/v0/b/cmsimage-9ec21.appspot.com/o/uploads%2Fcarousel%2F1.jpeg?alt=media&token=f317e859-0488-4677-ae10-d6ebdc9cd4f" alt="Second slide">
+                            {{incrementCounter(carouselCounter)}}
+                        </div>
+                    </ng-container>
+                    <ng-container *ngIf="last">
+                        {{resetCounter()}}
+                    </ng-container>
                 </ng-container>
-
               </div>
               <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>

@@ -5,11 +5,11 @@ import {AfterLoginService} from '../_services/after-login.service';
 
 const routes: Routes = [
     {
-        path: 'admin', component: AdminPanelComponent, canActivate: [AfterLoginService],
+        path: '', component: AdminPanelComponent, canActivate: [AfterLoginService],
         children: [
-            {path: 'account/account',               loadChildren: './account/account/account.module#AccountModule'},
-            {path: 'components/carousel',           loadChildren: './components/carousel/carousel/carousel.module#CarouselModule'},
-            {path: 'components/carousel-group',     loadChildren: './components/carousel/carousel-list/carousel-list.module#CarouselListModule' }
+        {path: 'account/account',                               loadChildren: './account/account/account.module#AccountModule'},
+        {path: 'components/carousel/:carousel_group_id',        loadChildren: './components/carousel/carousel/carousel.module#CarouselModule'},
+        {path: 'components/carousel-group',                     loadChildren: './components/carousel/carousel-list/carousel-list.module#CarouselListModule' }
         ]
     }
 ];

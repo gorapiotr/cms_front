@@ -15,6 +15,8 @@ import {AdminPanelModule} from './admin-panel/admin-panel.module';
 import {SignupModule} from './signup/signup.module';
 import {PasswordModule} from './password/password.module';
 import {MainInterceptor} from './interceptors/main.interceptor';
+import { PagesComponent } from './pages/pages.component';
+
 
 
 @NgModule({
@@ -30,7 +32,7 @@ import {MainInterceptor} from './interceptors/main.interceptor';
     AdminPanelModule,
     SignupModule,
     PasswordModule,
-    SnotifyModule
+    SnotifyModule,
   ],
   providers: [
       JarwisService,

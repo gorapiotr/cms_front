@@ -46,9 +46,11 @@ export class LoginComponent implements OnInit {
     }
 
     handleError(error) {
-        this.error = error.error.error;
+        this.error = error.error;
 
         this.Notify.error(this.error);
+
+        this.router.navigateByUrl('/login');
     }
     ngOnInit() {
     }

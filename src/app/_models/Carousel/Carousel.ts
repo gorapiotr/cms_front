@@ -5,6 +5,7 @@ export class Carousel {
     position: number | undefined;
     author: number | undefined;
     active: boolean;
+    imgPath: string;
 
 
     constructor() {
@@ -14,5 +15,6 @@ export class Carousel {
         this.position = undefined;
         this.author = undefined;
         this.active = undefined;
+        this.imgPath = 'icon1.png';
     }
 }
