@@ -1249,7 +1249,7 @@ define(
             fireNewCell(cell);
           }
 
-          // take into account currently active rowspans
+          // take into team currently active rowspans
           each(rowSpansDueAt, function (dueY) {
             if (y <= dueY) {
               colCount++;

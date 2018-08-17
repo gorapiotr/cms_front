@@ -22252,7 +22252,7 @@ define(
         return [];
       }
 
-      // take into account only first one
+      // take into team only first one
       selector = selector.split(/\s*,\s*/)[0];
 
       // tighten
