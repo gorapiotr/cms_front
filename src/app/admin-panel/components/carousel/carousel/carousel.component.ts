@@ -22,6 +22,7 @@ export class CarouselComponent implements OnInit, AfterViewInit {
      carouselCounter: number = 0;
      selectedFiles: FileList;
      currentUpload: Upload;
+     hideLoader = false;
 
 
   constructor(protected carouselService: CarouselService,
@@ -34,10 +35,15 @@ export class CarouselComponent implements OnInit, AfterViewInit {
 
   ngOnInit() {
       this.route.params.subscribe((params: Params) => {
-          this.carouselGroupService.getCarouselGroupById(params.carousel_group_id).subscribe( ( data ) => {
+          this.carouselGroupService.getCarouselGroupById(params.carousel_group_id).subscribe(
+              ( data ) => {
               this.carousel = data.data.sort((x,y) => x.position - y.position);
-              this.loadedCarousel = true;
-          });
+          },
+              (error) => console.log(error),
+              () => {
+                  this.loadedCarousel = true;
+                  this.hideLoader = true;
+              });
       });
   }
 

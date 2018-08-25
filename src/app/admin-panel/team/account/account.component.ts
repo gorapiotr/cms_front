@@ -10,11 +10,17 @@ import {User} from '../../../_models/User';
 export class AccountComponent implements OnInit {
 
     public user: User;
+    hideLoader = false;
 
     constructor(private userService: UserService) { }
 
     ngOnInit() {
-        this.userService.getUserData().subscribe(data => this.user = data);
+        this.userService.getUserData().subscribe(
+            (data) => this.user = data,
+            (error) => console.log(error),
+            () => {
+                this.hideLoader = true;
+            });
     }
 
 }

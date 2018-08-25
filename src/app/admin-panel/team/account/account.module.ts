@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import {AccountComponent} from './account.component';
 import {RouterModule, Routes} from '@angular/router';
 import {AfterLoginService} from '../../../_services/after-login.service';
+import {LoaderModule} from '../../../shared/loader/loader.module';
 
 const routes: Routes = [{
     path: '',
@@ -13,6 +14,7 @@ const routes: Routes = [{
   imports: [
     CommonModule,
     RouterModule.forChild(routes),
+    LoaderModule
   ],
   declarations: [AccountComponent],
   exports: [AccountComponent]

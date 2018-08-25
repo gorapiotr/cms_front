@@ -10,6 +10,7 @@ import { AngularFireModule } from 'angularfire2';
 import { environment } from '../../../../../environments/environment';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import {UploadService} from '../../../../_services/upload/upload.service';
+import {LoaderModule} from '../../../../shared/loader/loader.module';
 
 const routes: Routes = [{
     path: '',
@@ -23,7 +24,8 @@ const routes: Routes = [{
     FormsModule,
     InlineEditorModule,
     AngularFireModule.initializeApp(environment.firebase),
-    AngularFireDatabaseModule
+    AngularFireDatabaseModule,
+    LoaderModule
   ],
   providers: [
     CarouselService,

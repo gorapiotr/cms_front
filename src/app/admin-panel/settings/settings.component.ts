@@ -12,6 +12,7 @@ export class SettingsComponent implements OnInit {
 
   settings: Array<Setting>;
   public error = null;
+  hideLoader = false;
 
   constructor(
       protected settingsService: SettingsService,
@@ -21,7 +22,10 @@ export class SettingsComponent implements OnInit {
   ngOnInit() {
     this.settingsService.getSettings().subscribe(
         (data) => this.settings = data,
-        error => this.handleError(error));
+        (error) => this.handleError(error),
+        () => {
+            this.hideLoader = true;
+        });
   }
     handleError(error) {
         this.error = error.error;

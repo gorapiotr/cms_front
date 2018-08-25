@@ -5,6 +5,7 @@ import {AfterLoginService} from '../../_services/after-login.service';
 import {RouterModule, Routes} from '@angular/router';
 import {SettingsPipe} from '../../shared/class/pipe/settings.pipe';
 import {FormsModule} from '@angular/forms';
+import {LoaderModule} from '../../shared/loader/loader.module';
 
 const routes: Routes = [{
     path: '',
@@ -15,7 +16,8 @@ const routes: Routes = [{
   imports: [
     CommonModule,
     RouterModule.forChild(routes),
-    FormsModule
+    FormsModule,
+    LoaderModule
   ],
   declarations: [
       SettingsComponent,
