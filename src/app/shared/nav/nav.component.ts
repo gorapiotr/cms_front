@@ -6,6 +6,7 @@ import {UserService} from '../../_services/user.service';
 import {User} from '../../_models/User';
 import {deserializeSummaries} from '@angular/compiler/src/aot/summary_serializer';
 import {MapUtils} from '../class/maputils';
+import {NgxPermissionsService} from 'ngx-permissions';
 
 @Component({
   selector: 'app-nav',
@@ -21,12 +22,13 @@ export class NavComponent implements OnInit {
         private Auth: AuthService,
         private router: Router,
         private Token: TokenService,
-        private UserService: UserService
+        private userService: UserService,
+        private permissionsService: NgxPermissionsService,
     ) { }
 
     ngOnInit() {
         this.Auth.authStatus.subscribe(value => this.loggedIn = value);
-        this.UserService.getUserData().subscribe(
+        this.userService.getUserData().subscribe(
             data => this.user = data);
     }
 
@@ -34,9 +36,8 @@ export class NavComponent implements OnInit {
         event.preventDefault();
 
         this.Auth.changeAuthStatus(false);
-
         this.Token.remove();
-
+        this.permissionsService.flushPermissions();
         this.router.navigateByUrl('/login');
     }
 

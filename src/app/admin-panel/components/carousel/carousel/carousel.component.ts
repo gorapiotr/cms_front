@@ -1,4 +1,4 @@
-import {AfterViewInit, Component, OnInit} from '@angular/core';
+import {AfterViewChecked, AfterViewInit, Component, OnInit} from '@angular/core';
 import 'jquery-ui/ui/widgets/sortable.js';
 import {Carousel} from '../../../../_models/Carousel/Carousel';
 import {CarouselService} from '../../../../_services/carousel/carousel.service';
@@ -15,7 +15,7 @@ import {UploadService} from '../../../../_services/upload/upload.service';
   templateUrl: './carousel.component.html',
   styleUrls: ['./carousel.component.css']
 })
-export class CarouselComponent implements OnInit, AfterViewInit {
+export class CarouselComponent implements OnInit, AfterViewChecked {
 
      carousel: Array<Carousel>;
      loadedCarousel: boolean = false;
@@ -47,7 +47,7 @@ export class CarouselComponent implements OnInit, AfterViewInit {
       });
   }
 
-  ngAfterViewInit() {
+  ngAfterViewChecked() {
       const self = this;
       const sorted = $( "#sortable" );
       sorted.sortable({

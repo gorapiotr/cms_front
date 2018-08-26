@@ -4,7 +4,7 @@ import {JarwisService} from '../_services/jarwis.service';
 import {Router} from '@angular/router';
 import {TokenService} from '../_services/token.service';
 import {SnotifyService} from 'ng-snotify';
-import {UserService} from '../_services/user.service';
+import {NgxPermissionsService} from 'ngx-permissions';
 
 @Component({
   selector: 'app-login',
@@ -25,23 +25,20 @@ export class LoginComponent implements OnInit {
         private router: Router,
         private Auth: AuthService,
         private Notify: SnotifyService,
-        private userService: UserService
+        private permissionsService: NgxPermissionsService,
     ) { }
 
     onSubmit() {
         this.Jarwis.login(this.form).subscribe(
             data => this.handleResponse(data),
-            error => this.handleError(error)
-        );
+            error => this.handleError(error));
     }
 
     handleResponse(data) {
         this.Token.handle(data.access_token);
-
         this.Auth.changeAuthStatus(true);
-
+        this.permissionsService.loadPermissions(data.data.permissions);
         this.Notify.success('Succesful login!');
-
         this.router.navigateByUrl('/admin');
     }
 

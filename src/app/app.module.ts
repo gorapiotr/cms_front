@@ -16,6 +16,7 @@ import {SignupModule} from './signup/signup.module';
 import {PasswordModule} from './password/password.module';
 import {MainInterceptor} from './interceptors/main.interceptor';
 import { PagesComponent } from './pages/pages.component';
+import {NgxPermissionsModule} from 'ngx-permissions';
 
 
 
@@ -33,6 +34,7 @@ import { PagesComponent } from './pages/pages.component';
     SignupModule,
     PasswordModule,
     SnotifyModule,
+    NgxPermissionsModule.forRoot()
   ],
   providers: [
       JarwisService,
