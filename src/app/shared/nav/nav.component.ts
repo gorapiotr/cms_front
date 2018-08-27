@@ -3,7 +3,7 @@ import {AuthService} from '../../_services/auth/auth.service';
 import {Router} from '@angular/router';
 import {TokenService} from '../../_services/token/token.service';
 import {UserService} from '../../_services/user/user.service';
-import {User} from '../../_models/User';
+import {User} from '../../_models/User/User';
 import {deserializeSummaries} from '@angular/compiler/src/aot/summary_serializer';
 import {MapUtils} from '../class/maputils';
 import {NgxPermissionsService} from 'ngx-permissions';

@@ -1,7 +1,7 @@
 import {AfterViewInit, Component, OnInit} from '@angular/core';
 declare var $: any;
 
-import {User} from '../../_models/User';
+import {User} from '../../_models/User/User';
 import {UserService} from '../../_services/user/user.service';
 
 

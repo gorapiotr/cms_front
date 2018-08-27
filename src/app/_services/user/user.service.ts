@@ -1,15 +1,15 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {TokenService} from '../token/token.service';
 import {Headers} from '@angular/http';
 import {MapUtils} from '../../shared/class/maputils';
-import {User} from '../../_models/User';
+import {User} from '../../_models/User/User';
 import {map} from 'rxjs/internal/operators';
 import {Observable} from 'rxjs';
 import {ResponseInterface} from '../../_contracts/response.interface';
 
 @Injectable({
-  providedIn: 'root'
+    providedIn: 'root'
 })
 export class UserService {
 
@@ -24,9 +24,9 @@ export class UserService {
 
         return this.http.get(`${this.baseUrl}`)
             .pipe(
-              map((res: ResponseInterface) => {
-                return MapUtils.deserialize(User, res.data);
-            }));
+                map((res: ResponseInterface) => {
+                    return MapUtils.deserialize(User, res.data);
+                }));
     }
 }
 

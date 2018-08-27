@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {AfterViewInit, Component, OnInit} from '@angular/core';
 import {UserService} from '../../../_services/user/user.service';
-import {User} from '../../../_models/User';
+import {User} from '../../../_models/User/User';
 import {NgxPermissionsService} from 'ngx-permissions';
 
 @Component({
@@ -8,7 +8,7 @@ import {NgxPermissionsService} from 'ngx-permissions';
   templateUrl: './account.component.html',
   styleUrls: ['./account.component.css']
 })
-export class AccountComponent implements OnInit {
+export class AccountComponent implements OnInit,AfterViewInit {
 
     public user: User;
     public userPermissions;
@@ -19,14 +19,19 @@ export class AccountComponent implements OnInit {
         private permissionsService: NgxPermissionsService,
     ) { }
 
-    ngOnInit() {
+    ngAfterViewInit() {
         this.userService.getUserData().subscribe(
             (data) => this.user = data,
             (error) => console.log(error),
             () => {
-                this.userPermissions = this.permissionsService.getPermissions();
-                this.hideLoader = true;
+                this.permissionsService.permissions$.subscribe((permissions) => {
+                    this.userPermissions = permissions;
+                    this.hideLoader = true;
+                });
             });
+    }
+
+    ngOnInit() {
     }
 
     objectKeys(obj) {
