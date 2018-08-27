@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import {PasswordComponent} from './password.component';
-import {BeforeLoginService} from '../_services/before-login.service';
+import {BeforeLoginService} from '../_services/before-login/before-login.service';
 
 const routes: Routes = [
     {

@@ -4,7 +4,7 @@ import {HttpClient} from '@angular/common/http';
 @Injectable({
   providedIn: 'root'
 })
-export class JarwisService {
+export class LoginService {
 
   private baseUrl = 'http://localhost:80/api';
 
@@ -25,9 +25,4 @@ export class JarwisService {
   changePassword(data) {
       return this.http.post(`${this.baseUrl}/resetPassword`, data);
   }
-
-  getUserData() {
-    return this.http.get('http://localhost:80/api/user');
-  }
-
 }

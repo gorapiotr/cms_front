@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
-import {  SnotifyService } from 'ng-snotify';
-import {JarwisService} from '../../_services/jarwis.service';
+import {Component, OnInit} from '@angular/core';
+import {ActivatedRoute, Router} from '@angular/router';
+import {SnotifyService} from 'ng-snotify';
+import {LoginService} from '../../_services/login/login.service';
 
 @Component({
     selector: 'app-response-reset',
@@ -11,36 +11,37 @@ import {JarwisService} from '../../_services/jarwis.service';
 export class ResponseResetComponent implements OnInit {
     public error = [];
     public form = {
-        email : null,
-        password : null,
+        email: null,
+        password: null,
         password_confirmation: null,
-        resetToken : null
-    }
-    constructor(
-        private route: ActivatedRoute,
-        private Jarwis: JarwisService,
-        private router: Router,
-        private Notify: SnotifyService
-    ) {
+        resetToken: null
+    };
+
+    constructor(private route: ActivatedRoute,
+                private Login: LoginService,
+                private router: Router,
+                private Notify: SnotifyService) {
         route.queryParams.subscribe(params => {
             this.form.resetToken = params['token'];
         });
     }
 
-    onSubmit(){
-        this.Jarwis.changePassword(this.form).subscribe(
+    onSubmit() {
+        this.Login.changePassword(this.form).subscribe(
             data => this.handleResponse(data),
             error => this.handleError(error)
-        )
+        );
     }
-    handleResponse(data){
+
+    handleResponse(data) {
         this.Notify.success(data.data);
         this.router.navigateByUrl('/login');
     }
 
-    handleError(error){
+    handleError(error) {
         this.error = error.error.errors;
     }
+
     ngOnInit() {
     }
 

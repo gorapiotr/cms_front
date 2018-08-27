@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import {Router} from '@angular/router';
 import {SnotifyService} from 'ng-snotify';
-import {JarwisService} from '../_services/jarwis.service';
-import {TokenService} from '../_services/token.service';
-import {AuthService} from '../_services/auth.service';
+import {LoginService} from '../_services/login/login.service';
+import {TokenService} from '../_services/token/token.service';
+import {AuthService} from '../_services/auth/auth.service';
 
 @Component({
     selector: 'app-signup',
@@ -21,7 +21,7 @@ export class SignupComponent implements OnInit {
 
     public error = [];
 
-    constructor(private Jarwis: JarwisService,
+    constructor(private Login: LoginService,
                 private Token: TokenService,
                 private router: Router,
                 private Auth: AuthService,
@@ -29,7 +29,7 @@ export class SignupComponent implements OnInit {
     ) { }
 
     onSubmit() {
-        this.Jarwis.signup(this.form).subscribe(
+        this.Login.signup(this.form).subscribe(
             data => this.handleResponse(data),
             error => this.handleError(error)
         );

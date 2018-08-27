@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import {AuthService} from '../../_services/auth.service';
+import {AuthService} from '../../_services/auth/auth.service';
 import {Router} from '@angular/router';
-import {TokenService} from '../../_services/token.service';
-import {UserService} from '../../_services/user.service';
+import {TokenService} from '../../_services/token/token.service';
+import {UserService} from '../../_services/user/user.service';
 import {User} from '../../_models/User';
 import {deserializeSummaries} from '@angular/compiler/src/aot/summary_serializer';
 import {MapUtils} from '../class/maputils';

@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {RouterModule, Routes} from '@angular/router';
-import {AfterLoginService} from '../../../../_services/after-login.service';
+import {AfterLoginService} from '../../../../_services/after-login/after-login.service';
 import {CarouselListComponent} from './carousel-list.component';
 import {CarouselGroupService} from '../../../../_services/carousel/carousel-group.service';
 import {LoaderModule} from '../../../../shared/loader/loader.module';

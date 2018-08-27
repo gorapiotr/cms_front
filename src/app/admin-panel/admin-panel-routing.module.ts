@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import {AdminPanelComponent} from './admin-panel.component';
-import {AfterLoginService} from '../_services/after-login.service';
+import {AfterLoginService} from '../_services/after-login/after-login.service';
 import {AccountModule} from './team/account/account.module';
 
 const routes: Routes = [

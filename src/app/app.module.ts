@@ -1,52 +1,51 @@
-import { BrowserModule } from '@angular/platform-browser';
+import {BrowserModule} from '@angular/platform-browser';
 import {APP_INITIALIZER, NgModule} from '@angular/core';
-import { AppComponent } from './app.component';
-import { AppRoutingModule } from './/app-routing.module';
-import { FormsModule} from '@angular/forms';
+import {AppComponent} from './app.component';
+import {AppRoutingModule} from './/app-routing.module';
+import {FormsModule} from '@angular/forms';
 import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
-import { JarwisService } from './_services/jarwis.service';
-import { TokenService } from './_services/token.service';
-import {AuthService} from './_services/auth.service';
-import {AfterLoginService} from './_services/after-login.service';
-import {BeforeLoginService} from './_services/before-login.service';
-import { SnotifyModule, SnotifyService, ToastDefaults } from 'ng-snotify';
+import {LoginService} from './_services/login/login.service';
+import {TokenService} from './_services/token/token.service';
+import {AuthService} from './_services/auth/auth.service';
+import {AfterLoginService} from './_services/after-login/after-login.service';
+import {BeforeLoginService} from './_services/before-login/before-login.service';
+import {SnotifyModule, SnotifyService, ToastDefaults} from 'ng-snotify';
 import {LoginModule} from './login/login.module';
 import {AdminPanelModule} from './admin-panel/admin-panel.module';
 import {SignupModule} from './signup/signup.module';
 import {PasswordModule} from './password/password.module';
 import {MainInterceptor} from './interceptors/main.interceptor';
-import { PagesComponent } from './pages/pages.component';
 import {NgxPermissionsModule} from 'ngx-permissions';
 
 
-
 @NgModule({
-  declarations: [
-    AppComponent,
-  ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    FormsModule,
-    HttpClientModule,
-    LoginModule,
-    AdminPanelModule,
-    SignupModule,
-    PasswordModule,
-    SnotifyModule,
-    NgxPermissionsModule.forRoot()
-  ],
-  providers: [
-      JarwisService,
-      TokenService,
-      AuthService,
-      AfterLoginService,
-      BeforeLoginService,
-      { provide: 'SnotifyToastConfig', useValue: ToastDefaults},
-      SnotifyService,
-      {provide: HTTP_INTERCEPTORS, useClass: MainInterceptor, multi: true}
-  ],
-  bootstrap: [
-      AppComponent]
+    declarations: [
+        AppComponent,
+    ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        FormsModule,
+        HttpClientModule,
+        LoginModule,
+        AdminPanelModule,
+        SignupModule,
+        PasswordModule,
+        SnotifyModule,
+        NgxPermissionsModule.forRoot()
+    ],
+    providers: [
+        LoginService,
+        TokenService,
+        AuthService,
+        AfterLoginService,
+        BeforeLoginService,
+        {provide: 'SnotifyToastConfig', useValue: ToastDefaults},
+        SnotifyService,
+        {provide: HTTP_INTERCEPTORS, useClass: MainInterceptor, multi: true}
+    ],
+    bootstrap: [
+        AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}

@@ -6,8 +6,8 @@ import {Observable} from 'rxjs';
 import {Router} from '@angular/router';
 import 'rxjs/add/operator/catch';
 import {ErrorObservable} from 'rxjs-compat/observable/ErrorObservable';
-import {AuthService} from '../_services/auth.service';
-import {TokenService} from '../_services/token.service';
+import {AuthService} from '../_services/auth/auth.service';
+import {TokenService} from '../_services/token/token.service';
 
 @Injectable()
 export class MainInterceptor implements HttpInterceptor {

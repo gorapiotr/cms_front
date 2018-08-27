@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
-import {TokenService} from './token.service';
+import {TokenService} from '../token/token.service';
 import {Headers} from '@angular/http';
-import {MapUtils} from '../shared/class/maputils';
-import {User} from '../_models/User';
+import {MapUtils} from '../../shared/class/maputils';
+import {User} from '../../_models/User';
 import {map} from 'rxjs/internal/operators';
 import {Observable} from 'rxjs';
-import {ResponseInterface} from '../_contracts/response.interface';
+import {ResponseInterface} from '../../_contracts/response.interface';
 
 @Injectable({
   providedIn: 'root'

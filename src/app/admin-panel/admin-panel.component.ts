@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {UserService} from '../_services/user.service';
+import {UserService} from '../_services/user/user.service';
+import {NgxPermissionsService} from 'ngx-permissions';
 
 @Component({
   selector: 'app-admin-panel',
@@ -8,9 +9,12 @@ import {UserService} from '../_services/user.service';
 })
 export class AdminPanelComponent implements OnInit {
 
-  constructor(userService: UserService) { }
+  constructor(
+      private permissionsService: NgxPermissionsService,
+  ) { }
 
   ngOnInit() {
+    console.log("AdminPanelComponent");
   }
 
 }

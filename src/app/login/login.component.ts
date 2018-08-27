@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import {AuthService} from '../_services/auth.service';
-import {JarwisService} from '../_services/jarwis.service';
+import {AuthService} from '../_services/auth/auth.service';
+import {LoginService} from '../_services/login/login.service';
 import {Router} from '@angular/router';
-import {TokenService} from '../_services/token.service';
+import {TokenService} from '../_services/token/token.service';
 import {SnotifyService} from 'ng-snotify';
 import {NgxPermissionsService} from 'ngx-permissions';
 
@@ -20,7 +20,7 @@ export class LoginComponent implements OnInit {
     public error = null;
 
     constructor(
-        private Jarwis: JarwisService,
+        private Login: LoginService,
         private Token: TokenService,
         private router: Router,
         private Auth: AuthService,
@@ -29,7 +29,7 @@ export class LoginComponent implements OnInit {
     ) { }
 
     onSubmit() {
-        this.Jarwis.login(this.form).subscribe(
+        this.Login.login(this.form).subscribe(
             data => this.handleResponse(data),
             error => this.handleError(error));
     }
