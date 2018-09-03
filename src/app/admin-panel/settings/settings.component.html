@@ -2,6 +2,14 @@
     <app-loader></app-loader>
 </ng-template>
 
+<ng-template #updateSetting>
+    <i class="fa fa-save text-white"></i>
+</ng-template>
+<ng-template #showLoader>
+    <i class="fa fa-spinner fa-pulse fa-fw text-white"></i>
+</ng-template>
+
+
 <ng-container *ngIf="hideLoader else preLoader">
     <div class="row">
         <div class="col-12 grid-margin">
@@ -22,9 +30,11 @@
                                                aria-describedby="colored-addon3"
                                         >
                                         <div class="input-group-append bg-success border-success">
-                      <span class="input-group-text bg-transparent" (click)="saveChanges(setting)">
-                        <i class="fa fa-save text-white"></i>
-                      </span>
+                                          <span class="input-group-text bg-transparent" (click)="saveChanges(setting)">
+                                              <ng-container
+                                                      *ngIf="updateSettingsLoader[setting.key];then showLoader else updateSetting">
+                                              </ng-container>
+                                          </span>
                                         </div>
                                     </div>
                                 </div>
@@ -40,9 +50,11 @@
                                                aria-describedby="colored-addon3"
                                         >
                                         <div class="input-group-append bg-success border-success">
-                      <span class="input-group-text bg-transparent">
-                        <i class="fa fa-save text-white"></i>
-                      </span>
+                                             <span class="input-group-text bg-transparent" (click)="saveChanges(setting)">
+                                              <ng-container
+                                                      *ngIf="updateSettingsLoader[setting.key];then showLoader else updateSetting">
+                                              </ng-container>
+                                          </span>
                                         </div>
                                     </div>
                                 </div>
