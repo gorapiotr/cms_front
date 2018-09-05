@@ -5,14 +5,15 @@ import {Observable} from 'rxjs';
 import {ResponseInterface} from '../../_contracts/response.interface';
 import {MapUtils} from '../../shared/class/maputils';
 import {Setting} from '../../_models/Settings/Setting';
+import {CmsService} from '../cms.service';
 
 @Injectable({
   providedIn: 'root'
 })
-export class SettingsService {
+export class SettingsService{
 
 
-    private baseUrl = 'http://localhost:80/api/settings/';
+    private baseUrl = '/api/settings/';
 
     constructor(private http: HttpClient) {
     }

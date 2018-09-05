@@ -1,13 +1,16 @@
 import { Injectable } from '@angular/core';
+import {CmsService} from '../cms.service';
 
 @Injectable()
-export class TokenService {
+export class TokenService extends CmsService{
     private iss = {
-        login: 'http://localhost/api/login',
-        signup: 'http://localhost/api/signup'
+        login: this.tokenUrl + '/login',
+        signup: this.tokenUrl + '/signup'
     };
 
-    constructor() { }
+    constructor() {
+        super();
+    }
 
     handle(token) {
         this.set(token);

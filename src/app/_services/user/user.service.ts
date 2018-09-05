@@ -7,15 +7,16 @@ import {User} from '../../_models/User/User';
 import {map} from 'rxjs/internal/operators';
 import {Observable} from 'rxjs';
 import {ResponseInterface} from '../../_contracts/response.interface';
+import {CmsService} from '../cms.service';
 
 @Injectable({
     providedIn: 'root'
 })
-export class UserService {
+export class UserService{
 
     user: User;
 
-    private baseUrl = 'http://localhost:80/api/user';
+    private baseUrl = '/api/user';
 
     constructor(private http: HttpClient) {
     }

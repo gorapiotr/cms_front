@@ -6,12 +6,14 @@ import {ResponseInterface} from '../../_contracts/response.interface';
 import {MapUtils} from '../../shared/class/maputils';
 import {CarouselGroup} from '../../_models/Carousel/CarouselGroup';
 import {Carousel} from '../../_models/Carousel/Carousel';
+import {CmsService} from '../cms.service';
 
 @Injectable({
   providedIn: 'root'
 })
-export class CarouselGroupService {
-    private baseUrl = 'http://localhost:80/api/carousel-group/';
+export class CarouselGroupService{
+
+    private baseUrl = '/api/carousel-group/';
 
     constructor(private http: HttpClient) {
     }

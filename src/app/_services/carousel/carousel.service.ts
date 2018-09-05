@@ -5,15 +5,16 @@ import {Observable} from 'rxjs';
 import {ResponseInterface} from '../../_contracts/response.interface';
 import {map} from 'rxjs/internal/operators';
 import {MapUtils} from '../../shared/class/maputils';
+import {CmsService} from '../cms.service';
 
 @Injectable({
   providedIn: 'root'
 })
-export class CarouselService {
+export class CarouselService{
 
     carousel: Carousel;
 
-    private baseUrl = 'http://localhost:80/api/carousel/';
+    private baseUrl = '/api/carousel/';
 
     constructor(private http: HttpClient) {
     }

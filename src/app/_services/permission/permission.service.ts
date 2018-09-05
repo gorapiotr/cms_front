@@ -5,13 +5,14 @@ import {ResponseInterface} from '../../_contracts/response.interface';
 import {MapUtils} from '../../shared/class/maputils';
 import {HttpClient} from '@angular/common/http';
 import {Permission} from '../../_models/User/Permission';
+import {CmsService} from '../cms.service';
 
 @Injectable({
     providedIn: 'root'
 })
 export class PermissionService {
 
-    private baseUrl = 'http://localhost:80/api/permissions/';
+    private baseUrl = '/api/permissions/';
 
     constructor(private http: HttpClient) {
     }

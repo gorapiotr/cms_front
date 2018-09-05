@@ -23,7 +23,10 @@ export class MainInterceptor implements HttpInterceptor {
         //request.headers.append('Accept', 'application/json');
         //request.headers.append('Authorization', `Bearer ${access_token}`);
 
+        const url = 'http://localhost:80';
+
         const customReq = request.clone({
+            url: url + request.url,
             headers: request.headers.append('Authorization', `Bearer ${access_token}`)
         });
 
