@@ -30,6 +30,7 @@ export class SettingsService{
     }
 
     update(setting: Setting): Observable<any>{
+        console.log(setting);
         return this.http.put(`${this.baseUrl}` + setting.id, setting);
     }
 }

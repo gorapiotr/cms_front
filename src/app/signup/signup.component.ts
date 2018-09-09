@@ -12,14 +12,14 @@ import {AuthService} from '../_services/auth/auth.service';
 })
 export class SignupComponent implements OnInit {
 
-    public form  ={
+    public form: any  = {
         email: null,
         name: null,
         password: null,
         password_conformation: null
     };
 
-    public error = [];
+    public error: any = [];
 
     constructor(private Login: LoginService,
                 private Token: TokenService,

@@ -9,8 +9,8 @@ import {LoginService} from '../../_services/login/login.service';
     styleUrls: ['./response-reset.component.css']
 })
 export class ResponseResetComponent implements OnInit {
-    public error = [];
-    public form = {
+    public error: any = [];
+    public form: any = {
         email: null,
         password: null,
         password_confirmation: null,

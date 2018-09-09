@@ -1,4 +1,4 @@
-import {AfterViewChecked, AfterViewInit, Component, OnInit} from '@angular/core';
+import {AfterViewChecked, Component, OnInit} from '@angular/core';
 import 'jquery-ui/ui/widgets/sortable.js';
 import {Carousel} from '../../../../_models/Carousel/Carousel';
 import {CarouselService} from '../../../../_services/carousel/carousel.service';
