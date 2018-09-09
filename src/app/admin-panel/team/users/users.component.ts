@@ -44,7 +44,11 @@ export class UsersComponent implements OnInit {
       );
   }
 
-    pageChange() {
-        this.getUsers(this.pagination.page);
-    }
+  pageChange() {
+      this.getUsers(this.pagination.page);
+  }
+
+  arrayOne(n: number): any[] {
+      return Array(n);
+  }
 }
