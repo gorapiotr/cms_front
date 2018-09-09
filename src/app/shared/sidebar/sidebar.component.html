@@ -32,6 +32,11 @@
           <li class="nav-item">
             <a class="nav-link" routerLink="team/account"><i class="menu-icon fa fa-user"></i>Account info</a>
           </li>
+          <ng-template [ngxPermissionsOnly]="['read-users']">
+            <li class="nav-item">
+              <a class="nav-link" routerLink="team/users"><i class="menu-icon fa fa-users"></i>Users</a>
+            </li>
+          </ng-template>
         </ul>
       </div>
     </li>

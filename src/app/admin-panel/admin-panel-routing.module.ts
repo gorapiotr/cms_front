@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import {AdminPanelComponent} from './admin-panel.component';
 import {AfterLoginService} from '../_services/after-login/after-login.service';
-import {AccountModule} from './team/account/account.module';
 
 const routes: Routes = [
     {
@@ -10,6 +9,7 @@ const routes: Routes = [
         children: [
         // team
         {path: 'team/account',                                  loadChildren: './team/account/account.module#AccountModule'},
+        {path: 'team/users',                                    loadChildren: './team/users/users.module#UsersModule'},
         // components
         {path: 'components/carousel/:carousel_group_id',        loadChildren: './components/carousel/carousel/carousel.module#CarouselModule'},
         {path: 'components/carousel-group',                     loadChildren: './components/carousel/carousel-list/carousel-list.module#CarouselListModule' },
