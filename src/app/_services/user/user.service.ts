@@ -33,7 +33,6 @@ export class UserService{
                 map((res: ResponseInterface) => {
                     this.users = res.data.map((data: ResponseInterface) => MapUtils.deserialize(User, data));
                     this.meta = new MetaCollectionInterface(res.meta);
-                    console.log(this.users);
                     return this.users;
                 }))
             .catch(this.handleError);
