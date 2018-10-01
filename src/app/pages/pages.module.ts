@@ -3,15 +3,16 @@ import {RouterModule} from '@angular/router';
 import {PagesComponent} from './pages.component';
 import {PagesRoutingModule} from './pages-routing.module';
 import {LoaderModule} from '../shared/loader/loader.module';
-import {IndexPageModule} from './index-page/index-page.module';
 import {CategoryPostsModule} from './components/category-posts/category-posts.module';
+import {RightSideBarModule} from './components/right-side-bar/right-side-bar.module';
+import {RecommendedPostsModule} from './components/recommended-posts/recommended-posts.module';
+import {FooterModule} from './components/footer/footer.module';
+import {BannerModule} from './components/banner/banner.module';
 
 @NgModule({
     imports: [
         RouterModule,
-        PagesRoutingModule,
-        LoaderModule,
-        IndexPageModule
+        PagesRoutingModule
     ],
     declarations: [PagesComponent]
 })
