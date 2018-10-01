@@ -17,7 +17,9 @@
       <tbody>
       <tr *ngFor="let element of arrayOne(10), let i = index">
         <td></td>
-        <td class="py-1"></td>
+        <td class="py-1">
+          <!--<img src="../../../../assets/images/faces-clipart/pic-3.png" alt="image" />-->
+        </td>
         <td>
           <ng-container *ngIf="i==5">
             <app-loader></app-loader>
@@ -65,7 +67,7 @@
                     {{i+1+(pagination.page-1)*pagination.size}}
                   </td>
                   <td class="py-1">
-                    <img src="../../../../assets/images/faces/face1.jpg" alt="image" />
+                    <img src="../../../../assets/images/faces-clipart/pic-2.png" alt="image" />
                   </td>
                   <td>
                     {{user.name}}
