@@ -15,16 +15,26 @@ export class SettingsComponent implements OnInit {
     hideLoader = false;
     updateSettingsLoader = [];
 
+    selectedFile: File;
+    url: string = '';
+
+
     constructor(protected settingsService: SettingsService,
                 protected Notify: SnotifyService) {
     }
 
     ngOnInit() {
+        this.getSettings();
+    }
+
+    getSettings()
+    {
+        this.hideLoader = false;
         this.settingsService.getSettings().subscribe(
             (data) => {
                 this.settings = data;
                 this.settings.forEach( ( setting ) => {
-                   this.updateSettingsLoader[setting.key] = false;
+                    this.updateSettingsLoader[setting.key] = false;
                 });
             },
             (error) => this.handleError(error),
@@ -43,6 +53,7 @@ export class SettingsComponent implements OnInit {
         this.updateSettingsLoader[setting.key] = true;
         this.settingsService.update(setting).subscribe((data) => {
             this.Notify.success('Updated');
+            this.getSettings();
             this.updateSettingsLoader[setting.key] = false;
         }, (error) => {
             error.errors.value.forEach((err) => {
@@ -51,4 +62,7 @@ export class SettingsComponent implements OnInit {
         });
     }
 
+    onFileChanged(event, setting) {
+        setting.file = event.target.files[0];
+    }
 }

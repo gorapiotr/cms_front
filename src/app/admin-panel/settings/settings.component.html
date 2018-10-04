@@ -58,6 +58,22 @@
                                         </div>
                                     </div>
                                 </div>
+                                <div *ngFor="let setting of settings | settingsfilter:{key:'icon'}"
+                                     class="form-group">
+                                    <p class="card-description">{{setting.key}}</p>
+                                    <div class="row">
+                                        <div class="col-sm">
+                                        <img [src]="setting.value" width="150px">
+                                        </div>
+                                        <div class="col-sm">
+                                            <div class="form-group">
+                                                <input type="file" class="btn form-control-file" id="iconFileInput" aria-describedby="fileHelp" (change)="onFileChanged($event, setting)">
+                                                <div class="btn btn-success" (click)="saveChanges(setting)">Upload!</div>
+                                                <!--<small id="fileHelp" class="form-text text-muted">This is some placeholder block-level help text for the above input. It's a bit lighter and easily wraps to a new line.</small>-->
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>

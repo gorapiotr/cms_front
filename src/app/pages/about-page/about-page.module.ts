@@ -8,10 +8,6 @@ import {CategoryPostsModule} from '../components/category-posts/category-posts.m
 import {RecommendedPostsModule} from '../components/recommended-posts/recommended-posts.module';
 import {FooterModule} from '../components/footer/footer.module';
 import {BannerModule} from '../components/banner/banner.module';
-<<<<<<< HEAD
-=======
-import {AboutContentModule} from './about-content/about-content.module';
->>>>>>> Components about and contact for blog(lazy loading).
 
 
 const routes: Routes = [{
@@ -27,13 +23,7 @@ const routes: Routes = [{
         BannerModule,
         RecommendedPostsModule,
         CategoryPostsModule,
-        RightSideBarModule,
-<<<<<<< HEAD
-        FooterModule
-=======
-        FooterModule,
-        AboutContentModule
->>>>>>> Components about and contact for blog(lazy loading).
+        RightSideBarModule
     ],
     declarations: [AboutPageComponent],
     exports: [AboutPageComponent]

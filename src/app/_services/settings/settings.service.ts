@@ -30,7 +30,10 @@ export class SettingsService{
     }
 
     update(setting: Setting): Observable<any>{
-        console.log(setting);
-        return this.http.put(`${this.baseUrl}` + setting.id, setting);
+        const uploadData = new FormData();
+        uploadData.append('file', setting.file);
+        uploadData.append('key', setting.key);
+        uploadData.append('value', setting.value);
+        return this.http.post(`${this.baseUrl}` + setting.id, uploadData);
     }
 }
