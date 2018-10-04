@@ -1,0 +1,163 @@
+<div class="row">
+    <div class="col-12 grid-margin">
+        <div class="row flex-grow">
+            <div class="col-12">
+                <div class="card">
+                    <div class="col-12">
+                        <div class="card-body">
+                            <h4 class="card-title">Image filter</h4>
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-sm">
+                                        <img id="orig" #orig [src]="src" width="100%">
+                                    </div>
+                                    <div class="col-sm">
+                                        <img id="after" [src]="new_src" width="100%">
+                                    </div>
+                                    <div class="col-sm">
+                                        <div class="row">
+                                            <div class="col-sm">
+                                                <input type="number"
+                                                       class="form-control"
+                                                       [(ngModel)]="kernel[0]"
+                                                       name="karnel0"
+                                                >
+                                            </div>
+                                            <div class="col-sm">
+                                                <div class="col-sm">
+                                                    <input type="number"
+                                                           class="form-control"
+                                                           [(ngModel)]="kernel[1]"
+                                                           name="karnel1"
+                                                    >
+                                                </div>
+                                            </div>
+                                            <div class="col-sm">
+                                                <div class="col-sm">
+                                                    <input type="number"
+                                                           class="form-control"
+                                                           [(ngModel)]="kernel[2]"
+                                                           name="karnel2"
+                                                    >
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-sm">
+                                                <input type="number"
+                                                       class="form-control"
+                                                       [(ngModel)]="kernel[3]"
+                                                       name="karnel3"
+                                                >
+                                            </div>
+                                            <div class="col-sm">
+                                                <div class="col-sm">
+                                                    <input type="number"
+                                                           class="form-control"
+                                                           [(ngModel)]="kernel[4]"
+                                                           name="karnel4"
+                                                    >
+                                                </div>
+                                            </div>
+                                            <div class="col-sm">
+                                                <div class="col-sm">
+                                                    <input type="number"
+                                                           class="form-control"
+                                                           [(ngModel)]="kernel[5]"
+                                                           name="karnel5"
+                                                    >
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-sm">
+                                                <input type="number"
+                                                       class="form-control"
+                                                       [(ngModel)]="kernel[6]"
+                                                       name="karnel6"
+                                                >
+                                            </div>
+                                            <div class="col-sm">
+                                                <div class="col-sm">
+                                                    <input type="number"
+                                                           class="form-control"
+                                                           [(ngModel)]="kernel[7]"
+                                                           name="karnel7"
+                                                    >
+                                                </div>
+                                            </div>
+                                            <div class="col-sm">
+                                                <div class="col-sm">
+                                                    <input type="number"
+                                                           class="form-control"
+                                                           [(ngModel)]="kernel[8]"
+                                                           name="karnel8"
+                                                    >
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <button  class="btn btn-success"
+                                                 (click)="startConvolve()"
+                                                 style="margin: 4px"
+                                        >
+                                            Render image
+                                        </button>
+                                        <hr>
+                                        <button  class="btn btn-primary"
+                                                 style="margin: 2px"
+                                                 (click)="sumAndKernel(identity)"
+                                        >
+                                            Identity
+                                        </button>
+                                        <button
+                                                class="btn btn-primary"
+                                                style="margin: 2px"
+                                                (click)="onlyKernel(edgeDetection1)"
+                                        >
+                                            Edge Detection ver.1
+                                        </button>
+                                        <button
+                                                class="btn btn-primary"
+                                                style="margin: 2px"
+                                                (click)="onlyKernel(edgeDetection2)"
+                                        >
+                                            Edge Detection ver.2
+                                        </button>
+                                        <button
+                                                class="btn btn-primary"
+                                                style="margin: 2px"
+                                                (click)="onlyKernel(edgeDetection3)"
+                                        >
+                                            Edge Detection ver.3
+                                        </button>
+                                        <button
+                                                class="btn btn-primary"
+                                                style="margin: 2px"
+                                                (click)="onlyKernel(sharpen)"
+                                        >
+                                            Sharpen
+                                        </button>
+                                        <button
+                                                class="btn btn-primary"
+                                                style="margin: 2px"
+                                                (click)="sumAndKernel(boxBlur)"
+                                        >
+                                            Box blur
+                                        </button>
+                                        <button
+                                                class="btn btn-primary"
+                                                style="margin: 2px"
+                                                (click)="sumAndKernel(gaussianBlur)"
+                                        >
+                                            Gaussian blur
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

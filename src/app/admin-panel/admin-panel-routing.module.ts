@@ -14,7 +14,8 @@ const routes: Routes = [
         {path: 'components/carousel/:carousel_group_id',        loadChildren: './components/carousel/carousel/carousel.module#CarouselModule'},
         {path: 'components/carousel-group',                     loadChildren: './components/carousel/carousel-list/carousel-list.module#CarouselListModule' },
         // settings
-        {path: 'settings',                                      loadChildren: './settings/settings.module#SettingsModule'}
+        {path: 'settings',                                      loadChildren: './settings/settings.module#SettingsModule'},
+        {path: 'image-edit/image-filter',                       loadChildren: './image-edit/image-filter/image-filter.module#ImageFilterModule'}
         ]
     }
 ];
