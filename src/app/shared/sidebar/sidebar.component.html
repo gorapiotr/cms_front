@@ -1,64 +1,85 @@
 <nav class="sidebar sidebar-offcanvas" id="sidebar">
-  <ul class="nav">
-    <li class="nav-item nav-profile">
-      <div class="nav-link">
-        <div class="user-wrapper">
-          <a href="#">
-            <div class="profile-image">
-              <img src="../../assets/images/faces/face1.jpg" alt="profile image">
+    <ul class="nav">
+        <li class="nav-item nav-profile">
+            <div class="nav-link">
+                <div class="user-wrapper">
+                    <div class="preloader_content" [style.display]="!hideLoader ? 'block' : 'none'">
+                        <app-simple-loader></app-simple-loader>
+                    </div>
+                    <ng-container *ngIf="hideLoader">
+                        <a href="#">
+                            <div class="profile-image">
+                                <img [src]="user.avatar" alt="profile image">
+                            </div>
+                        </a>
+                        <div class="text-wrapper">
+                            <p class="profile-name">{{user?.email}}</p>
+                            <div>
+                                <small class="designation text-muted">Manager</small>
+                                <span class="status-indicator online"></span>
+                            </div>
+                        </div>
+                    </ng-container>
+                </div>
+                <a routerLink="/">
+                    <button class="btn btn-primary btn-block">Go to your site!</button>
+                </a>
             </div>
-          </a>
-          <div class="text-wrapper">
-            <p class="profile-name">{{user?.email}}</p>
-            <div>
-              <small class="designation text-muted">Manager</small>
-              <span class="status-indicator online"></span>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" data-toggle="collapse" href="#account" aria-expanded="false" aria-controls="ui-basic">
+                <i class="menu-icon fa fa-users"></i>
+                <span class="menu-title">Team</span>
+                <i class="menu-arrow"></i>
+            </a>
+            <div class="collapse" id="account">
+                <ul class="nav flex-column sub-menu">
+                    <li class="nav-item">
+                        <a class="nav-link" routerLink="team/account"><i class="menu-icon fa fa-user"></i>My account</a>
+                    </li>
+                    <ng-template [ngxPermissionsOnly]="['read-users']">
+                        <li class="nav-item">
+                            <a class="nav-link" routerLink="team/users"><i class="menu-icon fa fa-users"></i>Users</a>
+                        </li>
+                    </ng-template>
+                </ul>
             </div>
-          </div>
-        </div>
-        <a routerLink="/">
-          <button class="btn btn-primary btn-block">Go to your site!</button>
-        </a>
-      </div>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" data-toggle="collapse" href="#account" aria-expanded="false" aria-controls="ui-basic">
-        <i class="menu-icon fa fa-users"></i>
-        <span class="menu-title">Team</span>
-        <i class="menu-arrow"></i>
-      </a>
-      <div class="collapse" id="account">
-        <ul class="nav flex-column sub-menu">
-          <li class="nav-item">
-            <a class="nav-link" routerLink="team/account"><i class="menu-icon fa fa-user"></i>Account info</a>
-          </li>
-          <ng-template [ngxPermissionsOnly]="['read-users']">
-            <li class="nav-item">
-              <a class="nav-link" routerLink="team/users"><i class="menu-icon fa fa-users"></i>Users</a>
-            </li>
-          </ng-template>
-        </ul>
-      </div>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" data-toggle="collapse" href="#components" aria-expanded="false" aria-controls="ui-basic">
-        <i class="menu-icon fa fa-rocket"></i>
-        <span class="menu-title">Components</span>
-        <i class="menu-arrow"></i>
-      </a>
-      <div class="collapse" id="components">
-        <ul class="nav flex-column sub-menu">
-          <li class="nav-item">
-            <a class="nav-link" routerLink="components/carousel-group"><i class="menu-icon fa fa-cubes"></i>Carousel</a>
-          </li>
-        </ul>
-      </div>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" routerLink="settings">
-        <i class="menu-icon fa fa-cogs"></i>
-        <span class="menu-title">Settings</span>
-      </a>
-    </li>
-  </ul>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" data-toggle="collapse" href="#components" aria-expanded="false"
+               aria-controls="ui-basic">
+                <i class="menu-icon fa fa-rocket"></i>
+                <span class="menu-title">Components</span>
+                <i class="menu-arrow"></i>
+            </a>
+            <div class="collapse" id="components">
+                <ul class="nav flex-column sub-menu">
+                    <li class="nav-item">
+                        <a class="nav-link" routerLink="components/carousel-group"><i class="menu-icon fa fa-cubes"></i>Carousel</a>
+                    </li>
+                </ul>
+            </div>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" data-toggle="collapse" href="#assets" aria-expanded="false"
+               aria-controls="ui-basic">
+                <i class="menu-icon fa fa-puzzle-piece"></i>
+                <span class="menu-title">Assets</span>
+                <i class="menu-arrow"></i>
+            </a>
+            <div class="collapse" id="assets">
+                <ul class="nav flex-column sub-menu">
+                    <li class="nav-item">
+                        <a class="nav-link" routerLink="assets/image-filter"><i class="menu-icon fa fa-file-image"></i>Image filter</a>
+                    </li>
+                </ul>
+            </div>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" routerLink="settings">
+                <i class="menu-icon fa fa-cogs"></i>
+                <span class="menu-title">Settings</span>
+            </a>
+        </li>
+    </ul>
 </nav>

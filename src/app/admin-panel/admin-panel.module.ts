@@ -1,24 +1,24 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-
-import { AdminPanelRoutingModule } from './admin-panel-routing.module';
-import { AdminPanelComponent } from './admin-panel.component';
-import {NavComponent} from '../shared/nav/nav.component';
-import {SidebarComponent} from '../shared/sidebar/sidebar.component';
-import {FooterComponent} from '../shared/footer/footer.component';
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
+import {AdminPanelRoutingModule} from './admin-panel-routing.module';
+import {AdminPanelComponent} from './admin-panel.component';
 import {NgxPermissionsModule} from 'ngx-permissions';
+import {NavModule} from '../shared/nav/nav.module';
+import {SidebarModule} from '../shared/sidebar/sidebar.module';
+import {FooterModule} from '../shared/footer/footer.module';
 
 @NgModule({
-  imports: [
-    CommonModule,
-    AdminPanelRoutingModule,
-    NgxPermissionsModule.forChild()
-  ],
-  declarations: [
-      AdminPanelComponent,
-      NavComponent,
-      SidebarComponent,
-      FooterComponent
-      ]
+    imports: [
+        CommonModule,
+        AdminPanelRoutingModule,
+        NgxPermissionsModule.forChild(),
+        NavModule,
+        SidebarModule,
+        FooterModule
+    ],
+    declarations: [
+        AdminPanelComponent,
+    ]
 })
-export class AdminPanelModule { }
+export class AdminPanelModule {
+}

@@ -4,22 +4,27 @@ import {User} from '../../../_models/User/User';
 import {NgxPermissionsService} from 'ngx-permissions';
 
 @Component({
-  selector: 'app-account',
-  templateUrl: './account.component.html',
-  styleUrls: ['./account.component.css']
+    selector: 'app-account',
+    templateUrl: './account.component.html',
+    styleUrls: ['./account.component.css']
 })
-export class AccountComponent implements OnInit,AfterViewInit {
+export class AccountComponent implements OnInit, AfterViewInit {
 
     public user: User;
     public userPermissions;
     hideLoader = false;
+    hideUpdateUserLoader = true;
 
-    constructor(
-        private userService: UserService,
-        private permissionsService: NgxPermissionsService,
-    ) { }
+    constructor(private userService: UserService,
+                private permissionsService: NgxPermissionsService,) {
+    }
 
     ngAfterViewInit() {
+        this.getUserData();
+    }
+
+    getUserData() {
+        this.hideLoader = false;
         this.userService.getUserData().subscribe(
             (data) => this.user = data,
             (error) => console.log(error),
@@ -31,10 +36,22 @@ export class AccountComponent implements OnInit,AfterViewInit {
             });
     }
 
+    update() {
+        this.hideUpdateUserLoader = false;
+        this.userService.update(this.user).subscribe((data) => {
+            this.getUserData();
+            this.hideUpdateUserLoader = true;
+        });
+    }
+
     ngOnInit() {
     }
 
     objectKeys(obj) {
         return Object.keys(obj);
+    }
+
+    onFileChanged(event) {
+        this.user.avatar_file = event.target.files[0];
     }
 }

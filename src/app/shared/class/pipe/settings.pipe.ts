@@ -1,6 +1,7 @@
 import { Pipe, PipeTransform } from '@angular/core';
 import {Setting} from '../../../_models/Settings/Setting';
 
+
 @Pipe({
     name: 'settingsfilter',
     pure: false

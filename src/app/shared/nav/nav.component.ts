@@ -4,8 +4,6 @@ import {Router} from '@angular/router';
 import {TokenService} from '../../_services/token/token.service';
 import {UserService} from '../../_services/user/user.service';
 import {User} from '../../_models/User/User';
-import {deserializeSummaries} from '@angular/compiler/src/aot/summary_serializer';
-import {MapUtils} from '../class/maputils';
 import {NgxPermissionsService} from 'ngx-permissions';
 
 @Component({
@@ -17,6 +15,7 @@ export class NavComponent implements OnInit {
 
     public loggedIn: boolean;
     public user: User;
+    hideLoader = false;
 
     constructor(
         private Auth: AuthService,
@@ -27,9 +26,13 @@ export class NavComponent implements OnInit {
     ) { }
 
     ngOnInit() {
+        this.hideLoader = false;
         this.Auth.authStatus.subscribe(value => this.loggedIn = value);
         this.userService.getUserData().subscribe(
-            data => this.user = data);
+            (data) => {
+                this.user = data;
+                this.hideLoader = true;
+            });
     }
 
     logout(event: MouseEvent) {

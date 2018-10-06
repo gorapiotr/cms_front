@@ -2,6 +2,14 @@
     <app-loader></app-loader>
 </ng-template>
 
+<ng-template #updateUser>
+    Save
+</ng-template>
+
+<ng-template #showLoader>
+    Updating <i class="fa fa-spinner fa-pulse fa-fw text-white"></i>
+</ng-template>
+
 <ng-container *ngIf="hideLoader else preLoader">
     <div class="row">
         <div class="col-6 grid-margin">
@@ -9,14 +17,74 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="card-body">
-                            <h4 class="card-title">Account info</h4>
-                            <div class="media">
-                                <i class="mdi mdi-earth icon-md text-info d-flex align-self-start mr-3"></i>
-                                <div class="media-body">
-                                    <p class="card-text"><strong>Name:</strong> {{user?.name}}</p>
-                                    <p class="card-text"><strong>Email:</strong> {{user?.email}}</p>
+                            <!--<h4 class="card-title">Account info</h4>-->
+                            <!--<div class="media">-->
+                            <!--<i class="mdi mdi-earth icon-md text-info d-flex align-self-start mr-3"></i>-->
+                            <!--<div class="media-body">-->
+                            <!--<p class="card-text"><strong>Name:</strong> {{user?.name}}</p>-->
+                            <!--<p class="card-text"><strong>Email:</strong> {{user?.email}}</p>-->
+                            <!--<input type="text"-->
+                            <!--class="form-control"-->
+                            <!--placeholder="Title"-->
+                            <!--[(ngModel)]="user.name"-->
+                            <!--name="userName"-->
+                            <!--id="userName"-->
+                            <!--aria-label="User Name"-->
+                            <!--aria-describedby="colored-addon3"-->
+                            <!--&gt;-->
+                            <!--</div>-->
+                            <!--</div>-->
+                            <h4 class="card-title">User info</h4>
+                            <!--<p class="card-description">-->
+                            <!--Basic form layout-->
+                            <!--</p>-->
+                            <form class="forms-sample">
+                                <div class="form-group">
+                                    <label for="userEmail">Email address</label>
+                                    <input type="text"
+                                           class="form-control"
+                                           placeholder="Title"
+                                           [(ngModel)]="user.email"
+                                           name="userEmail"
+                                           id="userEmail"
+                                           aria-label="User Email"
+                                           aria-describedby="colored-addon3"
+                                           disabled
+                                    >
                                 </div>
-                            </div>
+                                <div class="form-group">
+                                    <label for="userName">Name</label>
+                                    <input type="text"
+                                           class="form-control"
+                                           placeholder="Title"
+                                           [(ngModel)]="user.name"
+                                           name="userName"
+                                           id="userName"
+                                           aria-label="User Name"
+                                           aria-describedby="colored-addon3"
+                                    >
+                                </div>
+                                <div class="form-group">
+                                    <label for="userName">Avatar</label>
+                                    <div class="row">
+                                        <div class="col-sm">
+                                            <img [src]="user.avatar" width="100px">
+                                        </div>
+                                        <div class="col-sm">
+                                            <div class="form-group">
+                                                <input type="file" class="btn form-control-file" id="iconFileInput"
+                                                       aria-describedby="fileHelp"
+                                                       (change)="onFileChanged($event)">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <button type="submit" (click)="update()" class="btn btn-success mr-2 float-right">
+                                    <ng-container
+                                            *ngIf="hideUpdateUserLoader;then updateUser else showLoader">
+                                    </ng-container>
+                                </button>
+                            </form>
                         </div>
                     </div>
                 </div>

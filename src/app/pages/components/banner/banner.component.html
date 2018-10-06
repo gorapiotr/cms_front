@@ -26,7 +26,13 @@
       <div class="col-12 text-center">
         <a class="absolute-toggle d-block d-md-none" data-toggle="collapse" href="#navbarMenu" role="button"
            aria-expanded="false" aria-controls="navbarMenu"><span class="burger-lines"></span></a>
-        <h1 class="site-logo"><a routerLink="/index">CMS</a></h1>
+        <h1 class="site-logo">
+          <a routerLink="/index">
+            <div *ngFor="let setting of settings | settingsfilter:{key:'title'}">
+              {{setting.value}}
+            </div>
+          </a>
+        </h1>
       </div>
     </div>
   </div>

@@ -38,6 +38,14 @@ export class UserService{
             .catch(this.handleError);
     }
 
+    update(user: User): Observable<any>{
+        const uploadData = new FormData();
+        uploadData.append('name', user.name);
+        uploadData.append('email', user.email);
+        uploadData.append('avatar_file', user.avatar_file);
+        return this.http.post(`${this.baseUrl}/` + user.id, uploadData);
+    }
+
     /**
      * TODO
      * EXPORT TO CMS_SERVICE
