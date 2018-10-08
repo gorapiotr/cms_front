@@ -11,8 +11,6 @@ const routes: Routes = [
         {path: 'team/account',                                  loadChildren: './team/account/account.module#AccountModule'},
         {path: 'team/users',                                    loadChildren: './team/users/users.module#UsersModule'},
         // components
-        {path: 'components/carousel/:carousel_group_id',        loadChildren: './components/carousel/carousel/carousel.module#CarouselModule'},
-        {path: 'components/carousel-group',                     loadChildren: './components/carousel/carousel-list/carousel-list.module#CarouselListModule' },
         // settings
         {path: 'settings',                                      loadChildren: './settings/settings.module#SettingsModule'},
         {path: 'assets/image-filter',                           loadChildren: './assets/image-edit/image-filter/image-filter.module#ImageFilterModule'},
