@@ -38,6 +38,11 @@ export class PostService {
             .catch(this.handleError);
     }
 
+    get(id: number): Observable<any> {
+        const url = this.baseUrl + '/' + id;
+        return this.http.get<ResponseInterface>(url);
+    }
+
     /**
      * TODO
      * EXPORT TO CMS_SERVICE
