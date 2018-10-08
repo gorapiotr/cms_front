@@ -1,0 +1,86 @@
+<ng-template #preLoader>
+    <app-loader></app-loader>
+</ng-template>
+
+<ng-template #paginationLoader>
+    <div class="table">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>#</th>
+                <th>Main Image</th>
+                <th>Slug</th>
+                <th>Lead</th>
+                <th>Edit</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let element of arrayOne(10), let i = index">
+                <td></td>
+                <td></td>
+                <td>
+                    <ng-container *ngIf="i==5">
+                        <app-loader></app-loader>
+                    </ng-container>
+                </td>
+                <td></td>
+                <td></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</ng-template>
+
+<ng-container *ngIf="hideLoader else preLoader">
+    <div class="col-lg-12 grid-margin stretch-card">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Posts</h4>
+                <ngb-pagination [collectionSize]="pagination.total"
+                                [(page)]="pagination.page"
+                                [(pageSize)]="pagination.size"
+                                aria-label="Default pagination"
+                                class="float-right"
+                                (pageChange)="pageChange()"
+                ></ngb-pagination>
+                <ng-container *ngIf="hidePaginationLoader else paginationLoader">
+                            <div class="table-responsive">
+
+                                <table class="table table-striped">
+                                    <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>Main Image</th>
+                                        <th>Slug</th>
+                                        <th>Lead</th>
+                                        <th>Edit</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr *ngFor="let element of posts, let i = index">
+                                        <td>
+                                            {{i+1+(pagination.page-1)*pagination.size}}
+                                        </td>
+                                        <td width="100px">
+                                            <img [src]="element.main_image" alt="image" />
+                                        </td>
+                                        <td>
+                                            {{element.slug}}
+                                        </td>
+                                        <td>
+                                            {{element.lead}}
+                                        </td>
+                                        <td [routerLink]="['/admin/post/',element.id,'edit']">
+                                            <button type="button" class="btn btn-icons btn-inverse-secondary">
+                                                <i class="far fa-edit"></i>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                    </div>
+                </ng-container>
+            </div>
+        </div>
+    </div>
+</ng-container>

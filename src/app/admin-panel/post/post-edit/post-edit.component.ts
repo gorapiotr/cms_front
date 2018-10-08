@@ -1,0 +1,18 @@
+import { Component, OnInit } from '@angular/core';
+
+@Component({
+  selector: 'app-post-edit',
+  templateUrl: './post-edit.component.html',
+  styleUrls: ['./post-edit.component.css']
+})
+export class PostEditComponent implements OnInit {
+
+    hideLoader = false;
+
+  constructor() { }
+
+  ngOnInit() {
+    this.hideLoader = true;
+  }
+
+}

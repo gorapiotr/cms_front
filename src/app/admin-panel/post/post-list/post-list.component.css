@@ -1,0 +1,8 @@
+.table td img, .table th img {
+    border-radius: 2%;
+}
+
+.img-xs, .table td img, .table th img {
+    width: 100px;
+    height: 56px;
+}
