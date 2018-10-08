@@ -5,8 +5,6 @@ import {RouterModule, Routes} from '@angular/router';
 import {CarouselComponent} from './carousel.component';
 import {CarouselService} from '../../../../_services/carousel/carousel.service';
 import {FormsModule} from '@angular/forms';
-//import {InlineEditorModule} from '../../../../../assets/js/qontu/ngx-inline-editor';
-import {UploadService} from '../../../../_services/upload/upload.service';
 import {LoaderModule} from '../../../../shared/loader/loader.module';
 
 const routes: Routes = [{
@@ -23,8 +21,7 @@ const routes: Routes = [{
     LoaderModule
   ],
   providers: [
-    CarouselService,
-    UploadService
+    CarouselService
   ],
   declarations: [CarouselComponent],
   exports: [CarouselComponent]

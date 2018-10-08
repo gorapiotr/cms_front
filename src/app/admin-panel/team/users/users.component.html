@@ -18,7 +18,6 @@
       <tr *ngFor="let element of arrayOne(10), let i = index">
         <td></td>
         <td class="py-1">
-          <!--<img src="../../../../assets/images/faces-clipart/pic-3.png" alt="image" />-->
         </td>
         <td>
           <ng-container *ngIf="i==5">
@@ -38,10 +37,6 @@
     <div class="card">
       <div class="card-body">
         <h4 class="card-title">Users Table</h4>
-        <!--<p class="card-description">-->
-          <!--Add class-->
-          <!--<code>.table-striped</code>-->
-        <!--</p>-->
         <ngb-pagination [collectionSize]="pagination.total"
                         [(page)]="pagination.page"
                         [(pageSize)]="pagination.size"

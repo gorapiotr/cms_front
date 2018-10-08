@@ -26,60 +26,89 @@
                 </a>
             </div>
         </li>
-        <li class="nav-item">
-            <a class="nav-link" data-toggle="collapse" href="#account" aria-expanded="false" aria-controls="ui-basic">
-                <i class="menu-icon fa fa-users"></i>
-                <span class="menu-title">Team</span>
-                <i class="menu-arrow"></i>
-            </a>
-            <div class="collapse" id="account">
-                <ul class="nav flex-column sub-menu">
-                    <li class="nav-item">
-                        <a class="nav-link" routerLink="team/account"><i class="menu-icon fa fa-user"></i>My account</a>
-                    </li>
-                    <ng-template [ngxPermissionsOnly]="['read-users']">
+        <ng-template [ngxPermissionsOnly]="['menu-users']">
+            <li class="nav-item">
+                <a class="nav-link" data-toggle="collapse" href="#account" aria-expanded="false" aria-controls="ui-basic">
+                    <i class="menu-icon fa fa-users"></i>
+                    <span class="menu-title">Team</span>
+                    <i class="menu-arrow"></i>
+                </a>
+                <div class="collapse" id="account">
+                    <ul class="nav flex-column sub-menu">
+                        <ng-template [ngxPermissionsOnly]="['read-users']">
+                            <li class="nav-item">
+                                <a class="nav-link" routerLink="team/account"><i class="menu-icon fa fa-user"></i>My account</a>
+                            </li>
+                        </ng-template>
+                        <ng-template [ngxPermissionsOnly]="['read-users']">
+                            <li class="nav-item">
+                                <a class="nav-link" routerLink="team/users"><i class="menu-icon fa fa-users"></i>Users</a>
+                            </li>
+                        </ng-template>
+                    </ul>
+                </div>
+            </li>
+        </ng-template>
+        <ng-template [ngxPermissionsOnly]="['menu-component']">
+            <li class="nav-item">
+                <a class="nav-link" data-toggle="collapse" href="#components" aria-expanded="false"
+                   aria-controls="ui-basic">
+                    <i class="menu-icon fa fa-rocket"></i>
+                        <span class="menu-title">Components</span>
+                    <i class="menu-arrow"></i>
+                </a>
+                <div class="collapse" id="components">
+                    <ul class="nav flex-column sub-menu">
                         <li class="nav-item">
-                            <a class="nav-link" routerLink="team/users"><i class="menu-icon fa fa-users"></i>Users</a>
+                            <a class="nav-link" routerLink="components/carousel-group"><i class="menu-icon fa fa-cubes"></i>Carousel</a>
                         </li>
-                    </ng-template>
-                </ul>
-            </div>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" data-toggle="collapse" href="#components" aria-expanded="false"
-               aria-controls="ui-basic">
-                <i class="menu-icon fa fa-rocket"></i>
-                <span class="menu-title">Components</span>
-                <i class="menu-arrow"></i>
-            </a>
-            <div class="collapse" id="components">
-                <ul class="nav flex-column sub-menu">
-                    <li class="nav-item">
-                        <a class="nav-link" routerLink="components/carousel-group"><i class="menu-icon fa fa-cubes"></i>Carousel</a>
-                    </li>
-                </ul>
-            </div>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" data-toggle="collapse" href="#assets" aria-expanded="false"
-               aria-controls="ui-basic">
-                <i class="menu-icon fa fa-puzzle-piece"></i>
-                <span class="menu-title">Assets</span>
-                <i class="menu-arrow"></i>
-            </a>
-            <div class="collapse" id="assets">
-                <ul class="nav flex-column sub-menu">
-                    <li class="nav-item">
-                        <a class="nav-link" routerLink="assets/image-filter"><i class="menu-icon fa fa-file-image"></i>Image filter</a>
-                    </li>
-                </ul>
-            </div>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" routerLink="settings">
-                <i class="menu-icon fa fa-cogs"></i>
-                <span class="menu-title">Settings</span>
-            </a>
-        </li>
+                    </ul>
+                </div>
+            </li>
+        </ng-template>
+        <ng-template [ngxPermissionsOnly]="['menu-post']">
+            <li class="nav-item">
+                <a class="nav-link" data-toggle="collapse" href="#post" aria-expanded="false"
+                   aria-controls="ui-basic">
+                    <i class="menu-icon fa fa-archive"></i>
+                    <span class="menu-title">Posts</span>
+                    <i class="menu-arrow"></i>
+                </a>
+                <div class="collapse" id="post">
+                    <ul class="nav flex-column sub-menu">
+                        <li class="nav-item">
+                            <a class="nav-link" routerLink="post/post-list"><i class="menu-icon fa fa-book"></i>Post list</a>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+        </ng-template>
+        <ng-template [ngxPermissionsOnly]="['menu-asset']">
+            <li class="nav-item">
+                <a class="nav-link" data-toggle="collapse" href="#assets" aria-expanded="false"
+                   aria-controls="ui-basic">
+                    <i class="menu-icon fa fa-puzzle-piece"></i>
+                    <span class="menu-title">Assets</span>
+                    <i class="menu-arrow"></i>
+                </a>
+                <div class="collapse" id="assets">
+                    <ul class="nav flex-column sub-menu">
+                        <ng-template [ngxPermissionsOnly]="['read-asset']">
+                            <li class="nav-item">
+                                <a class="nav-link" routerLink="assets/image-filter"><i class="menu-icon fa fa-file-image"></i>Image filter</a>
+                            </li>
+                        </ng-template>
+                    </ul>
+                </div>
+            </li>
+        </ng-template>
+        <ng-template [ngxPermissionsOnly]="['menu-settings']">
+            <li class="nav-item">
+                <a class="nav-link" routerLink="settings">
+                    <i class="menu-icon fa fa-cogs"></i>
+                    <span class="menu-title">Settings</span>
+                </a>
+            </li>
+        </ng-template>
     </ul>
 </nav>

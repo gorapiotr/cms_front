@@ -15,7 +15,10 @@ const routes: Routes = [
         {path: 'components/carousel-group',                     loadChildren: './components/carousel/carousel-list/carousel-list.module#CarouselListModule' },
         // settings
         {path: 'settings',                                      loadChildren: './settings/settings.module#SettingsModule'},
-        {path: 'assets/image-filter',                       loadChildren: './assets/image-edit/image-filter/image-filter.module#ImageFilterModule'}
+        {path: 'assets/image-filter',                           loadChildren: './assets/image-edit/image-filter/image-filter.module#ImageFilterModule'},
+        //posts
+        {path: 'post/post-list',                                loadChildren: './post/post-list/post-list.module#PostListModule'},
+        {path: 'post/:postId/edit',                             loadChildren: './post/post-edit/post-edit.module#PostEditModule'},
         ]
     }
 ];

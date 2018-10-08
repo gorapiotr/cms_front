@@ -7,8 +7,6 @@ import {CarouselGroupService} from '../../../../_services/carousel/carousel-grou
 import {ActivatedRoute, Params, Router} from '@angular/router';
 declare var $: any;
 import {Upload} from '../../../../_models/Upload/Upload';
-import {UploadService} from '../../../../_services/upload/upload.service';
-
 
 @Component({
   selector: 'app-carousel',
@@ -29,7 +27,6 @@ export class CarouselComponent implements OnInit, AfterViewChecked {
               protected Notify: SnotifyService,
               protected route: ActivatedRoute,
               protected carouselGroupService: CarouselGroupService,
-              private upSvc: UploadService
 
   ) { }
 
@@ -117,19 +114,16 @@ export class CarouselComponent implements OnInit, AfterViewChecked {
     uploadSingle() {
         let file = this.selectedFiles.item(0);
         this.currentUpload = new Upload(file);
-        this.upSvc.pushUpload(this.currentUpload).then( (x) => {
-            console.log("Updated");
-            this.upSvc.getImage(this.currentUpload.file.name).then( (x) => {
-                //let img = document.getElementById('myimg');
-               // img.src = x;
-            });
-        });
+        // this.upSvc.pushUpload(this.currentUpload).then( (x) => {
+        //     console.log("Updated");
+        //     this.upSvc.getImage(this.currentUpload.file.name).then( (x) => {
+        //         //let img = document.getElementById('myimg');
+        //        // img.src = x;
+        //     });
+        // });
     }
 
     getImage(path: string) {
-        this.upSvc.getImage(path).then( (x) => {
-            console.log(x);
-            return x;
-        });
+        // n
     }
 }
