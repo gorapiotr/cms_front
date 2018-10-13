@@ -1,10 +1,45 @@
+<ng-template #preLoader>
+    <app-loader></app-loader>
+</ng-template>
+
+<ng-template #updateUser>
+    Post update
+</ng-template>
+
+<ng-template #showLoader>
+    Updating <i class="fa fa-spinner fa-pulse fa-fw text-white"></i>
+</ng-template>
+
 <ng-container *ngIf="hideLoader else preLoader">
-  <div class="col-lg-12 grid-margin stretch-card">
-    <div class="card">
-      <div class="card-body">
-        <h4 class="card-title">Posts</h4>
-        <div [froalaEditor]>Hello, Froala!</div>
-      </div>
+    <div class="row">
+        <div class="col-12 grid-margin">
+            <div class="card">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="card-body">
+                            <button type="submit" (click)="update()" class="btn btn-success mr-2 float-right">
+                                <ng-container
+                                        *ngIf="hideUpdateUserLoader;then updateUser else showLoader">
+                                </ng-container>
+                            </button>
+                            <br>
+                            <br>
+                            <!-- SLUG -->
+                            <h4 class="card-title">Slug</h4>
+                            <div [froalaEditor]="leadOptions" [(froalaModel)]="model.slug"></div>
+                            <br>
+                            <!-- LEAD -->
+                            <h4 class="card-title">Lead</h4>
+                            <div [froalaEditor]="leadOptions" [(froalaModel)]="model.lead"></div>
+                            <br>
+                            <!--CONTENT-->
+                            <h4 class="card-title">Content</h4>
+                            <div [froalaEditor] [(froalaModel)]="model.content"></div>
+                            <br>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-  </div>
 </ng-container>
