@@ -6,6 +6,7 @@ import {AfterLoginService} from '../../../_services/after-login/after-login.serv
 import {LoaderModule} from '../../../shared/loader/loader.module';
 import {PostService} from '../../../_services/post/post.service';
 import {FroalaEditorModule} from 'angular-froala-wysiwyg';
+import {FormsModule} from '@angular/forms';
 
 const routes: Routes = [{
     path: '',
@@ -16,6 +17,7 @@ const routes: Routes = [{
 @NgModule({
     imports: [
         CommonModule,
+        FormsModule,
         RouterModule.forChild(routes),
         LoaderModule,
         FroalaEditorModule

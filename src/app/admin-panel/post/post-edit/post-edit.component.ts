@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Params} from '@angular/router';
 import {PostService} from '../../../_services/post/post.service';
 import {Post} from '../../../_models/Post/Post';
+import {SnotifyService} from 'ng-snotify';
 
 @Component({
     selector: 'app-post-edit',
@@ -15,7 +16,8 @@ export class PostEditComponent implements OnInit {
     hideUpdateUserLoader = true;
 
     constructor(protected route: ActivatedRoute,
-                protected postService: PostService) {
+                protected postService: PostService,
+                protected Notify: SnotifyService) {
     }
 
     ngOnInit() {
@@ -33,12 +35,28 @@ export class PostEditComponent implements OnInit {
         });
     }
 
+    /**
+     * todo
+     *
+     * created service for error display
+     */
     update() {
         this.hideUpdateUserLoader = false;
-        // this.userService.update(this.user).subscribe((data) => {
-        //     this.getPost();
-        //     this.hideUpdateUserLoader = true;
-        // });
+        this.postService.update(this.model).subscribe((data) => {
+            this.getPost();
+            this.hideUpdateUserLoader = true;
+            this.Notify.success('Updated');
+        }, (error) => {
+                const err = this.objectValues(error.errors);
+                err.forEach( (x) => {
+                    this.Notify.error(x as string);
+                });
+            this.hideUpdateUserLoader = true;
+        });
+    }
+
+    objectValues(obj) {
+        return Object.values(obj);
     }
 
     leadOptions: Object = {

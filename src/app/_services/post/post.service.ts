@@ -7,6 +7,7 @@ import {MapUtils} from '../../shared/class/maputils';
 import {Observable} from 'rxjs';
 import {map} from 'rxjs/internal/operators';
 import {Post} from '../../_models/Post/Post';
+import {Setting} from '../../_models/Settings/Setting';
 
 @Injectable({
   providedIn: 'root'
@@ -37,6 +38,16 @@ export class PostService {
                 }))
             .catch(this.handleError);
     }
+
+    update(post: Post): Observable<any>{
+        const uploadData = new FormData();
+        uploadData.append('id', String(post.id));
+        uploadData.append('slug', post.slug);
+        uploadData.append('content', post.content);
+        uploadData.append('lead', post.lead);
+        return this.http.post(`${this.baseUrl}/` + post.id, uploadData);
+    }
+
 
     get(id: number): Observable<any> {
         const url = this.baseUrl + '/' + id;

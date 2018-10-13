@@ -43,43 +43,43 @@
                                 class="float-right"
                                 (pageChange)="pageChange()"
                 ></ngb-pagination>
-                <ng-container *ngIf="hidePaginationLoader else paginationLoader">
-                            <div class="table-responsive">
+                <div *ngIf="hidePaginationLoader else paginationLoader">
+                    <div class="table-responsive">
 
-                                <table class="table table-striped">
-                                    <thead>
-                                    <tr>
-                                        <th>#</th>
-                                        <th>Main Image</th>
-                                        <th>Slug</th>
-                                        <th>Lead</th>
-                                        <th>Edit</th>
-                                    </tr>
-                                    </thead>
-                                    <tbody>
-                                    <tr *ngFor="let element of posts, let i = index">
-                                        <td>
-                                            {{i+1+(pagination.page-1)*pagination.size}}
-                                        </td>
-                                        <td width="100px">
-                                            <img [src]="element.main_image" alt="image" />
-                                        </td>
-                                        <td>
-                                            {{element.slug}}
-                                        </td>
-                                        <td>
-                                            {{element.lead}}
-                                        </td>
-                                        <td [routerLink]="['/admin/post/',element.id,'edit']">
-                                            <button type="button" class="btn btn-icons btn-inverse-secondary">
-                                                <i class="far fa-edit"></i>
-                                            </button>
-                                        </td>
-                                    </tr>
-                                    </tbody>
-                                </table>
+                        <table class="table table-striped">
+                            <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Main Image</th>
+                                <th>Slug</th>
+                                <th>Lead</th>
+                                <th>Edit</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr *ngFor="let element of posts, let i = index">
+                                <td>
+                                    {{i+1+(pagination.page-1)*pagination.size}}
+                                </td>
+                                <td width="100px">
+                                    <img [src]="element.main_image" alt="image"/>
+                                </td>
+                                <td>
+                                    {{element.slug}}
+                                </td>
+                                <td>
+                                    <div [innerHTML]="element.lead"></div>
+                                </td>
+                                <td [routerLink]="['/admin/post/',element.id,'edit']">
+                                    <button type="button" class="btn btn-icons btn-inverse-secondary">
+                                        <i class="far fa-edit"></i>
+                                    </button>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
                     </div>
-                </ng-container>
+                </div>
             </div>
         </div>
     </div>

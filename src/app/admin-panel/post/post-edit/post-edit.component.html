@@ -26,7 +26,17 @@
                             <br>
                             <!-- SLUG -->
                             <h4 class="card-title">Slug</h4>
-                            <div [froalaEditor]="leadOptions" [(froalaModel)]="model.slug"></div>
+                            <div class="form-group">
+                                <input type="text"
+                                       class="form-control"
+                                       placeholder="Slug"
+                                       [(ngModel)]="model.slug"
+                                       name="slug"
+                                       id="slug"
+                                       aria-label="Slug"
+                                       aria-describedby="colored-addon3"
+                                >
+                            </div>
                             <br>
                             <!-- LEAD -->
                             <h4 class="card-title">Lead</h4>
