@@ -10,6 +10,7 @@ import {UsersComponent} from '../../admin-panel/team/users/users.component';
 import {RouterModule, Routes} from '@angular/router';
 import {AfterLoginService} from '../../_services/after-login/after-login.service';
 import {LoaderModule} from '../../shared/loader/loader.module';
+import {PostsModule} from '../components/posts/posts.module';
 
 const routes: Routes = [{
     path: '',
@@ -24,7 +25,7 @@ const routes: Routes = [{
         LoaderModule,
         BannerModule,
         RecommendedPostsModule,
-        CategoryPostsModule,
+        PostsModule,
         RightSideBarModule,
         FooterModule
     ],

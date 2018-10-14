@@ -6,10 +6,11 @@ const routes: Routes = [
     {
         path: '', component: PagesComponent,
         children: [
-            {path: '', loadChildren: './index-page/index-page.module#IndexPageModule'},
-            {path: 'index', loadChildren: './index-page/index-page.module#IndexPageModule'},
-            {path: 'about', loadChildren: './about-page/about-page.module#AboutPageModule'},
-            {path: 'contact', loadChildren: './contact-page/contact-page.module#ContactPageModule'}
+            {path: '',              loadChildren: './index-page/index-page.module#IndexPageModule'},
+            {path: 'index',         loadChildren: './index-page/index-page.module#IndexPageModule'},
+            {path: 'about',         loadChildren: './about-page/about-page.module#AboutPageModule'},
+            {path: 'contact',       loadChildren: './contact-page/contact-page.module#ContactPageModule'},
+            {path: 'post/:slug',    loadChildren: './post-page/post-page.module#PostPageModule'},
         ]
     }
 ];

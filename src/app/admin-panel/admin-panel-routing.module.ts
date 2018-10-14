@@ -17,6 +17,7 @@ const routes: Routes = [
         //posts
         {path: 'post/post-list',                                loadChildren: './post/post-list/post-list.module#PostListModule'},
         {path: 'post/:postId/edit',                             loadChildren: './post/post-edit/post-edit.module#PostEditModule'},
+        {path: 'post/:postId/view',                             loadChildren: './post/post-view/post-view.module#PostViewModule'},
         ]
     }
 ];

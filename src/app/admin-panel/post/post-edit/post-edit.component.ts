@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Params} from '@angular/router';
-import {PostService} from '../../../_services/post/post.service';
+import {PostService} from '../../../_services/admin-panel/post/post.service';
 import {Post} from '../../../_models/Post/Post';
 import {SnotifyService} from 'ng-snotify';
 
@@ -29,7 +29,6 @@ export class PostEditComponent implements OnInit {
         this.route.params.subscribe((params: Params) => {
             this.postService.get(params.postId).subscribe((data) => {
                 this.model = data.data;
-                console.log(this.model);
                 this.hideLoader = true;
             });
         });
@@ -66,10 +65,10 @@ export class PostEditComponent implements OnInit {
 
     leadOptions: Object = {
         charCounterCount: true,
-        toolbarButtons: [],
-        toolbarButtonsXS: [],
-        toolbarButtonsSM: [],
-        toolbarButtonsMD: [],
+        toolbarButtons: ['bold'],
+        toolbarButtonsXS: ['bold'],
+        toolbarButtonsSM: ['bold'],
+        toolbarButtonsMD: ['bold'],
     };
 }
 

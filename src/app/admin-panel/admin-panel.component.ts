@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {UserService} from '../_services/user/user.service';
+import {UserService} from '../_services/admin-panel/user/user.service';
 import {NgxPermissionsService} from 'ngx-permissions';
 import {PermissionService} from '../_services/permission/permission.service';
 

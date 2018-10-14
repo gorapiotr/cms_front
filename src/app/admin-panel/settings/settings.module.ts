@@ -6,7 +6,7 @@ import {RouterModule, Routes} from '@angular/router';
 import {FormsModule} from '@angular/forms';
 import {LoaderModule} from '../../shared/loader/loader.module';
 import {SettingPipeModule} from '../../shared/class/pipe/setting.pipe.module';
-import {SettingsService} from '../../_services/settings/settings.service';
+import {SettingsService} from '../../_services/admin-panel/settings/settings.service';
 
 const routes: Routes = [{
     path: '',

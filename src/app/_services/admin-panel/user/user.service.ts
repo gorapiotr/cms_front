@@ -1,11 +1,11 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
-import {MapUtils} from '../../shared/class/maputils';
-import {User} from '../../_models/User/User';
+import {MapUtils} from '../../../shared/class/maputils';
+import {User} from '../../../_models/User/User';
 import {map} from 'rxjs/internal/operators';
 import {Observable} from 'rxjs';
-import {ResponseInterface} from '../../_contracts/response.interface';
-import {MetaCollectionInterface} from '../../_models/MetaCollection/MetaCollectionInterface';
+import {ResponseInterface} from '../../../_contracts/response.interface';
+import {MetaCollectionInterface} from '../../../_models/MetaCollection/MetaCollectionInterface';
 
 @Injectable({
     providedIn: 'root'

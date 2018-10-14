@@ -8,6 +8,7 @@ import {CategoryPostsModule} from '../components/category-posts/category-posts.m
 import {RecommendedPostsModule} from '../components/recommended-posts/recommended-posts.module';
 import {FooterModule} from '../components/footer/footer.module';
 import {BannerModule} from '../components/banner/banner.module';
+import {AboutContentModule} from './about-content/about-content.module';
 
 
 const routes: Routes = [{
@@ -23,7 +24,9 @@ const routes: Routes = [{
         BannerModule,
         RecommendedPostsModule,
         CategoryPostsModule,
-        RightSideBarModule
+        RightSideBarModule,
+        AboutContentModule,
+        FooterModule
     ],
     declarations: [AboutPageComponent],
     exports: [AboutPageComponent]

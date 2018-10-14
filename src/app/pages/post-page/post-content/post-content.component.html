@@ -1,0 +1,9 @@
+
+<ng-container *ngIf="hideLoader">
+<h2 class="mb-4">{{model.title}}</h2>
+<p class="mb-5"><img [src]="model.main_image" alt="Image placeholder" class="img-fluid"></p>
+    <div [innerHTML]="model.lead"></div>
+    <br>
+    <br>
+    <div [innerHTML]="model.content"></div>
+</ng-container>

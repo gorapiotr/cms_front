@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {Setting} from '../../../_models/Settings/Setting';
 import {SnotifyService} from 'ng-snotify';
-import {SettingsService} from '../../../_services/settings/settings.service';
+import {SettingsService} from '../../../_services/admin-panel/settings/settings.service';
 
 @Component({
     selector: 'app-banner',

@@ -53,7 +53,7 @@
                                 <th>Main Image</th>
                                 <th>Slug</th>
                                 <th>Lead</th>
-                                <th>Edit</th>
+                                <th>Options</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -70,8 +70,19 @@
                                 <td>
                                     <div [innerHTML]="element.lead"></div>
                                 </td>
-                                <td [routerLink]="['/admin/post/',element.id,'edit']">
-                                    <button type="button" class="btn btn-icons btn-inverse-secondary">
+                                <td>
+                                    <button
+                                            type="button"
+                                            class="btn btn-icons btn-inverse-secondary"
+                                            [routerLink]="['/admin/post/',element.id,'view']"
+                                    >
+                                        <i class="far fa-eye"></i>
+                                    </button>
+                                    <button
+                                            type="button"
+                                            class="btn btn-icons btn-inverse-secondary"
+                                            [routerLink]="['/admin/post/',element.id,'edit']"
+                                    >
                                         <i class="far fa-edit"></i>
                                     </button>
                                 </td>

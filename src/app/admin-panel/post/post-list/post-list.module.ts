@@ -5,7 +5,7 @@ import {RouterModule, Routes} from '@angular/router';
 import {AfterLoginService} from '../../../_services/after-login/after-login.service';
 import {LoaderModule} from '../../../shared/loader/loader.module';
 import {NgbPaginationModule} from '@ng-bootstrap/ng-bootstrap';
-import {PostService} from '../../../_services/post/post.service';
+import {PostService} from '../../../_services/admin-panel/post/post.service';
 
 const routes: Routes = [{
     path: '',

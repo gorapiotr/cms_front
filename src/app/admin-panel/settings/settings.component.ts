@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {SettingsService} from '../../_services/settings/settings.service';
+import {SettingsService} from '../../_services/admin-panel/settings/settings.service';
 import {Setting} from '../../_models/Settings/Setting';
 import {SnotifyService} from 'ng-snotify';
 
