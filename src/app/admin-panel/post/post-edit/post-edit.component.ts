@@ -42,6 +42,7 @@ export class PostEditComponent implements OnInit {
      */
     update() {
         this.hideUpdateUserLoader = false;
+        console.log(this.model);
         this.postService.update(this.model).subscribe((data) => {
             this.getPost();
             this.hideUpdateUserLoader = true;
@@ -53,6 +54,10 @@ export class PostEditComponent implements OnInit {
                 });
             this.hideUpdateUserLoader = true;
         });
+    }
+
+    onFileChanged(event) {
+        this.model.main_image_file = event.target.files[0];
     }
 
     objectValues(obj) {

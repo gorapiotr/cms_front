@@ -7,6 +7,7 @@ export class Post {
     lead: string;
     main_image: string;
     main_image_type: string;
+    main_image_file: File;
     created_by: User;
     updated_by: User;
 
@@ -19,5 +20,6 @@ export class Post {
         this.main_image_type = undefined;
         this.created_by = undefined;
         this.updated_by = undefined;
+        this.main_image_file = undefined;
     }
 }

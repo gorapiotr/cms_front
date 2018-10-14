@@ -45,6 +45,8 @@ export class PostService {
         uploadData.append('slug', post.slug);
         uploadData.append('content', post.content);
         uploadData.append('lead', post.lead);
+        uploadData.append('main_image_file', post.main_image_file);
+        console.log(uploadData);
         return this.http.post(`${this.baseUrl}/` + post.id, uploadData);
     }
 
