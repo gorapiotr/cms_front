@@ -16,6 +16,7 @@ const routes: Routes = [
         {path: 'assets/image-filter',                           loadChildren: './assets/image-edit/image-filter/image-filter.module#ImageFilterModule'},
         //posts
         {path: 'post/post-list',                                loadChildren: './post/post-list/post-list.module#PostListModule'},
+        {path: 'post/add',                                      loadChildren: './post/post-add/post-add.module#PostAddModule'},
         {path: 'post/:postId/edit',                             loadChildren: './post/post-edit/post-edit.module#PostEditModule'},
         {path: 'post/:postId/view',                             loadChildren: './post/post-view/post-view.module#PostViewModule'},
         ]

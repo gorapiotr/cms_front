@@ -1,5 +1,5 @@
 <ng-container *ngIf="!hideLoader">
-    <app-simple-loader></app-simple-loader>
+    <app-page-loader></app-page-loader>
 </ng-container>
 
 
@@ -27,18 +27,11 @@
         </div>
     </div>
 
-
-    <div class="row">
-        <div class="col-md-12 text-center">
-            <nav aria-label="Page navigation" class="text-center">
-                <ul class="pagination">
-                    <li class="page-item  active"><a class="page-link" href="#">Prev</a></li>
-                    <li class="page-item"><a class="page-link" href="#">1</a></li>
-                    <li class="page-item"><a class="page-link" href="#">2</a></li>
-                    <li class="page-item"><a class="page-link" href="#">3</a></li>
-                    <li class="page-item"><a class="page-link" href="#">Next</a></li>
-                </ul>
-            </nav>
-        </div>
-    </div>
+    <ngb-pagination [collectionSize]="pagination.total"
+                    [(page)]="pagination.page"
+                    [(pageSize)]="pagination.size"
+                    aria-label="Default pagination"
+                    class="float-right"
+                    (pageChange)="pageChange()"
+    ></ngb-pagination>
 </ng-container>

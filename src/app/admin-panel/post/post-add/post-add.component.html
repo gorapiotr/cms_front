@@ -2,8 +2,8 @@
     <app-loader></app-loader>
 </ng-template>
 
-<ng-template #updateUser>
-    Post update
+<ng-template #addPost>
+    Create new post
 </ng-template>
 
 <ng-template #showLoader>
@@ -17,9 +17,9 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="card-body">
-                            <button type="submit" (click)="update()" class="btn btn-success mr-2 float-right">
+                            <button type="submit" (click)="create()" class="btn btn-success mr-2 float-right">
                                 <ng-container
-                                        *ngIf="hideUpdateUserLoader;then updateUser else showLoader">
+                                        *ngIf="hidePostAddLoader;then addPost else showLoader">
                                 </ng-container>
                             </button>
                             <br>
@@ -42,7 +42,7 @@
                             <div class="form-group">
                                 <input type="text"
                                        class="form-control"
-                                       placeholder="Slug"
+                                       placeholder="Title"
                                        [(ngModel)]="model.title"
                                        name="title"
                                        id="title"
@@ -54,11 +54,14 @@
                             <h4 class="card-title">Main image</h4>
                             <div class="row">
                                 <div class="col-sm">
-                                    <img [src]="model.main_image" width="300px">
+                                    <ng-container *ngIf="model.main_image">
+                                        <img [src]="model.main_image" width="300px">
+                                    </ng-container>
                                 </div>
                                 <div class="col-sm">
                                     <div class="form-group">
-                                        <input type="file" class="btn form-control-file" id="iconFileInput" aria-describedby="fileHelp" (change)="onFileChanged($event)">
+                                        <input type="file" class="btn form-control-file" id="iconFileInput"
+                                               aria-describedby="fileHelp" (change)="onFileChanged($event)">
                                         <!--<div class="btn btn-success" (click)="saveChanges(setting)">Upload!</div>-->
                                         <!--<small id="fileHelp" class="form-text text-muted">This is some placeholder block-level help text for the above input. It's a bit lighter and easily wraps to a new line.</small>-->
                                     </div>
@@ -80,3 +83,4 @@
         </div>
     </div>
 </ng-container>
+

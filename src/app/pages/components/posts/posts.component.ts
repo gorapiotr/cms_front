@@ -46,4 +46,8 @@ export class PostsComponent implements OnInit {
         );
     }
 
+    pageChange() {
+        this.getPages(this.pagination.page);
+    }
+
 }

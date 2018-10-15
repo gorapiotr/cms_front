@@ -55,12 +55,12 @@ export class PostEditComponent implements OnInit {
         });
     }
 
-    onFileChanged(event) {
-        this.model.main_image_file = event.target.files[0];
-    }
-
     objectValues(obj) {
         return Object.values(obj);
+    }
+
+    onFileChanged(event) {
+        this.model.main_image_file = event.target.files[0];
     }
 
     leadOptions: Object = {

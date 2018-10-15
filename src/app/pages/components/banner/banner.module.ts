@@ -5,13 +5,14 @@ import { RouterModule } from '@angular/router';
 import {SettingPipeModule} from '../../../shared/class/pipe/setting.pipe.module';
 import {SettingsPageService} from '../../../_services/page/settings/settings-page.service';
 import {SimpleLoaderModule} from '../../../shared/simple-loader/simple-loader.module';
+import {PageLoaderModule} from '../page-loader/page-loader.module';
 
 @NgModule({
     imports: [
         CommonModule,
         RouterModule,
         SettingPipeModule,
-        SimpleLoaderModule
+        PageLoaderModule
     ],
     providers:[
         SettingsPageService

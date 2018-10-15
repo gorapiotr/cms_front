@@ -3,13 +3,15 @@ import {CommonModule} from '@angular/common';
 import {PostsComponent} from './posts.component';
 import {RouterModule} from '@angular/router';
 import {PostPageService} from '../../../_services/page/post/post-page.service';
-import {SimpleLoaderModule} from '../../../shared/simple-loader/simple-loader.module';
+import {NgbPaginationModule} from '@ng-bootstrap/ng-bootstrap';
+import {PageLoaderModule} from '../page-loader/page-loader.module';
 
 @NgModule({
     imports: [
         CommonModule,
         RouterModule,
-        SimpleLoaderModule
+        PageLoaderModule,
+        NgbPaginationModule
     ],
     providers: [
         PostPageService

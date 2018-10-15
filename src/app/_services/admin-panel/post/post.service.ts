@@ -43,11 +43,25 @@ export class PostService {
         const uploadData = new FormData();
         uploadData.append('id', String(post.id));
         uploadData.append('slug', post.slug);
+        uploadData.append('title', post.title);
         uploadData.append('content', post.content);
         uploadData.append('lead', post.lead);
         uploadData.append('main_image_file', post.main_image_file);
         console.log(uploadData);
         return this.http.post(`${this.baseUrl}/` + post.id, uploadData);
+    }
+
+    create(post: Post): Observable<any> {
+        const createData = new FormData();
+        createData.append('id', String(post.id));
+        createData.append('slug', post.slug);
+        createData.append('title', post.title);
+        createData.append('content', post.content);
+        createData.append('lead', post.lead);
+        createData.append('main_image_file', post.main_image_file);
+        console.log(createData);
+
+        return this.http.post(`${this.baseUrl}/`, createData);
     }
 
 
