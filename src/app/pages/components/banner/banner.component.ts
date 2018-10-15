@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {Setting} from '../../../_models/Settings/Setting';
 import {SnotifyService} from 'ng-snotify';
 import {SettingsService} from '../../../_services/admin-panel/settings/settings.service';
+import {SettingsPageService} from '../../../_services/page/settings/settings-page.service';
 
 @Component({
     selector: 'app-banner',
@@ -15,7 +16,7 @@ export class BannerComponent implements OnInit {
     hideLoader = false;
 
 
-    constructor(protected settingsService: SettingsService,
+    constructor(protected settingsPageService: SettingsPageService,
                 protected Notify: SnotifyService) {
     }
 
@@ -25,7 +26,7 @@ export class BannerComponent implements OnInit {
 
     getSettings() {
         this.hideLoader = false;
-        this.settingsService.getSettings().subscribe(
+        this.settingsPageService.getSettings().subscribe(
             (data) => {
                 this.settings = data;
             },
