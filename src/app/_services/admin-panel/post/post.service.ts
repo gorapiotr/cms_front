@@ -46,6 +46,7 @@ export class PostService {
         uploadData.append('title', post.title);
         uploadData.append('content', post.content);
         uploadData.append('lead', post.lead);
+        uploadData.append('public', String(Number(post.public)));
         uploadData.append('main_image_file', post.main_image_file);
         console.log(uploadData);
         return this.http.post(`${this.baseUrl}/` + post.id, uploadData);
@@ -58,6 +59,7 @@ export class PostService {
         createData.append('title', post.title);
         createData.append('content', post.content);
         createData.append('lead', post.lead);
+        createData.append('public', String(Number(post.public)));
         createData.append('main_image_file', post.main_image_file);
         console.log(createData);
 

@@ -6,6 +6,7 @@ export class Post {
     content: string;
     lead: string;
     title: string;
+    public: boolean;
     main_image: string;
     main_image_type: string;
     main_image_file: File;
@@ -19,6 +20,7 @@ export class Post {
         this.content = undefined;
         this.lead = undefined;
         this.title = undefined;
+        this.public = undefined;
         this.main_image = undefined;
         this.main_image_type = undefined;
         this.created_by = undefined;

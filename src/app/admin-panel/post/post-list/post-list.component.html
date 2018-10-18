@@ -54,6 +54,7 @@
                                 <th>Slug</th>
                                 <th>Title</th>
                                 <th>Options</th>
+                                <th>Public</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -85,6 +86,19 @@
                                     >
                                         <i class="far fa-edit"></i>
                                     </button>
+                                </td>
+                                <td>
+                                    <ng-container *ngIf="element.public; then publicYes; else publicNo"></ng-container>
+                                    <ng-template #publicYes>
+                                        <div class="btn btn-icons btn-inverse-secondary">
+                                        <i class="far fa-check-square"></i>
+                                        </div>
+                                    </ng-template>
+                                    <ng-template #publicNo>
+                                        <div class="btn btn-icons btn-inverse-secondary">
+                                        <i class="far fa-square"></i>
+                                        </div>
+                                    </ng-template>
                                 </td>
                             </tr>
                             </tbody>
