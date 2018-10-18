@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {AfterViewChecked, ChangeDetectorRef, Component, OnInit} from '@angular/core';
 import {Setting} from '../../../_models/Settings/Setting';
 import {SettingsService} from '../../../_services/admin-panel/settings/settings.service';
 import {SnotifyService} from 'ng-snotify';
@@ -8,7 +8,7 @@ import {SnotifyService} from 'ng-snotify';
   templateUrl: './page-settings.component.html',
   styleUrls: ['./page-settings.component.css']
 })
-export class PageSettingsComponent implements OnInit {
+export class PageSettingsComponent implements OnInit,AfterViewChecked {
 
     settings: Array<Setting>;
     public error = null;
@@ -20,11 +20,16 @@ export class PageSettingsComponent implements OnInit {
 
 
     constructor(protected settingsService: SettingsService,
-                protected Notify: SnotifyService) {
+                protected Notify: SnotifyService,
+                private cdRef:ChangeDetectorRef) {
     }
 
     ngOnInit() {
         this.getSettings();
+    }
+
+    ngAfterViewChecked() {
+        this.cdRef.detectChanges();
     }
 
     getSettings()
@@ -50,6 +55,7 @@ export class PageSettingsComponent implements OnInit {
     }
 
     saveChanges(setting: Setting) {
+        console.log(setting);
         this.updateSettingsLoader[setting.key] = true;
         this.settingsService.update(setting).subscribe((data) => {
             this.Notify.success('Updated');
@@ -60,6 +66,15 @@ export class PageSettingsComponent implements OnInit {
                 this.Notify.error(err);
             });
         });
+    }
+
+    saveChangesBoolean(setting: Setting) {
+        if (setting.value == 'true') {
+            setting.value = 'false';
+        } else {
+            setting.value = 'true';
+        }
+        this.saveChanges(setting);
     }
 
     onFileChanged(event, setting) {

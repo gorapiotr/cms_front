@@ -3,6 +3,7 @@ export class Setting {
     key: string;
     value: string;
     type: string;
+    description: string;
     file: File;
 
     constructor() {
@@ -11,5 +12,6 @@ export class Setting {
         this.value = undefined;
         this.type = undefined;
         this.file = undefined;
+        this.description = undefined;
     }
 }

@@ -1,84 +1,257 @@
 <ng-template #preLoader>
-  <app-loader></app-loader>
+    <app-loader></app-loader>
 </ng-template>
 
 <ng-template #updateSetting>
-  <i class="fa fa-save text-white"></i>
+    <i class="fa fa-save text-white"></i>
 </ng-template>
 <ng-template #showLoader>
-  <i class="fa fa-spinner fa-pulse fa-fw text-white"></i>
+    <i class="fa fa-spinner fa-pulse fa-fw text-white"></i>
 </ng-template>
 
 
-<ng-container *ngIf="hideLoader else preLoader">
-  <div class="row">
-    <div class="col-12 grid-margin">
-      <div class="row flex-grow">
-        <div class="col-12">
-          <div class="card">
-            <div class="col-8">
-              <div class="card-body">
-                <h4 class="card-title">Page settings</h4>
-                <div *ngFor="let setting of settings | settingsfilter:{key:'title'}" class="form-group">
-                  <p class="card-description">{{setting.key}}</p>
-                  <div class="input-group">
-                    <input type="text"
-                           class="form-control"
-                           placeholder="Title"
-                           [(ngModel)]="setting.value"
-                           aria-label="Title"
-                           aria-describedby="colored-addon3"
-                    >
-                    <div class="input-group-append bg-success border-success">
+<ngb-tabset>
+    <!-- CORE -->
+    <ngb-tab title="Core">
+        <ng-template ngbTabContent>
+            <ng-container *ngIf="hideLoader else preLoader">
+                <div class="row">
+                    <div class="col-12 grid-margin">
+                        <div class="row flex-grow">
+                            <div class="col-12">
+                                <div class="card">
+                                    <div class="col-8">
+                                        <div class="card-body">
+                                            <h4 class="card-title">Core settings</h4>
+                                            <!-- TITLE -->
+                                            <div *ngFor="let setting of settings | settingsfilter:{key:'title'}"
+                                                 class="form-group">
+                                                <p class="card-description">{{setting.description}}</p>
+                                                <div class="input-group">
+                                                    <input type="text"
+                                                           class="form-control"
+                                                           placeholder="Title"
+                                                           [(ngModel)]="setting.value"
+                                                           aria-label="Title"
+                                                           aria-describedby="colored-addon3"
+                                                    >
+                                                    <div class="input-group-append bg-success border-success">
                                           <span class="input-group-text bg-transparent" (click)="saveChanges(setting)">
                                               <ng-container
                                                       *ngIf="updateSettingsLoader[setting.key];then showLoader else updateSetting">
                                               </ng-container>
                                           </span>
-                    </div>
-                  </div>
-                </div>
-                <div *ngFor="let setting of settings | settingsfilter:{key:'description'}"
-                     class="form-group">
-                  <p class="card-description">{{setting.key}}</p>
-                  <div class="input-group">
-                    <input type="text"
-                           class="form-control"
-                           placeholder="Title"
-                           [(ngModel)]="setting.value"
-                           aria-label="Title"
-                           aria-describedby="colored-addon3"
-                    >
-                    <div class="input-group-append bg-success border-success">
-                                             <span class="input-group-text bg-transparent" (click)="saveChanges(setting)">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- DESCRIPTION -->
+                                            <div *ngFor="let setting of settings | settingsfilter:{key:'description'}"
+                                                 class="form-group">
+                                                <p class="card-description">{{setting.description}}</p>
+                                                <div class="input-group">
+                                                    <input type="text"
+                                                           class="form-control"
+                                                           placeholder="Title"
+                                                           [(ngModel)]="setting.value"
+                                                           aria-label="Title"
+                                                           aria-describedby="colored-addon3"
+                                                    >
+                                                    <div class="input-group-append bg-success border-success">
+                                             <span class="input-group-text bg-transparent"
+                                                   (click)="saveChanges(setting)">
                                               <ng-container
                                                       *ngIf="updateSettingsLoader[setting.key];then showLoader else updateSetting">
                                               </ng-container>
                                           </span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- ICON -->
+                                            <div *ngFor="let setting of settings | settingsfilter:{key:'icon'}"
+                                                 class="form-group">
+                                                <p class="card-description">{{setting.description}}</p>
+                                                <div class="row">
+                                                    <div class="col-sm">
+                                                        <img [src]="setting.value" width="150px">
+                                                    </div>
+                                                    <div class="col-sm">
+                                                        <div class="form-group">
+                                                            <input type="file" class="btn form-control-file"
+                                                                   id="iconFileInput" aria-describedby="fileHelp"
+                                                                   (change)="onFileChanged($event, setting)">
+                                                            <div class="btn btn-success" (click)="saveChanges(setting)">
+                                                                Upload!
+                                                            </div>
+                                                            <!--<small id="fileHelp" class="form-text text-muted">This is some placeholder block-level help text for the above input. It's a bit lighter and easily wraps to a new line.</small>-->
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                  </div>
                 </div>
-                <div *ngFor="let setting of settings | settingsfilter:{key:'icon'}"
-                     class="form-group">
-                  <p class="card-description">{{setting.key}}</p>
-                  <div class="row">
-                    <div class="col-sm">
-                      <img [src]="setting.value" width="150px">
+            </ng-container>
+        </ng-template>
+    </ngb-tab>
+    <!-- SOCIAL -->
+    <ngb-tab title="Social">
+        <ng-template ngbTabContent>
+            <ng-container *ngIf="hideLoader else preLoader">
+                <div class="row">
+                    <div class="col-12 grid-margin">
+                        <div class="row flex-grow">
+                            <div class="col-12">
+                                <div class="card">
+                                    <div class="col-12">
+                                        <div class="card-body">
+                                            <h4 class="card-title">Social settings</h4>
+                                            <!-- FACEBOOK -->
+                                            <div class="row">
+                                                <div class="col-8">
+                                                    <div *ngFor="let setting of settings | settingsfilter:{key:'facebook'}"
+                                                         class="form-group">
+                                                        <p class="card-description">{{setting.description}}</p>
+                                                        <div class="input-group">
+                                                            <input type="text"
+                                                                   class="form-control"
+                                                                   placeholder="facebook"
+                                                                   [(ngModel)]="setting.value"
+                                                                   aria-label="Facebook"
+                                                                   aria-describedby="colored-addon3"
+                                                            >
+                                                            <div class="input-group-append bg-success border-success">
+                                                          <span class="input-group-text bg-transparent"
+                                                                (click)="saveChanges(setting)">
+                                                              <ng-container
+                                                                      *ngIf="updateSettingsLoader[setting.key];then showLoader else updateSetting">
+                                                              </ng-container>
+                                                          </span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-2">
+                                                    <div *ngFor="let setting of settings | settingsfilter:{key:'active_fb'}"
+                                                         class="form-group">
+                                                        <p class="card-description">{{setting.description}}</p>
+                                                        <ng-container *ngIf="setting.value == 'true'; then activeYes; else activeNo"></ng-container>
+                                                        <ng-template #activeYes>
+                                                            <div class="btn btn-icons btn-inverse-secondary"
+                                                                 (click)="saveChangesBoolean(setting)">
+                                                                <i class="far fa-check-square"></i>
+                                                            </div>
+                                                        </ng-template>
+                                                        <ng-template #activeNo>
+                                                            <div class="btn btn-icons btn-inverse-secondary"
+                                                                 (click)="saveChangesBoolean(setting)">
+                                                                <i class="far fa-square"></i>
+                                                            </div>
+                                                        </ng-template>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- TWITTER -->
+                                            <div class="row">
+                                                <div class="col-8">
+                                                    <div *ngFor="let setting of settings | settingsfilter:{key:'twitter'}"
+                                                         class="form-group">
+                                                        <p class="card-description">{{setting.description}}</p>
+                                                        <div class="input-group">
+                                                            <input type="text"
+                                                                   class="form-control"
+                                                                   placeholder="twitter"
+                                                                   [(ngModel)]="setting.value"
+                                                                   aria-label="Twitter"
+                                                                   aria-describedby="colored-addon3"
+                                                            >
+                                                            <div class="input-group-append bg-success border-success">
+                                                          <span class="input-group-text bg-transparent"
+                                                                (click)="saveChanges(setting)">
+                                                              <ng-container
+                                                                      *ngIf="updateSettingsLoader[setting.key];then showLoader else updateSetting">
+                                                              </ng-container>
+                                                          </span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-2">
+                                                    <div *ngFor="let setting of settings | settingsfilter:{key:'active_tw'}"
+                                                         class="form-group">
+                                                        <p class="card-description">{{setting.description}}</p>
+                                                        <ng-container *ngIf="setting.value == 'true'; then activeYes; else activeNo"></ng-container>
+                                                        <ng-template #activeYes>
+                                                            <div class="btn btn-icons btn-inverse-secondary"
+                                                                 (click)="saveChangesBoolean(setting)">
+                                                                <i class="far fa-check-square"></i>
+                                                            </div>
+                                                        </ng-template>
+                                                        <ng-template #activeNo>
+                                                            <div class="btn btn-icons btn-inverse-secondary"
+                                                                 (click)="saveChangesBoolean(setting)">
+                                                                <i class="far fa-square"></i>
+                                                            </div>
+                                                        </ng-template>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- YOUTUBE -->
+                                            <div class="row">
+                                                <div class="col-8">
+                                                    <div *ngFor="let setting of settings | settingsfilter:{key:'youtube'}"
+                                                         class="form-group">
+                                                        <p class="card-description">{{setting.description}}</p>
+                                                        <div class="input-group">
+                                                            <input type="text"
+                                                                   class="form-control"
+                                                                   placeholder="youtube"
+                                                                   [(ngModel)]="setting.value"
+                                                                   aria-label="Youtube"
+                                                                   aria-describedby="colored-addon3"
+                                                            >
+                                                            <div class="input-group-append bg-success border-success">
+                                                          <span class="input-group-text bg-transparent"
+                                                                (click)="saveChanges(setting)">
+                                                              <ng-container
+                                                                      *ngIf="updateSettingsLoader[setting.key];then showLoader else updateSetting">
+                                                              </ng-container>
+                                                          </span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-2">
+                                                    <div *ngFor="let setting of settings | settingsfilter:{key:'active_yt'}"
+                                                         class="form-group">
+                                                        <p class="card-description">{{setting.description}}</p>
+                                                        <ng-container *ngIf="setting.value == 'true'; then activeYes; else activeNo"></ng-container>
+                                                        <ng-template #activeYes>
+                                                            <div class="btn btn-icons btn-inverse-secondary"
+                                                                 (click)="saveChangesBoolean(setting)">
+                                                                <i class="far fa-check-square"></i>
+                                                            </div>
+                                                        </ng-template>
+                                                        <ng-template #activeNo>
+                                                            <div class="btn btn-icons btn-inverse-secondary"
+                                                                 (click)="saveChangesBoolean(setting)">
+                                                                <i class="far fa-square"></i>
+                                                            </div>
+                                                        </ng-template>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <div class="col-sm">
-                      <div class="form-group">
-                        <input type="file" class="btn form-control-file" id="iconFileInput" aria-describedby="fileHelp" (change)="onFileChanged($event, setting)">
-                        <div class="btn btn-success" (click)="saveChanges(setting)">Upload!</div>
-                        <!--<small id="fileHelp" class="form-text text-muted">This is some placeholder block-level help text for the above input. It's a bit lighter and easily wraps to a new line.</small>-->
-                      </div>
-                    </div>
-                  </div>
                 </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</ng-container>
+            </ng-container>
+        </ng-template>
+    </ngb-tab>
+</ngb-tabset>

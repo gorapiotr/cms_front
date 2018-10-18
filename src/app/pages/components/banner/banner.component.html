@@ -9,12 +9,36 @@
         <div class="container">
             <div class="row">
                 <div class="col-9 social">
-                    <a href="#"><span class="fa fa-twitter"></span></a>
-                    <a href="#"><span class="fa fa-facebook"></span></a>
-                    <a href="#"><span class="fa fa-instagram"></span></a>
-                    <a href="#"><span class="fa fa-youtube-play"></span></a>
-                    <a href="#"><span class="fa fa-vimeo"></span></a>
-                    <a href="#"><span class="fa fa-snapchat"></span></a>
+                    <!-- FACEBOOK -->
+                    <ng-container *ngFor="let element of settings | settingsfilter:{key:'active_fb'}">
+                        <ng-container *ngIf="element.value == 'true'">
+                            <ng-container *ngFor="let setting of settings | settingsfilter:{key:'facebook'}">
+                                <a href="{{setting.value}}"><span class="fa fa-facebook"></span></a>
+                            </ng-container>
+                        </ng-container>
+                    </ng-container>
+                    <!-- TWITTER -->
+                    <ng-container *ngFor="let element of settings | settingsfilter:{key:'active_tw'}">
+                        <ng-container *ngIf="element.value == 'true'">
+                            <ng-container *ngFor="let setting of settings | settingsfilter:{key:'twitter'}">
+                                <a href="{{setting.value}}"><span class="fa fa-twitter"></span></a>
+                            </ng-container>
+                        </ng-container>
+                    </ng-container>
+                    <!-- YOUTUBE -->
+                    <ng-container *ngFor="let element of settings | settingsfilter:{key:'active_yt'}">
+                        <ng-container *ngIf="element.value == 'true'">
+                            <ng-container *ngFor="let setting of settings | settingsfilter:{key:'youtube'}">
+                                <a href="{{setting.value}}"><span class="fa fa-youtube-play"></span></a>
+                            </ng-container>
+                        </ng-container>
+                    </ng-container>
+
+                    <!--<a href="#"><span class="fa fa-twitter"></span></a>-->
+                    <!--<a href="#"><span class="fa fa-instagram"></span></a>-->
+                    <!--<a href="#"><span class="fa fa-youtube-play"></span></a>-->
+                    <!--<a href="#"><span class="fa fa-vimeo"></span></a>-->
+                    <!--<a href="#"><span class="fa fa-snapchat"></span></a>-->
                 </div>
                 <div class="col-3 search-top">
                     <!-- <a href="#"><span class="fa fa-search"></span></a> -->

@@ -21,7 +21,7 @@
                 <h4 class="card-title">Admin panel settings</h4>
                 <div *ngFor="let setting of settings | settingsfilter:{key:'admin_logo'}"
                      class="form-group">
-                  <p class="card-description">{{setting.key}}</p>
+                  <p class="card-description">{{setting.description}}</p>
                   <div class="row">
                     <div class="col-sm">
                       <img [src]="setting.value" width="150px">
