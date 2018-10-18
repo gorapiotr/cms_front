@@ -6,4 +6,11 @@
     <br>
     <br>
     <div [innerHTML]="model.content"></div>
+    <br>
+    <br>
+    <div class="float-right">
+        <p>
+            <i>{{model.created_by.name}}, {{model.created_at}}</i>
+        </p>
+    </div>
 </ng-container>
