@@ -1,14 +1,14 @@
-import {Component, OnInit} from '@angular/core';
-import {SettingsService} from '../../_services/admin-panel/settings/settings.service';
-import {Setting} from '../../_models/Settings/Setting';
+import { Component, OnInit } from '@angular/core';
+import {Setting} from '../../../_models/Settings/Setting';
+import {SettingsService} from '../../../_services/admin-panel/settings/settings.service';
 import {SnotifyService} from 'ng-snotify';
 
 @Component({
-    selector: 'app-settings',
-    templateUrl: './settings.component.html',
-    styleUrls: ['./settings.component.css']
+  selector: 'app-page-settings',
+  templateUrl: './page-settings.component.html',
+  styleUrls: ['./page-settings.component.css']
 })
-export class SettingsComponent implements OnInit {
+export class PageSettingsComponent implements OnInit {
 
     settings: Array<Setting>;
     public error = null;

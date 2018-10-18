@@ -5,6 +5,8 @@ import {TokenService} from '../../_services/token/token.service';
 import {UserService} from '../../_services/admin-panel/user/user.service';
 import {User} from '../../_models/User/User';
 import {NgxPermissionsService} from 'ngx-permissions';
+import {SettingsService} from '../../_services/admin-panel/settings/settings.service';
+import {Setting} from '../../_models/Settings/Setting';
 
 @Component({
   selector: 'app-nav',
@@ -16,6 +18,8 @@ export class NavComponent implements OnInit {
     public loggedIn: boolean;
     public user: User;
     hideLoader = false;
+    settings: Array<Setting>;
+
 
     constructor(
         private Auth: AuthService,
@@ -23,6 +27,7 @@ export class NavComponent implements OnInit {
         private Token: TokenService,
         private userService: UserService,
         private permissionsService: NgxPermissionsService,
+        private settingsService: SettingsService
     ) { }
 
     ngOnInit() {
@@ -33,6 +38,10 @@ export class NavComponent implements OnInit {
                 this.user = data;
                 this.hideLoader = true;
             });
+        this.settingsService.getSettings().subscribe( (data) => {
+                this.settings = data;
+                console.log(this.settings);
+        });
     }
 
     logout(event: MouseEvent) {

@@ -12,7 +12,9 @@ const routes: Routes = [
         {path: 'team/users',                                    loadChildren: './team/users/users.module#UsersModule'},
         // components
         // settings
-        {path: 'settings',                                      loadChildren: './settings/settings.module#SettingsModule'},
+        {path: 'page-settings',                                 loadChildren: './settings/page-settings/page-settings.module#PageSettingsModule'},
+        {path: 'admin-panel-settings',                          loadChildren: './settings/admin-panel-settings/admin-panel-settings.module#AdminPanelSettingsModule'},
+        //assets
         {path: 'assets/image-filter',                           loadChildren: './assets/image-edit/image-filter/image-filter.module#ImageFilterModule'},
         //posts
         {path: 'post/post-list',                                loadChildren: './post/post-list/post-list.module#PostListModule'},

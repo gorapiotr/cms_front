@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { SettingsComponent } from './settings.component';
+import { AdminPanelSettingsComponent } from './admin-panel-settings.component';
 
-describe('SettingsComponent', () => {
-  let component: SettingsComponent;
-  let fixture: ComponentFixture<SettingsComponent>;
+describe('AdminPanelSettingsComponent', () => {
+  let component: AdminPanelSettingsComponent;
+  let fixture: ComponentFixture<AdminPanelSettingsComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ SettingsComponent ]
+      declarations: [ AdminPanelSettingsComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(SettingsComponent);
+    fixture = TestBed.createComponent(AdminPanelSettingsComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

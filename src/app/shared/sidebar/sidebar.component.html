@@ -107,10 +107,24 @@
         </ng-template>
         <ng-template [ngxPermissionsOnly]="['menu-settings']">
             <li class="nav-item">
-                <a class="nav-link" routerLink="settings">
+                <a class="nav-link" data-toggle="collapse" href="#settings" aria-expanded="false"
+                   aria-controls="ui-basic">
                     <i class="menu-icon fa fa-cogs"></i>
                     <span class="menu-title">Settings</span>
+                    <i class="menu-arrow"></i>
                 </a>
+                <div class="collapse" id="settings">
+                    <ul class="nav flex-column sub-menu">
+                        <ng-template [ngxPermissionsOnly]="['read-settings']">
+                            <li class="nav-item">
+                                <a class="nav-link" routerLink="page-settings"><i class="menu-icon fa fa-paper-plane"></i>Page settings</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" routerLink="admin-panel-settings"><i class="menu-icon fa fa-laptop"></i>Admin-panel settings</a>
+                            </li>
+                        </ng-template>
+                    </ul>
+                </div>
             </li>
         </ng-template>
     </ul>

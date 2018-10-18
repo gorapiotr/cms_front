@@ -1,0 +1,45 @@
+<ng-template #preLoader>
+  <app-loader></app-loader>
+</ng-template>
+
+<ng-template #updateSetting>
+  <i class="fa fa-save text-white"></i>
+</ng-template>
+<ng-template #showLoader>
+  <i class="fa fa-spinner fa-pulse fa-fw text-white"></i>
+</ng-template>
+
+
+<ng-container *ngIf="hideLoader else preLoader">
+  <div class="row">
+    <div class="col-12 grid-margin">
+      <div class="row flex-grow">
+        <div class="col-12">
+          <div class="card">
+            <div class="col-8">
+              <div class="card-body">
+                <h4 class="card-title">Admin panel settings</h4>
+                <div *ngFor="let setting of settings | settingsfilter:{key:'admin_logo'}"
+                     class="form-group">
+                  <p class="card-description">{{setting.key}}</p>
+                  <div class="row">
+                    <div class="col-sm">
+                      <img [src]="setting.value" width="150px">
+                    </div>
+                    <div class="col-sm">
+                      <div class="form-group">
+                        <input type="file" class="btn form-control-file" id="iconFileInput" aria-describedby="fileHelp" (change)="onFileChanged($event, setting)">
+                        <div class="btn btn-success" (click)="saveChanges(setting)">Upload!</div>
+                        <!--<small id="fileHelp" class="form-text text-muted">This is some placeholder block-level help text for the above input. It's a bit lighter and easily wraps to a new line.</small>-->
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-container>
