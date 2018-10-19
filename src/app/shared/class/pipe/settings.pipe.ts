@@ -13,6 +13,6 @@ export class SettingsPipe implements PipeTransform {
         }
         // filter items array, items which match and return true will be
         // kept, false will be filtered out
-        return items.filter(item => item.key.indexOf(filter.key) !== -1);
+        return items.filter(item => item.key === filter.key);
     }
 }
