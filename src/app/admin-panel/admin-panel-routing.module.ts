@@ -17,6 +17,7 @@ const routes: Routes = [
         {path: 'admin-panel-settings',                          loadChildren: './settings/admin-panel-settings/admin-panel-settings.module#AdminPanelSettingsModule'},
         //assets
         {path: 'assets/image-filter',                           loadChildren: './assets/image-edit/image-filter/image-filter.module#ImageFilterModule'},
+        {path: 'assets/image-crop',                             loadChildren: './assets/image-edit/image-crop/image-crop.module#ImageCropModule'},
         //posts
         {path: 'post/post-list',                                loadChildren: './post/post-list/post-list.module#PostListModule'},
         {path: 'post/add',                                      loadChildren: './post/post-add/post-add.module#PostAddModule'},

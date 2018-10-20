@@ -17,27 +17,7 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="card-body">
-                            <!--<h4 class="card-title">Account info</h4>-->
-                            <!--<div class="media">-->
-                            <!--<i class="mdi mdi-earth icon-md text-info d-flex align-self-start mr-3"></i>-->
-                            <!--<div class="media-body">-->
-                            <!--<p class="card-text"><strong>Name:</strong> {{user?.name}}</p>-->
-                            <!--<p class="card-text"><strong>Email:</strong> {{user?.email}}</p>-->
-                            <!--<input type="text"-->
-                            <!--class="form-control"-->
-                            <!--placeholder="Title"-->
-                            <!--[(ngModel)]="user.name"-->
-                            <!--name="userName"-->
-                            <!--id="userName"-->
-                            <!--aria-label="User Name"-->
-                            <!--aria-describedby="colored-addon3"-->
-                            <!--&gt;-->
-                            <!--</div>-->
-                            <!--</div>-->
                             <h4 class="card-title">User info</h4>
-                            <!--<p class="card-description">-->
-                            <!--Basic form layout-->
-                            <!--</p>-->
                             <form class="forms-sample">
                                 <div class="form-group">
                                     <label for="userEmail">Email address</label>
@@ -68,7 +48,26 @@
                                     <label for="userName">Avatar</label>
                                     <div class="row">
                                         <div class="col-sm">
-                                            <img [src]="user.avatar" width="100px">
+                                            <ng-container *ngIf="cropperReady; then showCropper; else showImage"></ng-container>
+                                            <ng-template #showImage>
+                                                <img [src]="user.avatar" width="100px">
+                                            </ng-template>
+                                            <ng-template #showCropper>
+                                                <image-cropper
+                                                        [imageChangedEvent]="imageChangedEvent"
+                                                        [maintainAspectRatio]="true"
+                                                        [aspectRatio]="1"
+                                                        [resizeToWidth]="100"
+                                                        [roundCropper]="false"
+                                                        format="png"
+                                                        outputType="both"
+                                                        (imageCropped)="imageCropped($event)"
+                                                        (imageLoaded)="imageLoaded()"
+                                                        (loadImageFailed)="loadImageFailed()"
+                                                        style="max-height: 33vh"
+                                                        [style.display]="cropperReady ? null : 'none'"
+                                                ></image-cropper>
+                                            </ng-template>
                                         </div>
                                         <div class="col-sm">
                                             <div class="form-group">

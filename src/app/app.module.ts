@@ -20,7 +20,7 @@ import {NgxPermissionsModule} from 'ngx-permissions';
 
 @NgModule({
     declarations: [
-        AppComponent,
+        AppComponent
     ],
     imports: [
         BrowserModule,

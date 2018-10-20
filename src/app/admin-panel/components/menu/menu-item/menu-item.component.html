@@ -1,0 +1,97 @@
+<ng-template #preLoader>
+    <app-loader></app-loader>
+</ng-template>
+
+<ng-template #updateSetting>
+    <i class="fa fa-save text-white"></i>
+</ng-template>
+<ng-template #showLoader>
+    <i class="fa fa-spinner fa-pulse fa-fw text-white"></i>
+</ng-template>
+
+
+<ng-container *ngIf="hideLoader else preLoader">
+    <div class="row">
+        <div class="col-12 grid-margin">
+            <div class="row flex-grow">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="col-12">
+                            <div class="card-body">
+                                <h4 class="card-title">Menu items</h4>
+                                <!-- FACEBOOK -->
+                                <div class="row">
+                                    <div class="col-8">
+                                        <div *ngFor="let setting of settings | settingsfilter:{key: menuItem.name}"
+                                             class="form-group">
+                                            <p class="card-description">{{setting.description}}</p>
+                                            <div class="input-group">
+                                                <input type="text"
+                                                       class="form-control"
+                                                       placeholder="home"
+                                                       [(ngModel)]="setting.value"
+                                                       aria-label="home"
+                                                       aria-describedby="colored-addon3"
+                                                >
+                                                <div class="input-group-append bg-success border-success">
+                                                          <span class="input-group-text bg-transparent"
+                                                                (click)="saveChanges(setting)">
+                                                              <ng-container
+                                                                      *ngIf="updateSettingsLoader[setting.key];then showLoader else updateSetting">
+                                                              </ng-container>
+                                                          </span>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div *ngFor="let setting of settings | settingsfilter:{key: menuItem.slug}"
+                                             class="form-group">
+                                            <p class="card-description">{{setting.description}}</p>
+                                            <div class="input-group">
+                                                <input type="text"
+                                                       class="form-control"
+                                                       placeholder=""
+                                                       [(ngModel)]="setting.value"
+                                                       aria-describedby="colored-addon3"
+                                                >
+                                                <div class="input-group-append bg-success border-success">
+                                                          <span class="input-group-text bg-transparent"
+                                                                (click)="saveChanges(setting)">
+                                                              <ng-container
+                                                                      *ngIf="updateSettingsLoader[setting.key];then showLoader else updateSetting">
+                                                              </ng-container>
+                                                          </span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-2">
+                                        <div *ngFor="let setting of settings | settingsfilter:{key: menuItem.active}"
+                                             class="form-group">
+                                            <p class="card-description">{{setting.description}}</p>
+                                            <ng-container
+                                                    *ngIf="setting.value == 'true'; then activeYes; else activeNo"></ng-container>
+                                            <ng-template #activeYes>
+                                                <div class="btn btn-icons btn-inverse-secondary"
+                                                     (click)="saveChangesBoolean(setting)">
+                                                    <i class="far fa-check-square"></i>
+                                                </div>
+                                            </ng-template>
+                                            <ng-template #activeNo>
+                                                <div class="btn btn-icons btn-inverse-secondary"
+                                                     (click)="saveChangesBoolean(setting)">
+                                                    <i class="far fa-square"></i>
+                                                </div>
+                                            </ng-template>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</ng-container>
+

@@ -2,6 +2,7 @@ import {AfterViewInit, Component, OnInit} from '@angular/core';
 import {UserService} from '../../../_services/admin-panel/user/user.service';
 import {User} from '../../../_models/User/User';
 import {NgxPermissionsService} from 'ngx-permissions';
+import {ImageCroppedEvent} from 'ngx-image-cropper/src/image-cropper.component';
 
 @Component({
     selector: 'app-account',
@@ -10,10 +11,13 @@ import {NgxPermissionsService} from 'ngx-permissions';
 })
 export class AccountComponent implements OnInit, AfterViewInit {
 
-    public user: User;
-    public userPermissions;
+    user: User;
+    userPermissions;
     hideLoader = false;
     hideUpdateUserLoader = true;
+    imageChangedEvent: any = '';
+    croppedImage: any = '';
+    cropperReady = false;
 
     constructor(private userService: UserService,
                 private permissionsService: NgxPermissionsService,) {
@@ -21,6 +25,9 @@ export class AccountComponent implements OnInit, AfterViewInit {
 
     ngAfterViewInit() {
         this.getUserData();
+    }
+
+    ngOnInit() {
     }
 
     getUserData() {
@@ -40,11 +47,9 @@ export class AccountComponent implements OnInit, AfterViewInit {
         this.hideUpdateUserLoader = false;
         this.userService.update(this.user).subscribe((data) => {
             this.getUserData();
+            this.cropperReady = false;
             this.hideUpdateUserLoader = true;
         });
-    }
-
-    ngOnInit() {
     }
 
     objectKeys(obj) {
@@ -52,6 +57,23 @@ export class AccountComponent implements OnInit, AfterViewInit {
     }
 
     onFileChanged(event) {
+        this.imageChangedEvent = event;
         this.user.avatar_file = event.target.files[0];
+        this.cropperReady = true;
+    }
+
+    imageCropped(event: ImageCroppedEvent) {
+
+        const file = new File([event.file], 'image');
+        this.croppedImage = event.base64;
+        this.user.avatar_file = file;
+    }
+
+    imageLoaded() {
+        this.cropperReady = true;
+    }
+
+    loadImageFailed() {
+        console.log('Load failed');
     }
 }

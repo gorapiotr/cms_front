@@ -1,0 +1,12 @@
+<ngb-tabset>
+    <ng-container *ngFor="let menuItem of menuItems">
+        <ngb-tab title="{{menuItem.title}}">
+            <ng-template ngbTabContent>
+                <app-menu-item
+                        [menuItem]="menuItem"
+                >
+                </app-menu-item>
+            </ng-template>
+        </ngb-tab>
+    </ng-container>
+</ngb-tabset>
