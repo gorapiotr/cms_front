@@ -4,12 +4,14 @@ import {NavComponent} from './nav.component';
 import {SimpleLoaderModule} from '../simple-loader/simple-loader.module';
 import {SettingsService} from '../../_services/admin-panel/settings/settings.service';
 import {SettingPipeModule} from '../class/pipe/setting.pipe.module';
+import {RouterModule} from '@angular/router';
 
 @NgModule({
     imports: [
         CommonModule,
         SimpleLoaderModule,
-        SettingPipeModule
+        SettingPipeModule,
+        RouterModule
     ],
     providers: [SettingsService],
     declarations: [NavComponent],
