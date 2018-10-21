@@ -1,0 +1,50 @@
+<div class="sidebar-box">
+    <div class="bio text-center">
+        <ng-container *ngFor="let element of settings | settingsfilter:{key:'bio_image'}">
+            <img
+                    [src]="element.value"
+                    alt="Image Placeholder"
+                    class="img-fluid"
+                    style="border: 1px solid #e6e6e6"
+            >
+        </ng-container>
+        <div class="bio-body">
+            <ng-container *ngFor="let element of settings | settingsfilter:{key:'bio_name'}">
+                <h2>{{element.value}}</h2>
+            </ng-container>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Exercitationem facilis sunt
+                repellendus excepturi beatae porro debitis voluptate nulla quo veniam fuga sit molestias
+                minus.</p>
+            <p><a href="#" class="btn btn-primary btn-sm">Read my bio</a></p>
+            <p class="social">
+                <ng-container *ngFor="let element of settings | settingsfilter:{key:'active_fb'}">
+                    <ng-container *ngIf="element.value == 'true'">
+                        <ng-container *ngFor="let setting of settings | settingsfilter:{key:'facebook'}">
+                            <a href="{{setting.value}}"
+                               style="margin: 0 5px"
+                            ><span class="fa fa-facebook"></span></a>
+                        </ng-container>
+                    </ng-container>
+                </ng-container>
+                <ng-container *ngFor="let element of settings | settingsfilter:{key:'active_tw'}">
+                    <ng-container *ngIf="element.value == 'true'">
+                        <ng-container *ngFor="let setting of settings | settingsfilter:{key:'twitter'}">
+                            <a href="{{setting.value}}"
+                               style="margin: 0 5px"
+                            ><span class="fa fa-twitter"></span></a>
+                        </ng-container>
+                    </ng-container>
+                </ng-container>
+                <ng-container *ngFor="let element of settings | settingsfilter:{key:'active_yt'}">
+                    <ng-container *ngIf="element.value == 'true'">
+                        <ng-container *ngFor="let setting of settings | settingsfilter:{key:'youtube'}">
+                            <a href="{{setting.value}}"
+                               style="margin: 0 5px"
+                            ><span class="fa fa-youtube-play"></span></a>
+                        </ng-container>
+                    </ng-container>
+                </ng-container>
+            </p>
+        </div>
+    </div>
+</div>
