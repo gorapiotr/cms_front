@@ -6,8 +6,9 @@ import {LoaderModule} from '../../shared/loader/loader.module';
 import {RightSideBarModule} from '../components/right-side-bar/right-side-bar.module';
 import {CategoryPostsModule} from '../components/category-posts/category-posts.module';
 import {RecommendedPostsModule} from '../components/recommended-posts/recommended-posts.module';
-import {FooterModule} from '../components/footer/footer.module';
 import {BannerModule} from '../components/banner/banner.module';
+import {ContactContentModule} from './contact-content/contact-content.module';
+import {FooterModule} from '../components/footer/footer.module';
 
 const routes: Routes = [{
     path: '',
@@ -20,9 +21,11 @@ const routes: Routes = [{
       RouterModule.forChild(routes),
       LoaderModule,
       BannerModule,
+      FooterModule,
       RecommendedPostsModule,
       CategoryPostsModule,
       RightSideBarModule,
+      ContactContentModule
   ],
   declarations: [ContactPageComponent]
 })

@@ -3,6 +3,7 @@ import {ActivatedRoute, Params} from '@angular/router';
 import {PostService} from '../../../_services/admin-panel/post/post.service';
 import {Post} from '../../../_models/Post/Post';
 import {SnotifyService} from 'ng-snotify';
+import {ImageCroppedEvent} from 'ngx-image-cropper/src/image-cropper.component';
 
 @Component({
     selector: 'app-post-edit',
@@ -14,6 +15,9 @@ export class PostEditComponent implements OnInit {
     hideLoader = false;
     model: Post;
     hideUpdateUserLoader = true;
+    imageChangedEvent: any = '';
+    croppedImage: any = '';
+    cropperReady = false;
 
     constructor(protected route: ActivatedRoute,
                 protected postService: PostService,
@@ -47,20 +51,16 @@ export class PostEditComponent implements OnInit {
             this.hideUpdateUserLoader = true;
             this.Notify.success('Updated');
         }, (error) => {
-                const err = this.objectValues(error.errors);
-                err.forEach( (x) => {
-                    this.Notify.error(x as string);
-                });
+            const err = this.objectValues(error.errors);
+            err.forEach((x) => {
+                this.Notify.error(x as string);
+            });
             this.hideUpdateUserLoader = true;
         });
     }
 
     objectValues(obj) {
         return Object.values(obj);
-    }
-
-    onFileChanged(event) {
-        this.model.main_image_file = event.target.files[0];
     }
 
     leadOptions: Object = {
@@ -70,6 +70,28 @@ export class PostEditComponent implements OnInit {
         toolbarButtonsSM: ['bold'],
         toolbarButtonsMD: ['bold'],
     };
+
+
+    onFileChanged(event) {
+        this.imageChangedEvent = event;
+        this.model.main_image_file = event.target.files[0];
+        this.cropperReady = true;
+    }
+
+    imageCropped(event: ImageCroppedEvent) {
+
+        const file = new File([event.file], 'image');
+        this.croppedImage = event.base64;
+        this.model.main_image_file = file;
+    }
+
+    imageLoaded() {
+        this.cropperReady = true;
+    }
+
+    loadImageFailed() {
+        console.log('Load failed');
+    }
 }
 
 
