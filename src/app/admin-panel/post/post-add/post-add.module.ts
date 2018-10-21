@@ -7,6 +7,7 @@ import {FroalaEditorModule} from 'angular-froala-wysiwyg';
 import {FormsModule} from '@angular/forms';
 import {PostService} from '../../../_services/admin-panel/post/post.service';
 import {AfterLoginService} from '../../../_services/after-login/after-login.service';
+import {ImageCropperModule} from 'ngx-image-cropper';
 
 const routes: Routes = [{
     path: '',
@@ -25,7 +26,8 @@ const routes: Routes = [{
         FormsModule,
         RouterModule.forChild(routes),
         LoaderModule,
-        FroalaEditorModule
+        FroalaEditorModule,
+        ImageCropperModule
     ],
     providers: [PostService],
     declarations: [PostAddComponent]

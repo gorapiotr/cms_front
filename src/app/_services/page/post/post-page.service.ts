@@ -37,6 +37,16 @@ export class PostPageService {
             .catch(this.handleError);
     }
 
+    getCollection(posts): Observable<any> {
+        return this.http.post<ResponseInterface>(this.baseUrl + '/get-posts', {postIds: posts})
+            .pipe(
+                map((res: ResponseInterface) => {
+                    this.posts = res.data.map((data: ResponseInterface) => MapUtils.deserialize(Post, data));
+                    return this.posts;
+                }))
+            .catch(this.handleError);
+    }
+
     get(slug: string): Observable<any> {
         const url = this.baseUrl + '/' + slug;
         return this.http.get<ResponseInterface>(url);

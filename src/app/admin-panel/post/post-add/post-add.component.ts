@@ -3,6 +3,7 @@ import {Post} from '../../../_models/Post/Post';
 import {ActivatedRoute, Router} from '@angular/router';
 import {PostService} from '../../../_services/admin-panel/post/post.service';
 import {SnotifyService} from 'ng-snotify';
+import {ImageCroppedEvent} from 'ngx-image-cropper/src/image-cropper.component';
 
 @Component({
   selector: 'app-post-add',
@@ -14,6 +15,9 @@ export class PostAddComponent implements OnInit {
     hideLoader = false;
     model: Post;
     hidePostAddLoader = true;
+    imageChangedEvent: any = '';
+    croppedImage: any = '';
+    cropperReady = false;
 
 
     constructor(protected route: ActivatedRoute,
@@ -42,10 +46,6 @@ export class PostAddComponent implements OnInit {
         });
     }
 
-    onFileChanged(event) {
-        this.model.main_image_file = event.target.files[0];
-    }
-
     objectValues(obj) {
         return Object.values(obj);
     }
@@ -57,4 +57,25 @@ export class PostAddComponent implements OnInit {
         toolbarButtonsSM: ['bold'],
         toolbarButtonsMD: ['bold'],
     };
+
+    onFileChanged(event) {
+        this.imageChangedEvent = event;
+        this.model.main_image_file = event.target.files[0];
+        this.cropperReady = true;
+    }
+
+    imageCropped(event: ImageCroppedEvent) {
+
+        const file = new File([event.file], 'image');
+        this.croppedImage = event.base64;
+        this.model.main_image_file = file;
+    }
+
+    imageLoaded() {
+        this.cropperReady = true;
+    }
+
+    loadImageFailed() {
+        console.log('Load failed');
+    }
 }

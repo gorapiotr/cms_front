@@ -67,9 +67,25 @@
                             <h4 class="card-title">Main image</h4>
                             <div class="row">
                                 <div class="col-sm">
-                                    <ng-container *ngIf="model.main_image">
-                                        <img [src]="model.main_image" width="300px">
-                                    </ng-container>
+                                    <ng-container *ngIf="cropperReady; then showCropper; else showImage"></ng-container>
+                                    <ng-template #showImage>
+                                    </ng-template>
+                                    <ng-template #showCropper>
+                                        <image-cropper
+                                                [imageChangedEvent]="imageChangedEvent"
+                                                [maintainAspectRatio]="true"
+                                                [aspectRatio]="1.5"
+                                                [resizeToWidth]="800"
+                                                [roundCropper]="false"
+                                                format="png"
+                                                outputType="both"
+                                                (imageCropped)="imageCropped($event)"
+                                                (imageLoaded)="imageLoaded()"
+                                                (loadImageFailed)="loadImageFailed()"
+                                                style="max-height: 33vh"
+                                                [style.display]="cropperReady ? null : 'none'"
+                                        ></image-cropper>
+                                    </ng-template>
                                 </div>
                                 <div class="col-sm">
                                     <div class="form-group">
