@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { SliderComponent } from './slider.component';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {RouterModule, Routes} from '@angular/router';
+import { HttpClientModule} from "@angular/common/http";
 
 const routes: Routes = [{
     path: '',
@@ -13,7 +14,8 @@ const routes: Routes = [{
     imports: [
         CommonModule,
         NgbModule.forRoot(),
-        RouterModule.forChild(routes)
+        RouterModule.forChild(routes),
+        HttpClientModule
   ],
     declarations: [
       SliderComponent

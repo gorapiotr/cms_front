@@ -1,3 +1,4 @@
+<!--<script src="https://www.gstatic.com/firebasejs/5.5.8/firebase.js"></script>-->
 <ngb-carousel *ngIf="images" [showNavigationArrows]="showNavigationArrows" [showNavigationIndicators]="showNavigationIndicators">
   <ng-template ngbSlide>
     <img [src]="images[0]" alt="Random first slide">
@@ -32,4 +33,12 @@
 <div class="btn-group" role="group" aria-label="Carousel toggle controls">
   <button type="button" (click)="showNavigationArrows = !showNavigationArrows" class="btn btn-outline-dark btn-sm">Toggle navigation arrows</button>
   <button type="button" (click)="showNavigationIndicators = !showNavigationIndicators" class="btn btn-outline-dark btn-sm">Toggle navigation indicators</button>
+</div>
+<hr>
+<div class="col-sm">
+  <div class="form-group">
+    <progress value="0" max="100" id="uploader">0%</progress>
+    <input type="file" class="btn form-control-file" aria-describedby="fileHelp" (change)="onFileChanged($event)">
+    <div class="btn btn-success" (click)="onUpload()">Upload!</div>
+  </div>
 </div>
