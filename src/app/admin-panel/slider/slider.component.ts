@@ -5,9 +5,11 @@ import { SnotifyService} from "ng-snotify";
 import { SliderService } from '../../_services/slider/slider.service';
 import { HttpClient } from "@angular/common/http";
 import * as firebase from "firebase";
+// import {url} from "inspector";
+// import {reject} from "q";
 
 @Component({
-     selector: 'app-slider',
+    selector: 'app-slider',
     templateUrl: './slider.component.html',
     styleUrls: ['./slider.component.css'],
     providers: [NgbCarouselConfig]
@@ -30,10 +32,7 @@ export class SliderComponent {
         storageBucket: "cmsproject-49632.appspot.com",
         messagingSenderId: "864662869534"
     };
-    sendData = {
-        fileName: String,
-        url: String
-    };
+    slide = new Slider();
 
     constructor(private http: HttpClient, config: NgbCarouselConfig, protected sliderService: SliderService,
                 protected Notify: SnotifyService) {
@@ -51,8 +50,13 @@ export class SliderComponent {
         this.sliderService.get().subscribe(
             (data) => {
                 //get a list of images urls from db (it should be downloaded only for specific user and his post)
+                console.log("downloaded data");
                 this.images = data;
-        })
+            },
+            (error) => {
+                console.log("failed to reach database");
+                console.log(error);
+            });
     }
 
     handleError(error) {
@@ -65,29 +69,41 @@ export class SliderComponent {
         this.selectedFile = event.target.files[0];
     }
 
+    uploadToDB() {
+        this.sliderService.update(this.slide).subscribe((data) => {
+            this.Notify.success('Updated');
+            console.log("uploaded to db");
+            this.getSlides();
+        }, (error) => {
+            console.log("couldn't reach api to update db");
+            console.log(error);
+        })
+    }
+
     onUpload() {
         let uploader = <HTMLInputElement>document.getElementById('uploader');
-        let file = this.selectedFile;
-        let storageRef = firebase.storage().ref('postImages/' + file.name);
-        let task = storageRef.put(file);
+        this.slide.name = this.selectedFile.name;
+        let storageRef = firebase.storage().ref('postImages/' + this.selectedFile.name);
+        let task = storageRef.put(this.selectedFile);
 
         task.on(firebase.storage.TaskEvent.STATE_CHANGED,
-            function progress(snapshot: firebase.storage.UploadTaskSnapshot) {
+            (snapshot: firebase.storage.UploadTaskSnapshot) => {
                 uploader.value = String((snapshot.bytesTransferred / snapshot.totalBytes) * 100);
             },
-            function error(err) {
+            (error) => {
+                console.log("firebase upload failed");
+                console.log(error);
             },
-            function complete() {
-                console.log("completed");
-                console.log(file);
-                storageRef.child(file.name).getDownloadURL().then(function(url) {
-                   //send url, filename, user, etc. to db through api
-                    this.sendData.fileName = file.name;
-                    this.sendData.url = url;
-                    this.sliderService.update(this.sendData).subscribe((data) => {
-                        this.Notify.success('Updated');
-                        this.getSlides();
-                    })
+            () => {
+                console.log("img in firebase");
+                console.log(this.selectedFile);
+                storageRef.getDownloadURL().then((url) => {
+                    this.slide.url = url;
+                    this.uploadToDB();
+                    console.log("got url! uploading to db");
+                    console.log(this.slide.url);
+                },(error) => {
+                    console.log("coudn't get URL");
                 });
             });
     }

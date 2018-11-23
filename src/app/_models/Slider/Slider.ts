@@ -1,11 +1,11 @@
 export class Slider {
     id: number | undefined;
     url: string;
-    file: File;
+    name: string;
 
     constructor() {
         this.id = undefined;
         this.url = undefined;
-        this.file = undefined;
+        this.name = undefined;
     }
 }
