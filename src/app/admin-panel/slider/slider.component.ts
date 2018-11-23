@@ -5,8 +5,6 @@ import { SnotifyService} from "ng-snotify";
 import { SliderService } from '../../_services/slider/slider.service';
 import { HttpClient } from "@angular/common/http";
 import * as firebase from "firebase";
-// import {url} from "inspector";
-// import {reject} from "q";
 
 @Component({
     selector: 'app-slider',
@@ -16,15 +14,15 @@ import * as firebase from "firebase";
 })
 
 export class SliderComponent {
-    // images = [1, 2, 3, 4].map(() => `https://picsum.photos/900/500?random&t=${Math.random()}`);
-    images = [];    //list of URLs for firebase storage images
-    showNavigationArrows = false;
-    showNavigationIndicators = false;
+    exampleImages = [1, 2, 3].map(() => `https://picsum.photos/900/500?random&t=${Math.random()}`);
+    images: Array<string>;    //list of URLs for images stored in firebase storage
+    exampleImgPresented = false;
+    showNavigationArrows = true;
+    showNavigationIndicators = true;
     public error = null;
     hideLoader = false;
     selectedFile: File = null;
-    // Initialize Firebase
-    config = {
+    firebaseConfig = {
         apiKey: "AIzaSyBQ3Ch9knXozMSCz0QWUXtjyG22O_gP3Lk",
         authDomain: "cmsproject-49632.firebaseapp.com",
         databaseURL: "https://cmsproject-49632.firebaseio.com",
@@ -41,17 +39,34 @@ export class SliderComponent {
         config.wrap = false;
         config.keyboard = false;
         config.pauseOnHover = true;
-        config.showNavigationArrows = true;
-        config.showNavigationIndicators = true;
-        firebase.initializeApp(this.config);
+        config.showNavigationArrows = this.showNavigationArrows;
+        config.showNavigationIndicators = this.showNavigationIndicators;
+        this.getSlides();
+        firebase.initializeApp(this.firebaseConfig);
     }
+
+
 
     getSlides() {
         this.sliderService.get().subscribe(
             (data) => {
-                //get a list of images urls from db (it should be downloaded only for specific user and his post)
-                console.log("downloaded data");
-                this.images = data;
+                //get a list of Slider() objects from db
+                if(data.length > 0) {
+                    this.Notify.success("got " + data.length + " images");
+                    if(this.exampleImgPresented == true) {
+                        this.images.length = 0;
+                        this.exampleImgPresented = false;
+                    }
+                    let imagesList = [];
+                    data.forEach((slide) => {
+                        imagesList.push(slide.image_url);
+                    });
+                    this.images = imagesList;
+                } else {
+                    this.exampleImgPresented = true;
+                    this.Notify.success("no images -> display example");
+                    this.images = this.exampleImages;
+                }
             },
             (error) => {
                 console.log("failed to reach database");
@@ -59,13 +74,12 @@ export class SliderComponent {
             });
     }
 
-    handleError(error) {
-        this.error = error.error;
-        this.Notify.error(error);
+    handleError(err) {
+        this.error = err.error;
+        this.Notify.error(err);
     }
 
     onFileChanged(event) {
-        // this.selectedFile = <File>event.target.files[0];
         this.selectedFile = event.target.files[0];
     }
 
@@ -82,7 +96,7 @@ export class SliderComponent {
 
     onUpload() {
         let uploader = <HTMLInputElement>document.getElementById('uploader');
-        this.slide.name = this.selectedFile.name;
+        this.slide.file_name = this.selectedFile.name;
         let storageRef = firebase.storage().ref('postImages/' + this.selectedFile.name);
         let task = storageRef.put(this.selectedFile);
 
@@ -96,12 +110,13 @@ export class SliderComponent {
             },
             () => {
                 console.log("img in firebase");
+                this.Notify.success("Image in firebase storage");
                 console.log(this.selectedFile);
                 storageRef.getDownloadURL().then((url) => {
-                    this.slide.url = url;
+                    this.slide.image_url = url;
                     this.uploadToDB();
                     console.log("got url! uploading to db");
-                    console.log(this.slide.url);
+                    console.log(this.slide.image_url);
                 },(error) => {
                     console.log("coudn't get URL");
                 });

@@ -29,8 +29,8 @@ export class SliderService {
 
     update(slide: Slider): Observable<any>{
         const uploadData = new FormData();
-        uploadData.append('file', slide.file);
-        uploadData.append('url', slide.url);
-        return this.http.post(`${this.baseUrl}` + slide.id, uploadData);
+        uploadData.append('file_name', slide.file_name);
+        uploadData.append('image_url', slide.image_url);
+        return this.http.post(`${this.baseUrl}` + 'update', uploadData);
     }
 }
