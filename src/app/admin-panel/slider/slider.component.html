@@ -1,44 +1,30 @@
-<!--<script src="https://www.gstatic.com/firebasejs/5.5.8/firebase.js"></script>-->
-<ngb-carousel *ngIf="images" [showNavigationArrows]="showNavigationArrows" [showNavigationIndicators]="showNavigationIndicators">
-  <ng-template ngbSlide>
-    <img [src]="images[0]" alt="Random first slide">
-    <div class="carousel-caption">
-      <h3>5 seconds between slides...</h3>
-      <p>This carousel uses customized default values.</p>
-    </div>
-  </ng-template>
-  <ng-template ngbSlide>
-    <img [src]="images[1]" alt="Random second slide">
-    <div class="carousel-caption">
-      <h3>No mouse events...</h3>
-      <p>This carousel doesn't pause or resume on mouse events</p>
-    </div>
-  </ng-template>
-  <ng-template ngbSlide>
-    <img [src]="images[2]"  alt="Random third slide">
-    <div class="carousel-caption">
-      <h3>No keyboard...</h3>
-      <p>This carousel uses customized default values.</p>
-    </div>
-  </ng-template>
-  <ng-template ngbSlide>
-    <img [src]="images[3]" alt="Random fourth slide">
-    <div class="carousel-caption">
-      <h3>And no wrap after last slide.</h3>
-      <p>This carousel uses customized default values.</p>
-    </div>
-  </ng-template>
-</ngb-carousel>
-<hr>
-<div class="btn-group" role="group" aria-label="Carousel toggle controls">
-  <button type="button" (click)="showNavigationArrows = !showNavigationArrows" class="btn btn-outline-dark btn-sm">Toggle navigation arrows</button>
-  <button type="button" (click)="showNavigationIndicators = !showNavigationIndicators" class="btn btn-outline-dark btn-sm">Toggle navigation indicators</button>
+<div *ngIf="images.length > 0">
+  <ngb-carousel [showNavigationArrows]="showNavigationArrows" [showNavigationIndicators]="showNavigationIndicators">
+    <ng-template ngbSlide *ngFor="let image of images; let i = index">
+      <img [src]="image" alt="Your {{i}} image">
+      <div class="carousel-caption">
+        <h3>Your image no. {{i + 1}}</h3>
+      </div>
+    </ng-template>
+  </ngb-carousel>
+  <hr>
+  <div class="btn-group" role="group" aria-label="Carousel toggle controls">
+    <button type="button" (click)="showNavigationArrows = !showNavigationArrows" class="btn btn-outline-dark btn-sm">Toggle navigation arrows</button>
+    <button type="button" (click)="showNavigationIndicators = !showNavigationIndicators" class="btn btn-outline-dark btn-sm">Toggle navigation indicators</button>
+  </div>
+  <hr>
 </div>
-<hr>
+<!--<div *ngIf="imgInCanvas">-->
+<div>
+  <canvas id="canvas" width="0" height="0" style="position: relative"></canvas>
+</div>
 <div class="col-sm">
   <div class="form-group">
     <progress value="0" max="100" id="uploader">0%</progress>
-    <input type="file" class="btn form-control-file" aria-describedby="fileHelp" (change)="onFileChanged($event)">
-    <div class="btn btn-success" (click)="onUpload()">Upload!</div>
+    <input type="file" class="btn form-control-file" aria-describedby="fileHelp" (change)="loadImage($event)">
+    <div class="btn-group" role="group">
+      <button class="btn btn-success btn-space" (click)="onUpload()">Upload!</button>
+      <button class="btn btn-success btn-space" (click)="negatyw()">Negatyw</button>
+    </div>
   </div>
 </div>
