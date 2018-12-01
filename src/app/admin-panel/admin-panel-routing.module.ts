@@ -12,7 +12,7 @@ const routes: Routes = [
         {path: 'team/users',                                    loadChildren: './team/users/users.module#UsersModule'},
         // components
         {path: 'components/menu',                               loadChildren: './components/menu/menu-component/menu-component.module#MenuComponentModule'},
-            // settings
+        // settings
         {path: 'page-settings',                                 loadChildren: './settings/page-settings/page-settings.module#PageSettingsModule'},
         {path: 'admin-panel-settings',                          loadChildren: './settings/admin-panel-settings/admin-panel-settings.module#AdminPanelSettingsModule'},
         //assets

@@ -4,3 +4,21 @@
 @import "../../../../assets/theme/fonts/ionicons/css/ionicons.min.css";
 @import "../../../../assets/theme/fonts/fontawesome/css/font-awesome.min.css";
 @import "../../../../assets/theme/fonts/flaticon/font/flaticon.css";
+
+.site-footer {
+    padding-top: 20px !important;
+    padding-bottom: 20px !important;
+}
+
+.mb-5, .my-5 {
+    margin-bottom: 0rem !important;
+}
+
+.img-fluid {
+    float: left;
+}
+
+.short-description {
+    padding: 5px;
+    color: #ffffff;
+}

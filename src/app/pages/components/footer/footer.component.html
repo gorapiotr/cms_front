@@ -1,101 +1,122 @@
 <footer class="site-footer">
-  <div class="container">
-    <div class="row mb-5">
-      <div class="col-md-4">
-        <h3>Paragraph</h3>
-        <p>
-          <img src="../../assets/theme/images/img_1.jpg" alt="Image placeholder" class="img-fluid">
-        </p>
-
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nisi, accusantium optio unde perferendis
-          eum illum voluptatibus dolore tempora, consequatur minus asperiores temporibus reprehenderit.</p>
-      </div>
-      <div class="col-md-6 ml-auto">
-        <div class="row">
-          <div class="col-md-7">
-            <h3>Latest Post</h3>
-            <div class="post-entry-sidebar">
-              <ul>
-                <li>
-                  <a href="">
-                    <img src="../../assets/theme/images/img_6.jpg" alt="Image placeholder"
-                         class="mr-4">
-                    <div class="text">
-                      <h4>There’s a Cool New Way for Men to Wear Socks and Sandals</h4>
-                      <div class="post-meta">
-                        <span class="mr-2">March 15, 2018 </span>
-                        <span class="ml-2"><span class="fa fa-comments"></span> 3</span>
-                      </div>
-                    </div>
-                  </a>
-                </li>
-                <li>
-                  <a href="">
-                    <img src="../../assets/theme/images/img_3.jpg" alt="Image placeholder"
-                         class="mr-4">
-                    <div class="text">
-                      <h4>There’s a Cool New Way for Men to Wear Socks and Sandals</h4>
-                      <div class="post-meta">
-                        <span class="mr-2">March 15, 2018 </span>
-                        <span class="ml-2"><span class="fa fa-comments"></span> 3</span>
-                      </div>
-                    </div>
-                  </a>
-                </li>
-                <li>
-                  <a href="">
-                    <img src="../../assets/theme/images/img_4.jpg" alt="Image placeholder"
-                         class="mr-4">
-                    <div class="text">
-                      <h4>There’s a Cool New Way for Men to Wear Socks and Sandals</h4>
-                      <div class="post-meta">
-                        <span class="mr-2">March 15, 2018 </span>
-                        <span class="ml-2"><span class="fa fa-comments"></span> 3</span>
-                      </div>
-                    </div>
-                  </a>
-                </li>
-              </ul>
+    <div class="container">
+        <div class="row mb-5">
+            <div class="col-md-6">
+                <p>
+                    <a href="https://www.typescriptlang.org/">
+                    <img src="https://firebasestorage.googleapis.com/v0/b/cmsimage-9ec21.appspot.com/o/typescript.png?alt=media&token=ebf8fb0e-9ea2-445b-9376-2b860b7e466b" alt="Image placeholder" class="img-fluid"
+                         width="100px">
+                    </a>
+                </p>
+                <!--<div class="short-description">&nbsp;&nbsp;typepatterns.com</div>-->
             </div>
-          </div>
-          <div class="col-md-1"></div>
+            <div class="col-md-6">
+                <div class="row">
+                    <div class="col-md-7">
+                        <div class="mb-5">
+                            <h3>Quick Links</h3>
+                            <ul class="list-unstyled">
+                                <ng-container
+                                        *ngFor="let element of settings | settingsfilter:{key:'active_home_menu_item'}">
+                                    <ng-container *ngIf="element.value == 'true'">
+                                        <ng-container
+                                                *ngFor="let setting of settings | settingsfilter:{key:'home_menu_item_slug'}">
+                                            <li>
+                                                <a routerLink="{{setting.value}}">
+                                                    <ng-container
+                                                            *ngFor="let setting of settings | settingsfilter:{key:'home_menu_item'}">
+                                                        {{setting.value}}
+                                                    </ng-container>
+                                                </a>
+                                            </li>
+                                        </ng-container>
+                                    </ng-container>
+                                </ng-container>
 
-          <div class="col-md-4">
+                                <ng-container
+                                        *ngFor="let element of settings | settingsfilter:{key:'active_about_menu_item'}">
+                                    <ng-container *ngIf="element.value == 'true'">
+                                        <ng-container
+                                                *ngFor="let setting of settings | settingsfilter:{key:'about_menu_item_slug'}">
+                                            <li>
+                                                <a routerLink="{{setting.value}}">
+                                                    <ng-container
+                                                            *ngFor="let setting of settings | settingsfilter:{key:'about_menu_item'}">
+                                                        {{setting.value}}
+                                                    </ng-container>
+                                                </a>
+                                            </li>
+                                        </ng-container>
+                                    </ng-container>
+                                </ng-container>
 
-            <div class="mb-5">
-              <h3>Quick Links</h3>
-              <ul class="list-unstyled">
-                <li><a href="#">About Us</a></li>
-                <li><a href="#">Travel</a></li>
-                <li><a href="#">Adventure</a></li>
-                <li><a href="#">Courses</a></li>
-                <li><a href="#">Categories</a></li>
-              </ul>
+                                <ng-container
+                                        *ngFor="let element of settings | settingsfilter:{key:'active_contact_menu_item'}">
+                                    <ng-container *ngIf="element.value == 'true'">
+                                        <ng-container
+                                                *ngFor="let setting of settings | settingsfilter:{key:'contact_menu_item_slug'}">
+                                            <li>
+                                                <a routerLink="{{setting.value}}">
+                                                    <ng-container
+                                                            *ngFor="let setting of settings | settingsfilter:{key:'contact_menu_item'}">
+                                                        {{setting.value}}
+                                                    </ng-container>
+                                                </a>
+                                            </li>
+                                        </ng-container>
+                                    </ng-container>
+                                </ng-container>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-md-1"></div>
+
+                    <div class="col-md-4">
+
+                        <div class="mb-5">
+                            <h3>Social</h3>
+                            <ul class="list-unstyled footer-social">
+                                <ng-container *ngFor="let element of settings | settingsfilter:{key:'active_fb'}">
+                                    <ng-container *ngIf="element.value == 'true'">
+                                        <ng-container
+                                                *ngFor="let setting of settings | settingsfilter:{key:'facebook'}">
+                                            <li><a href="{{setting.value}}"><span class="fa fa-facebook"></span>Facebook</a>
+                                            </li>
+                                        </ng-container>
+                                    </ng-container>
+                                </ng-container>
+                                <!-- TWITTER -->
+                                <ng-container *ngFor="let element of settings | settingsfilter:{key:'active_tw'}">
+                                    <ng-container *ngIf="element.value == 'true'">
+                                        <ng-container *ngFor="let setting of settings | settingsfilter:{key:'twitter'}">
+                                            <li><a href="{{setting.value}}"><span
+                                                    class="fa fa-twitter"></span>Twitter</a></li>
+                                        </ng-container>
+                                    </ng-container>
+                                </ng-container>
+                                <!-- YOUTUBE -->
+                                <ng-container *ngFor="let element of settings | settingsfilter:{key:'active_yt'}">
+                                    <ng-container *ngIf="element.value == 'true'">
+                                        <ng-container *ngFor="let setting of settings | settingsfilter:{key:'youtube'}">
+                                            <li><a href="{{setting.value}}"><span class="fa fa-youtube-play"></span>YouTube</a>
+                                            </li>
+                                        </ng-container>
+                                    </ng-container>
+                                </ng-container>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
             </div>
-
-            <div class="mb-5">
-              <h3>Social</h3>
-              <ul class="list-unstyled footer-social">
-                <li><a href="#"><span class="fa fa-twitter"></span> Twitter</a></li>
-                <li><a href="#"><span class="fa fa-facebook"></span> Facebook</a></li>
-                <li><a href="#"><span class="fa fa-instagram"></span> Instagram</a></li>
-                <li><a href="#"><span class="fa fa-vimeo"></span> Vimeo</a></li>
-                <li><a href="#"><span class="fa fa-youtube-play"></span> Youtube</a></li>
-                <li><a href="#"><span class="fa fa-snapchat"></span> Snapshot</a></li>
-              </ul>
-            </div>
-          </div>
         </div>
-      </div>
+        <div class="row">
+            <!--<div class="col-md-12">-->
+            <!--&lt;!&ndash; Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. &ndash;&gt;-->
+            <!--Copyright &copy;<script>document.write(new Date().getFullYear());</script>-->
+            <!--All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a-->
+            <!--href="https://colorlib.com" target="_blank">Colorlib</a>-->
+            <!--&lt;!&ndash; Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. &ndash;&gt;-->
+            <!--</div>-->
+        </div>
     </div>
-    <div class="row">
-      <div class="col-md-12">
-        <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-        Copyright &copy;<script>document.write(new Date().getFullYear());</script>
-        All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a
-              href="https://colorlib.com" target="_blank">Colorlib</a>
-        <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-      </div>
-    </div>
-  </div>
 </footer>
