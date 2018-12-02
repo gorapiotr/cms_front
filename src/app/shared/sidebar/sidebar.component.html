@@ -106,6 +106,11 @@
                                 <a class="nav-link" routerLink="assets/image-crop"><i class="menu-icon fa fa-file-image"></i>Image crop</a>
                             </li>
                         </ng-template>
+                        <ng-template [ngxPermissionsOnly]="['read-asset']">
+                            <li class="nav-item">
+                                <a class="nav-link" routerLink="assets/image-reduce-noise"><i class="menu-icon fa fa-file-image"></i>Reduce noise</a>
+                            </li>
+                        </ng-template>
                     </ul>
                 </div>
             </li>

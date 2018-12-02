@@ -18,6 +18,7 @@ const routes: Routes = [
         //assets
         {path: 'assets/image-filter',                           loadChildren: './assets/image-edit/image-filter/image-filter.module#ImageFilterModule'},
         {path: 'assets/image-crop',                             loadChildren: './assets/image-edit/image-crop/image-crop.module#ImageCropModule'},
+        {path: 'assets/image-reduce-noise',                     loadChildren: './assets/image-edit/image-reduce-noise/image-reduce-noise.module#ImageReduceNoiseModule'},
         //posts
         {path: 'post/post-list',                                loadChildren: './post/post-list/post-list.module#PostListModule'},
         {path: 'post/add',                                      loadChildren: './post/post-add/post-add.module#PostAddModule'},
