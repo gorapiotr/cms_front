@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {Post} from '../../../_models/Post/Post';
+import {PostPageService} from '../../../_services/page/post/post-page.service';
 
 @Component({
   selector: 'app-recommended-posts',
@@ -7,9 +9,29 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RecommendedPostsComponent implements OnInit {
 
-  constructor() { }
+    posts: Post[];
+    hideLoader = false;
 
-  ngOnInit() {
-  }
+    constructor(protected postPageService: PostPageService) {
+    }
+
+    ngOnInit() {
+        this.getPosts();
+    }
+
+    getPosts() {
+        this.hideLoader = false;
+        this.postPageService.getCollection([5 ,2 ,6]).subscribe(
+            (data) => {
+                this.posts = data;
+                console.log(this.posts);
+
+            },
+            (error) => console.log(error),
+            () => {
+                this.hideLoader = true;
+            }
+        );
+    }
 
 }

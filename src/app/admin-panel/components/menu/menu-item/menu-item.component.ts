@@ -29,9 +29,6 @@ export class MenuItemComponent implements OnInit {
         this.getSettings();
     }
 
-    ngAfterViewChecked() {
-        this.cdRef.detectChanges();
-    }
 
     getSettings() {
         this.hideLoader = false;

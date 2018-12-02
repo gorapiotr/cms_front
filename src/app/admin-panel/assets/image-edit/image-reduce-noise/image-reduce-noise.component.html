@@ -1,0 +1,52 @@
+<div class="row" xmlns="">
+    <div class="col-12 grid-margin">
+        <div class="row flex-grow">
+            <div class="col-12">
+                <div class="card">
+                    <div class="col-12">
+                        <div class="card-body">
+                            <h4 class="card-title">Image filter</h4>
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-sm">
+                                        <img id="orig" #orig [src]="src" width="100%">
+                                    </div>
+                                    <div class="col-sm">
+                                        <img id="after" [src]="noise_src" width="100%">
+                                    </div>
+                                    <div class="col-sm">
+                                        <img [src]="new_src" width="100%">
+                                    </div>
+                                    <hr>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm">
+                                        <button class="btn btn-success"
+                                                (click)="reduceNoise()"
+                                                style="margin: 4px"
+                                        >
+                                            Render image
+                                        </button>
+                                    </div>
+                                    <div class="col-sm">
+                                            <ng-container *ngFor="let kernel of kernels">
+                                            <button class="btn btn-success"
+                                                    (click)="sumAndKernel(kernel)"
+                                                    style="margin: 4px"
+                                            >
+                                                kernel
+                                            </button>
+                                            </ng-container>
+                                    </div>
+                                    <div class="col-sm">
+                                        {{kernel}}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

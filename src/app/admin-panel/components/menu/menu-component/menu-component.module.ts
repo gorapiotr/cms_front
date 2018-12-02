@@ -1,6 +1,6 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { MenuComponentComponent } from './menu-component.component';
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
+import {MenuComponentComponent} from './menu-component.component';
 import {LoaderModule} from '../../../../shared/loader/loader.module';
 import {FormsModule} from '@angular/forms';
 import {RouterModule, Routes} from '@angular/router';
@@ -24,9 +24,9 @@ const routes: Routes = [{
         MenuItemModule,
         NgbTabsetModule
     ],
-    providers: [
-    ],
-  declarations: [MenuComponentComponent],
+    providers: [],
+    declarations: [MenuComponentComponent],
     exports: [MenuComponentComponent]
 })
-export class MenuComponentModule { }
+export class MenuComponentModule {
+}

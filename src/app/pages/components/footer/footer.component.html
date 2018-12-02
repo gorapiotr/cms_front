@@ -3,10 +3,17 @@
         <div class="row mb-5">
             <div class="col-md-6">
                 <p>
-                    <a href="https://www.typescriptlang.org/">
-                    <img src="https://firebasestorage.googleapis.com/v0/b/cmsimage-9ec21.appspot.com/o/typescript.png?alt=media&token=ebf8fb0e-9ea2-445b-9376-2b860b7e466b" alt="Image placeholder" class="img-fluid"
-                         width="100px">
-                    </a>
+                    <ng-container
+                            *ngFor="let element of settings | settingsfilter:{key:'footer_image'}">
+                        <ng-container
+                                *ngFor="let url of settings | settingsfilter:{key:'footer_image_url'}">
+                            <a [href]="url.value">
+                                <img [src]="element.value"
+                                     alt="Image placeholder" class="img-fluid"
+                                     width="100px">
+                            </a>
+                        </ng-container>
+                    </ng-container>
                 </p>
                 <!--<div class="short-description">&nbsp;&nbsp;typepatterns.com</div>-->
             </div>

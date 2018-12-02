@@ -1,7 +1,4 @@
-import {ChangeDetectorRef, Component, OnInit} from '@angular/core';
-import {Setting} from '../../../../_models/Settings/Setting';
-import {SettingsService} from '../../../../_services/admin-panel/settings/settings.service';
-import {SnotifyService} from 'ng-snotify';
+import {Component, OnInit} from '@angular/core';
 
 @Component({
     selector: 'app-menu-component',

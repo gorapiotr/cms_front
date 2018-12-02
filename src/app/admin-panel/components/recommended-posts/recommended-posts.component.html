@@ -1,3 +1,59 @@
-<p>
-  recommended-posts works!
-</p>
+<ng-template #preLoader>
+    <app-loader></app-loader>
+</ng-template>
+
+<ng-container *ngIf="hideLoader else preLoader">
+    <div class="row" xmlns="">
+        <div class="col-12 grid-margin">
+            <div class="row flex-grow">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="col-12">
+                            <div class="card-body">
+                                <h4 class="card-title">Recommended posts</h4>
+                                <div class="container">
+                                    <section class="site-section pt-5">
+                                        <div class="container">
+                                            <div class="row">
+                                                <div class="col-sm">
+                                                    <button type="submit" class="btn btn-success mr-2 float-right">
+                                                        Update
+                                                    </button>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <ng-container *ngFor="let element of posts">
+                                                    <div class="col-md-6 col-lg-4">
+                                                        <div class="form-group">
+                                                            <label for="selectPost">Select post</label>
+                                                            <select class="form-control" id="selectPost" readonly>
+                                                                <option>{{element.slug}}</option>
+                                                            </select>
+                                                        </div>
+                                                        <a [routerLink]="['/post/',element.slug]"
+                                                           class="a-block d-flex align-items-center height-md"
+                                                           [ngStyle]="{'background-image': 'url(' + element.main_image + ')'}">
+                                                            <div class="text">
+                                                                <div class="post-meta">
+                                                                    <span class="category">New</span>
+                                                                    <span class="mr-2">{{element.created_at}}</span>
+                                                                    <span class="ml-2"><span
+                                                                            class="fa fa-comments"></span> 3</span>
+                                                                </div>
+                                                                <h3>{{element.title}}</h3>
+                                                            </div>
+                                                        </a>
+                                                    </div>
+                                                </ng-container>
+                                            </div>
+                                        </div>
+                                    </section>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</ng-container>
