@@ -51,7 +51,6 @@ export class SliderComponent {
         this.sliderService.get().subscribe(
             (data) => {
                 //get images from server, show in carousel, hide canvas
-                    this.Notify.success("got " + data.length + " images");
                     if(this.exampleImgPresented == true) {
                         this.images.length = 0;
                         this.exampleImgPresented = false;
@@ -73,7 +72,7 @@ export class SliderComponent {
 
     uploadToDB() {
         this.sliderService.update(this.slide).subscribe((data) => {
-            this.Notify.success('Updated');
+            this.Notify.success('Update succeded');
             console.log("uploaded to db");
             this.getSlides();
         }, (error) => {
@@ -97,7 +96,6 @@ export class SliderComponent {
                     this.Notify.error("firebase upload failed");
                 },
                 () => {
-                    this.Notify.success("Image in firebase storage");
                     console.log(this.selectedFile);
                     storageRef.getDownloadURL().then((url) => {
                         this.slide.image_url = url;
