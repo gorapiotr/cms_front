@@ -14,7 +14,6 @@
   </div>
   <hr>
 </div>
-<!--<div *ngIf="imgInCanvas">-->
 <div>
   <canvas id="canvas" width="0" height="0" style="position: relative"></canvas>
 </div>
@@ -24,7 +23,12 @@
     <input type="file" class="btn form-control-file" aria-describedby="fileHelp" (change)="loadImage($event)">
     <div class="btn-group" role="group">
       <button class="btn btn-success btn-space" (click)="onUpload()">Upload!</button>
-      <button class="btn btn-success btn-space" (click)="negatyw()">Negatyw</button>
+      <button class="btn btn-success btn-space" (click)="negatyw()">Negative</button>
+      <button class="btn btn-success btn-space" (click)="sepia(40)">Sepia</button>
     </div>
+    <tr><td>Luminancja (od 0 do 255):</td><td><input type="text" size="30" value="0" id="param_luminancja" (change)="solarization()"/></td></tr>
+    <tr>
+      <canvas id="lut_canvas" width="150" height="150" style="position: relative"></canvas>
+    </tr>
   </div>
 </div>
