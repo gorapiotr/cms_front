@@ -1,0 +1,42 @@
+<h3>Create your own image</h3>
+<mat-dialog-content align="center" class="mat-typography">
+  <div>
+    <canvas id="canvas" width="0" height="0" style="position: relative"></canvas>
+  </div>
+  <div align="center">
+      <input style="margin: 0 auto;" type="file" class="btn form-control-file" aria-describedby="fileHelp" (change)="loadImage($event)">
+      <table *ngIf="selectedFile" cellpadding="5px">
+          <tr>
+              <td></td>
+              <td><button class="btn btn-success btn-space" (click)="negatyw()">Negative</button></td>
+          </tr>
+          <tr>
+              <td><input type="text" size="5" value="20" id="param_sepia"/></td>
+              <td><button style="alignment: center" class="btn btn-success btn-space" (click)="sepia()">Sepia</button></td>
+          </tr>
+          <tr>
+              <td><input type="text" size="5" value="0.65" id="param_gamma"/></td>
+              <td><button class="btn btn-success btn-space" (click)="gamma()">Gamma correction</button></td>
+          </tr>
+          <tr>
+              <td><input type="text" size="5" value="255" id="param_luminancja"/></td>
+              <td><button class="btn btn-success btn-space" (click)="solarization()">Solarization</button></td>
+          </tr>
+      </table>
+      <table cellpadding="5px">
+          <tr>
+            <td>
+              <canvas id="histogram_canvas" width="0" height="0"></canvas>
+            </td>
+            <td>
+              <canvas id="lut_canvas" width="0" height="0" style="position: relative"></canvas>
+            </td>
+          </tr>
+      </table>
+  </div>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close>Cancel</button>
+  <progress *ngIf="uploadClicked" max="100" id="uploader">0%</progress>
+  <button *ngIf="!uploadClicked" mat-button cdkFocusInitial (click)="onUpload()">Upload</button>
+</mat-dialog-actions>

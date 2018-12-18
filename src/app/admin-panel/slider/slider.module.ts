@@ -1,9 +1,10 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import {SliderComponent, SliderDialog} from './slider.component';
+import { SliderComponent } from './slider.component';
+import { DialogComponent } from './dialog/dialog.component';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {RouterModule, Routes} from '@angular/router';
-import { HttpClientModule} from "@angular/common/http";
+import {HttpClientModule} from "@angular/common/http";
 import {
     MatDialogModule,
     MatFormFieldModule,
@@ -12,7 +13,6 @@ import {
     MAT_DIALOG_DEFAULT_OPTIONS
 } from "@angular/material";
 import {FormsModule} from "@angular/forms";
-import {BrowserAnimationsModule, NoopAnimationsModule} from "@angular/platform-browser/animations";
 
 const routes: Routes = [{
     path: '',
@@ -25,7 +25,6 @@ const routes: Routes = [{
     ],
     imports: [
         CommonModule,
-        // BrowserAnimationsModule,
         NgbModule.forRoot(),
         RouterModule.forChild(routes),
         HttpClientModule,
@@ -37,18 +36,15 @@ const routes: Routes = [{
     ],
     declarations: [
         SliderComponent,
-        SliderDialog
+        DialogComponent,
     ],
     exports: [
         SliderComponent,
-        // SliderDialog,
         MatFormFieldModule,
         MatButtonModule,
-        // BrowserAnimationsModule,
-        // NoopAnimationsModule,
     ],
     entryComponents: [
-        SliderDialog,
+        DialogComponent,
     ]
 })
 export class SliderModule { }
