@@ -24,11 +24,38 @@
     <div class="btn-group" role="group">
       <button class="btn btn-success btn-space" (click)="onUpload()">Upload!</button>
       <button class="btn btn-success btn-space" (click)="negatyw()">Negative</button>
-      <button class="btn btn-success btn-space" (click)="sepia(40)">Sepia</button>
     </div>
-    <tr><td>Luminancja (od 0 do 255):</td><td><input type="text" size="30" value="0" id="param_luminancja" (change)="solarization()"/></td></tr>
+    <div>
+      <button class="btn btn-success btn-space" (click)="sepia()">Sepia</button>
+      <input type="text" size="10" value="20" id="param_sepia"/>(20-40)
+    </div>
+    <div>
+      <button class="btn btn-success btn-space" (click)="gamma()">Gamma correction</button>
+      <input type="text" size="10" value="0.65" id="param_gamma"/>
+    </div>
+    <div>
+      Wartość progowa luminancji:<input type="text" size="10" value="255" id="param_luminancja" (change)="solarization()"/>
+    </div><br><br>
     <tr>
-      <canvas id="lut_canvas" width="150" height="150" style="position: relative"></canvas>
+      <td>
+        <canvas id="histogram_canvas" width="0" height="0"></canvas>
+      </td>
+      <td>
+        <canvas id="lut_canvas" width="0" height="0" style="position: relative"></canvas>
+      </td>
     </tr>
   </div>
+  <ol>
+    <li>
+      <mat-form-field>
+        <input matInput [(ngModel)]="name" placeholder="What's your name?">
+      </mat-form-field>
+    </li>
+    <li>
+      <button mat-raised-button (click)="openDialog()">Pick one</button>
+    </li>
+    <li *ngIf="animal">
+      You chose: <i>{{animal}}</i>
+    </li>
+  </ol>
 </div>

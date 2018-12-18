@@ -16,6 +16,7 @@ import {SignupModule} from './signup/signup.module';
 import {PasswordModule} from './password/password.module';
 import {MainInterceptor} from './interceptors/main.interceptor';
 import {NgxPermissionsModule} from 'ngx-permissions';
+import {NoopAnimationsModule} from "@angular/platform-browser/animations";
 
 
 @NgModule({
@@ -23,7 +24,8 @@ import {NgxPermissionsModule} from 'ngx-permissions';
         AppComponent,
     ],
     imports: [
-        BrowserModule,
+        // BrowserModule,
+        NoopAnimationsModule,
         AppRoutingModule,
         FormsModule,
         HttpClientModule,
