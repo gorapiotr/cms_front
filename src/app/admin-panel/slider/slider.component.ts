@@ -58,6 +58,8 @@ export class SliderComponent {
     getSlides() {
         this.sliderService.get().subscribe(
             (data) => {
+                console.log('dane z bazy');
+                console.log(data);
                 //get images from server, show in carousel
                     if(this.exampleImgPresented == true) {
                         this.images.length = 0;

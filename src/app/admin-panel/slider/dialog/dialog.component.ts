@@ -58,8 +58,12 @@ export class DialogComponent implements OnInit {
     this.uploadClicked = true;
     let uploader = <HTMLInputElement>document.getElementById('uploader');
     let storageRef = firebase.storage().ref('postImages/' + this.selectedFile.name);
+    console.log('this.selectedFile');
+    console.log(this.selectedFile);
     this.slide.file_name = this.selectedFile.name;
     this.canvas.toBlob((blob) => {
+      console.log('blob');
+      console.log(blob);
       let task = storageRef.put(blob);
       task.on(firebase.storage.TaskEvent.STATE_CHANGED,
           (snapshot: firebase.storage.UploadTaskSnapshot) => {
